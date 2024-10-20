@@ -36,3 +36,4 @@ This repository is for the frontend of the Developia Discord channel. Follow the
 
 ## Contributors
 - List of contributors can be added here.
+- 2024 Developia
