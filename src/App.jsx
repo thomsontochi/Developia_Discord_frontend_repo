@@ -5,6 +5,7 @@ import Footer from './components/layouts/Footer';
 import Home from './pages/Home';
 import "./App.css";
 import Hero from './components/Hero';
+import Product from './components/Product';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <div className="site-wrap">
         <Header />
         <Hero/>
+        <Product/>
          <Routes>
           <Route path="/" element={<Home />} />
         
