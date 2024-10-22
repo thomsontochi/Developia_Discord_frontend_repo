@@ -4,17 +4,19 @@ import Header from './components/layouts/Header';
 import Footer from './components/layouts/Footer';
 import Home from './pages/Home';
 import "./App.css";
+import Hero from './components/Hero';
 
 function App() {
   return (
     <Router>
       <div className="site-wrap">
         <Header />
-        {/* <Routes>
+        <Hero/>
+         <Routes>
           <Route path="/" element={<Home />} />
         
-        </Routes> */}
-        {/* <Footer /> */}
+        </Routes> 
+        <Footer />
       </div>
     </Router>
   );
