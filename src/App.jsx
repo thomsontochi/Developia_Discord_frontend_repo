@@ -1,26 +1,26 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './components/layouts/Header';
-import Footer from './components/layouts/Footer';
-import Home from './pages/Home';
+import {BrowserRouter as Router, Routes} from 'react-router-dom';
 import "./App.css";
-import Hero from './components/Hero';
-import Product from './components/Product';
+import {AllRoutes} from "./utils/routes.jsx";
 
 function App() {
   return (
-    <Router>
-      <div className="site-wrap">
-        <Header />
-        <Hero/>
-        <Product/>
-         <Routes>
-          <Route path="/" element={<Home />} />
-        
-        </Routes> 
-        <Footer />
-      </div>
-    </Router>
+      <>
+    {/*<Router>*/}
+    {/*  <div className="site-wrap">*/}
+    {/*    <Header />*/}
+    {/*    <Hero/>*/}
+    {/*    <Product/>*/}
+    {/*     <Routes>*/}
+    {/*      <Route path="/" element={<Home />} />*/}
+
+    {/*    </Routes>*/}
+    {/*    <Footer />*/}
+    {/*  </div>*/}
+    {/*</Router>*/}
+<Router>
+    <Routes>{AllRoutes}</Routes>
+</Router>
+      </>
   );
 }
 
