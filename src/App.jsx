@@ -5,7 +5,7 @@ import Footer from './components/layouts/Footer';
 import Home from './pages/Home';
 import "./App.css";
 import Hero from './components/Hero';
-
+import Services from './pages/Services'
 function App() {
   return (
     <Router>
@@ -14,7 +14,7 @@ function App() {
         <Hero/>
          <Routes>
           <Route path="/" element={<Home />} />
-        
+         <Route path="/services" element={<Services/>}/>
         </Routes> 
         <Footer />
       </div>
