@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import Counch from "../assets/images/couch.png";
 
 const Hero = () => {
     return (
@@ -19,7 +20,7 @@ const Hero = () => {
 					</div>
 					<div className="col-lg-7">
 						<div className="hero-img-wrap">
-							<img src="images/couch.png" className="img-fluid" /> {/* Self-closing tag */}
+							<img src={Counch} className="img-fluid" /> {/* Self-closing tag */}
 						</div>
 					</div>
 				</div>

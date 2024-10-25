@@ -6,16 +6,18 @@ import Home from './pages/Home';
 import "./App.css";
 import Hero from './components/Hero';
 import Product from './components/Product';
+import About from './pages/About';
 
 function App() {
   return (
     <Router>
       <div className="site-wrap">
         <Header />
-        <Hero/>
-        <Product/>
+        {/* <Hero/> */}
+        {/* <Product/> */}
          <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
         
         </Routes> 
         <Footer />

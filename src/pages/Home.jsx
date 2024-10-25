@@ -1,5 +1,7 @@
 import React from 'react';
 // import Hero from '../components/home/Hero';
+import Hero from '../components/Hero';
+import Product from '../components/Product';
 // import ProductSection from '../components/home/ProductSection';
 // import WhyChooseUs from '../components/home/WhyChooseUs';
 // import WeHelp from '../components/home/WeHelp';
@@ -11,7 +13,8 @@ const Home = () => {
   return (
     <>
     {/* <h1> this is home </h1> */}
-      {/* <Hero /> */}
+      <Hero />
+      <Product />
       {/* <ProductSection />
       <WhyChooseUs />
       <WeHelp />
