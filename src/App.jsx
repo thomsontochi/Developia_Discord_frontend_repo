@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import "./App.css";
 import Hero from './components/Hero';
 import Product from './components/Product';
+import Wcu from './pages/Wcu';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Header />
         <Hero/>
         <Product/>
+        <Wcu/>
          <Routes>
           <Route path="/" element={<Home />} />
         

@@ -8,18 +8,16 @@ const Hero = () => {
 		<div className="hero">
 			<div className="container">
 				<div className="row justify-content-between">
-					<div className="col-lg-5">
-						<div className="intro-excerpt">
-							<h1>Modern Interior <span clsas="d-block">Design Studio</span></h1>
-							<p className="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam
-								vulputate velit imperdiet dolor tempor tristique.</p>
-							<p><a href="" className="btn btn-secondary me-2">Shop Now</a><a href="#"
-									className="btn btn-white-outline">Explore</a></p>
+					<div className="col-lg-6">
+						<div className="">
+							<h1>Empowering WhatsApp Vendors <span className="d-block">with Seamless E-commerce Solutions</span></h1>
+							<p className="mb-4">Join Developia Discord, where we connect WhatsApp vendors with customers effortlessly. Our platform provides a user-friendly interface, enabling vendors to showcase their products and manage orders directly through WhatsApp.</p>
+							<p><a href="" className="btn btn-secondary me-2">Start Selling Now</a><a href="#" className="btn btn-white-outline">Discover More</a></p>
 						</div>
 					</div>
-					<div className="col-lg-7">
+					<div className="col-lg-6">
 						<div className="hero-img-wrap">
-							<img src="images/couch.png" className="img-fluid" /> {/* Self-closing tag */}
+							<img src="/assets/images/couch.png" className="img-fluid" alt="E-commerce illustration" /> {/* Self-closing tag */}
 						</div>
 					</div>
 				</div>
