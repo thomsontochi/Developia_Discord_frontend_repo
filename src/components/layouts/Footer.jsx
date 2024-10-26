@@ -4,7 +4,7 @@ import envelope_Image from "/src/assets/images/envelope-outline.svg";
 import sofa_Image from "/src/assets/images/sofa.png";
 import { menuData } from "/src/assets/TestimonialData";
 
-// import { IoIosSend } from "react-icons/io";
+// Font awesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons';

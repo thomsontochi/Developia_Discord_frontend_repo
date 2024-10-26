@@ -7,6 +7,7 @@ import "./App.css";
 import Hero from './components/Hero';
 import Product from './components/Product';
 import About from './pages/About';
+import BlogSection from './pages/BlogSection';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
          <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/BlogSection" element={<BlogSection />} />
         
         </Routes> 
         <Footer />
