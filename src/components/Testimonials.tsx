@@ -42,7 +42,7 @@ const Testimonials: React.FC<TestimonialsProps> = () => {
         <div>
              
 			
-		<div className="testimonial-section before-footer-section">
+		<div className="testimonial-section ">
 			<div className="container">
 				<div className="row">
 					<div className="col-lg-7 mx-auto text-center">
