@@ -1,17 +1,43 @@
-import React from 'react';
+// import React from 'react';
+import React, { useEffect } from 'react';
+import { tns } from "tiny-slider";
+import "tiny-slider/dist/tiny-slider.css";
+import {testimonialsData} from "../assets/TestimonialData"
 
-// import person_I from "../assets/images/person_1.jpg";
-// import person_II from "../assets/images/person_2.jpg";
-// import person_III from "../assets/images/person_3.jpg";
 
 
+
+import { BsChevronRight } from "react-icons/bs";
+import { BsChevronLeft } from "react-icons/bs";
 
 
 interface TestimonialsProps {
     
 }
 
+
+
 const Testimonials: React.FC<TestimonialsProps> = () => {
+
+
+          
+	useEffect(() => {
+		const slider = tns({
+		   container: '.testimonial-slider',
+		   items: 1,
+		   slideBy: 'page',
+		   autoplay: true,
+		   autoplayButtonOutput: false,
+		   controls: true,
+		   nav: true,
+		   prevButton: '.prev',
+		   nextButton: '.next',
+		});
+	 
+		return () => slider.destroy(); // Clean up on component unmount
+	 }, []);
+
+
     return (
         <div>
              
@@ -29,87 +55,44 @@ const Testimonials: React.FC<TestimonialsProps> = () => {
 						<div className="testimonial-slider-wrap text-center">
 
 							<div id="testimonial-nav">
-								<span className="prev" data-controls="prev"><span className="fa fa-chevron-left"></span></span>
-								<span className="next" data-controls="next"><span className="fa fa-chevron-right"></span></span>
+								<span className="prev" data-controls="prev">
+									<span ><BsChevronLeft  size={20}/>
+										</span></span>
+								<span className="next" data-controls="next"><span><BsChevronRight  size={20}/></span></span>
 							</div>
 
 							<div className="testimonial-slider">
-								
-								<div className="item">
+							{ testimonialsData.map((info)=>{
+								return(
+
+									<div className="item" key={info.id}>
 									<div className="row justify-content-center">
 										<div className="col-lg-8 mx-auto">
 
 											<div className="testimonial-block text-center">
 												<blockquote className="mb-5">
-													<p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. 
-														Donec vitae odio quis nisl dapibus 
-														malesuada. Nullam ac aliquet velit. Aliquam vulputate 
-														velit imperdiet dolor tempor tristique. Pellentesque habitant
-														 morbi tristique senectus et netus et malesuada fames ac turpis 
-														 egestas. Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
+													<p>&ldquo;{info.quote}&rdquo;</p>
 												</blockquote>
 
 												<div className="author-info">
 													<div className="author-pic">
-														<img src="images/person-1.png" alt="Maria Jones" className="img-fluid" />
+														<img src={info.image} alt="Maria Jones" className="img-fluid" />
 													</div>
-													<h3 className="font-weight-bold">Maria Jones</h3>
-													<span className="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span>
+													<h3 className="font-weight-bold">{info.name}</h3>
+													<span className="position d-block mb-3">{info.designation}</span>
 												</div>
 											</div>
 
 										</div>
 									</div>
-								</div> 
+								</div>)
+
+							})
+								  }{/* {item one  ends here} */}
+													
+
+							</div>   {/*testimonials ends here*/} 
 							
-
-								<div className="item">
-									<div className="row justify-content-center">
-										<div className="col-lg-8 mx-auto">
-
-											<div className="testimonial-block text-center">
-												<blockquote className="mb-5">
-													<p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
-												</blockquote>
-
-												<div className="author-info">
-													<div className="author-pic">
-														<img src="images/person-1.png" alt="Maria Jones" className="img-fluid" />
-													</div>
-													<h3 className="font-weight-bold">Maria Jones</h3>
-													<span className="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span>
-												</div>
-											</div>
-
-										</div>
-									</div>
-								</div> 
-							
-
-								<div className="item">
-									<div className="row justify-content-center">
-										<div className="col-lg-8 mx-auto">
-
-											<div className="testimonial-block text-center">
-												<blockquote className="mb-5">
-													<p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
-												</blockquote>
-
-												<div className="author-info">
-													<div className="author-pic">
-														<img src="images/person-1.png" alt="Maria Jones" className="img-fluid" />
-													</div>
-													<h3 className="font-weight-bold">Maria Jones</h3>
-													<span className="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span>
-												</div>
-											</div>
-
-										</div>
-									</div>
-								</div> 
-							
-
-							</div>
 
 						</div>
 					</div>
