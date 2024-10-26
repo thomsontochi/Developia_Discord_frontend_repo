@@ -34,7 +34,7 @@ const About = () => {
 
              { /* <!-- End Hero Section --> */ }
         
-              <WhyChooseUs />
+             <WhyChooseUs />
 			 <TeamSection />
 			 <Testimonials />
 			 {/* <Testimonials /> /* the tstimaonial component is in progress   */ }
