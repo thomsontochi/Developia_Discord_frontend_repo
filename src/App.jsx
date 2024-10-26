@@ -6,7 +6,12 @@ import Home from './pages/Home';
 import "./App.css";
 import Hero from './components/Hero';
 import Product from './components/Product';
-import Wcu from './pages/Wcu';
+import Wcu from './components/layouts/Wcu';
+import PopularProduct from './components/layouts/PopularProduct';
+
+import Testimonials from './components/Testimonials';
+
+
 
 function App() {
   return (
@@ -15,7 +20,9 @@ function App() {
         <Header />
         <Hero/>
         <Product/>
+        <PopularProduct/>
         <Wcu/>
+        <Testimonials/>
          <Routes>
           <Route path="/" element={<Home />} />
         
