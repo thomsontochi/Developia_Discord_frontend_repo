@@ -1,6 +1,7 @@
 import person_I from "../assets/images/person_1.jpg";
 import person_II from "../assets/images/person_2.jpg";
 import person_III from "../assets/images/person_3.jpg";
+import Post_1 from "/src/assets/images/post-1.jpg";
 
 
 
@@ -84,5 +85,17 @@ const menuData = [
 
 ]
 
-export { testimonialsData, menuData };
+
+const BlogInfoComponentData = [
+
+	{
+		id: 1,
+		image: Post_1, 
+		postContentEntry: "First Time Home Owner Ideas",
+		name: "Kristin Watson",
+		date: "Dec 19, 2021"
+	}
+]
+
+export { testimonialsData, menuData, BlogInfoComponentData };
 
