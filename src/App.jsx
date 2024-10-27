@@ -8,7 +8,6 @@ import Hero from './components/Hero';
 import Product from './components/Product';
 import Wcu from './components/layouts/Wcu';
 import PopularProduct from './components/layouts/PopularProduct';
-
 import Testimonials from './components/Testimonials';
 
 

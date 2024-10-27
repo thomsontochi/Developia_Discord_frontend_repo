@@ -13,8 +13,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.27.0",
-    "tiny-slider": "^2.9.4",
-    "tiny-slider-react": "^0.5.7"
+    "swiper": "^11.1.14"
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",

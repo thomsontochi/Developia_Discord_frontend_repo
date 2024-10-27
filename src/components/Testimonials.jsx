@@ -1,101 +1,95 @@
 import React from "react";
-import { useEffect, useRef } from 'react';
-import { tns } from "tiny-slider";
-import 'tiny-slider/dist/tiny-slider.css';
-import './testimonials.css'// Make sure to create this CSS file
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay, Pagination } from "swiper/modules";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+import "./testimonials.css"
+
+const testimonialData = [
+  {
+    id: 1,
+    content:
+      "Developia Discord has transformed the way I connect with my customers. The platform is user-friendly, and I can easily manage my orders through WhatsApp. Highly recommend!",
+    name: "Maria Jones",
+    position: "CEO, Co-Founder, XYZ Inc.",
+    image: "/assets/images/person-1.png",
+  },
+  {
+    id: 2,
+    content:
+      "As a vendor, I appreciate the seamless integration with WhatsApp. It allows me to provide personalized service to my clients, and the sales have never been better!",
+    name: "John Smith",
+    position: "Owner, Smith's Crafts",
+    image: "/assets/images/person-1.png",
+  },
+  {
+    id: 3,
+    content:
+      "I love shopping through Developia Discord! The variety of products from different vendors is amazing, and the process is so convenient. I always find what I need!",
+    name: "Emily Johnson",
+    position: "Frequent Shopper",
+    image: "/assets/images/person-1.png",
+  },
+];
 
 const Testimonials = () => {
-    const sliderRef = useRef(null);
-
-    useEffect(() => {
-        if (sliderRef.current) {
-            const slider = tns({
-                container: sliderRef.current,
-                items: 1,
-                slideBy: 1,
-                autoplay: true,
-                autoplayTimeout: 5000,
-                autoplayButtonOutput: false,
-                nav: true,
-                navPosition: "bottom",
-                controls: true,
-                speed: 400,
-                mouseDrag: true,
-                controlsContainer: "#testimonial-nav"
-            });
-        }
-    }, []);
-
-    const testimonials = [
-        {
-            id: 1,
-            text: "Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.",
-            name: "Maria Jones",
-            position: "CEO, Co-Founder, XYZ Inc.",
-            image: "/assets/images/person-1.png"
-        },
-        {
-            id: 2,
-            text: "Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.",
-            name: "Maria Jones",
-            position: "CEO, Co-Founder, XYZ Inc.",
-            image: "/assets/images/person-1.png"
-        },
-        {
-            id: 3,
-            text: "Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.",
-            name: "Maria Jones",
-            position: "CEO, Co-Founder, XYZ Inc.",
-            image: "/assets/images/person-1.png"
-        }
-    ];
-
-    return (
-        <div className="testimonial-section">
-            <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col-lg-7 text-center mb-5">
-                        <h2 className="section-title">Testimonials</h2>
-                    </div>
-                </div>
-
-                <div className="row justify-content-center">
-                    <div className="col-lg-12">
-                        <div className="testimonial-slider-wrap">
-                            <div className="testimonial-slider" ref={sliderRef}>
-                                {testimonials.map((testimonial) => (
-                                    <div key={testimonial.id} className="item">
-                                        <div className="testimonial-block text-center">
-                                            <blockquote className="mb-5">
-                                                <p>&ldquo;{testimonial.text}&rdquo;</p>
-                                            </blockquote>
-
-                                            <div className="author-info">
-                                                <div className="author-pic">
-                                                    <img src={testimonial.image} alt={testimonial.name} />
-                                                </div>
-                                                <h3 className="font-weight-bold">{testimonial.name}</h3>
-                                                <span className="position d-block mb-3">{testimonial.position}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-
-                            <div id="testimonial-nav" className="custom-nav">
-                                <button className="prev">
-                                    <span className="icon-keyboard_arrow_left"></span>
-                                </button>
-                                <button className="next">
-                                    <span className="icon-keyboard_arrow_right"></span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  return (
+    <section className="testimonial-section py-16">
+      <div className="container mx-auto px-4">
+        <div className="max-w-3xl mx-auto text-center mb-12">
+          <h2 className="text-3xl font-bold mb-4">Testimonials</h2>
         </div>
-    );
+
+        <div className="relative max-w-4xl mx-auto">
+          <Swiper
+            modules={[Navigation, Autoplay, Pagination]}
+            spaceBetween={30}
+            slidesPerView={1}
+            navigation={true}
+            pagination={{ clickable: true }}
+            loop={true}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            className="testimonial-slider"
+          >
+            {testimonialData.map((testimonial) => (
+              <SwiperSlide key={testimonial.id}>
+                <div className="px-4 py-8">
+                  <div className="testimonial-block text-center">
+                    <blockquote className="mb-8">
+                      <p className="text-lg italic text-gray-600">
+                        "{testimonial.content}"
+                      </p>
+                    </blockquote>
+                    <div className="author-info">
+                      <div className="author-pic mb-4" style={{ marginBottom: '20px'}}>
+                        <img
+                          src={testimonial.image}
+                          alt={testimonial.name}
+                          className="w-16 h-16 rounded-full mx-auto object-cover"
+                        />
+                      </div>
+                      <h3 className="font-bold text-xl mb-1">
+                        {testimonial.name}
+                      </h3>
+                      <span className="position d-block mb-3">
+                        {testimonial.position}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Testimonials;
