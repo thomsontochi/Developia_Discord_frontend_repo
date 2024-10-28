@@ -1,8 +1,9 @@
 import React from 'react';
 import couch from "/assets/images/couch.png";
-// import WhyChooseUs from '../components/WhyChooseUs';
-// import TeamSection from '../components/TeamSection';
+
 import Testimonials from '../components/Testimonials';
+import WhyChooseUs from '../components/WhyChooseUs';
+import TeamSection from '../components/TeamSection';
 
 
 
@@ -34,8 +35,8 @@ const About = () => {
 
              { /* <!-- End Hero Section --> */ }
         
-              {/* <WhyChooseUs />
-			 <TeamSection /> */}
+			 <WhyChooseUs /> 
+			<TeamSection />
 			 <Testimonials />
 			 {/* <Testimonials /> /* the tstimaonial component is in progress   */ }
          </div>

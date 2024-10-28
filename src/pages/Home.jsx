@@ -4,6 +4,7 @@ import Hero from '../components/Hero';
 import Product from '../components/Product';
 // import ProductSection from '../components/home/ProductSection';
 import WhyChooseUs from '../components/WhyChooseUs';
+import WeHelp from '../components/WeHelp';
 // import WeHelp from '../components/home/WeHelp';
 // import PopularProduct from '../components/home/PopularProduct';
 // import Testimonial from '../components/home/Testimonial';
@@ -15,7 +16,8 @@ const Home = () => {
     {/* <h1> this is home </h1> */}
       <Hero />
       <Product />
-    <WhyChooseUs />
+      <WhyChooseUs />
+      <WeHelp />
       {/* <ProductSection />
       <WhyChooseUs />
       <WeHelp />
