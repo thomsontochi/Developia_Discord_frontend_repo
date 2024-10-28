@@ -21,10 +21,10 @@ import { faLinkedin} from '@fortawesome/free-brands-svg-icons';
 const Footer = () => {
   return (
        <>
-<footer class="footer-section">
+<footer class="footer-section mt-5">
   <div class="container relative">
 
-    <div className="sofa-img">
+    <div className="sofa-img mt-2">
       <img src={sofa_Image } alt="Image" className="img-fluid" />
     </div>
 

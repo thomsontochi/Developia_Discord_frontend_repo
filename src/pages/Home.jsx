@@ -5,6 +5,9 @@ import Product from '../components/Product';
 // import ProductSection from '../components/home/ProductSection';
 import WhyChooseUs from '../components/WhyChooseUs';
 import WeHelp from '../components/WeHelp';
+import Testimonials from '../components/Testimonials';
+import RecentBlog from '../components/RecentBlog';
+import PopularProduct from '../components/layouts/PopularProduct';
 // import WeHelp from '../components/home/WeHelp';
 // import PopularProduct from '../components/home/PopularProduct';
 // import Testimonial from '../components/home/Testimonial';
@@ -18,11 +21,14 @@ const Home = () => {
       <Product />
       <WhyChooseUs />
       <WeHelp />
+    <PopularProduct />
+     <Testimonials />
+     <RecentBlog />
       {/* <ProductSection />
       <WhyChooseUs />
       <WeHelp />
       <PopularProduct />
-      <Testimonial />
+    
       <BlogSection /> */}
     </>
   );

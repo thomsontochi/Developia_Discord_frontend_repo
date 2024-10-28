@@ -5,6 +5,9 @@ import Post_1 from "/assets/images/post-1.jpg";
 import Post_2 from "/assets/images/post-2.jpg";
 import Post_3 from "/assets/images/post-3.jpg";
 import person_IV from "/assets/images/person_4.jpg";
+import productImage_1 from "/assets/images/product-1.png";
+import productImage_2 from "/assets/images/product-2.png";
+import productImage_3 from "/assets/images/product-3.png";
 
 
 
@@ -202,5 +205,29 @@ const teamSectionData = [
 	}
 ]
 
-export { testimonialsData, menuData, BlogInfoComponentData, teamSectionData };
+const PopularProductData = [
+	{
+		id: 1,
+		productImage: productImage_1,
+		productName: "Nordic Chair",
+		productDecription: "Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio"
+	},
+	{
+		id: 2,
+		productImage: productImage_2,
+		productName: "Nordic Chair",
+		productDecription: "Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio"
+	},
+	{
+		id: 3,
+		productImage: productImage_3,
+		productName: "Ergonomic Chair",
+		productDecription: "Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio"
+	}
+
+]
+
+
+
+export { testimonialsData, menuData, BlogInfoComponentData, teamSectionData, PopularProductData };
 
