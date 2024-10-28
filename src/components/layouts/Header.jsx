@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import cartIcon from "/src/assets/images/cart.svg";
-import user from "/src/assets/images/user.svg";
+import cartIcon from "/assets/images/cart.svg";
+import user from "/assets/images/user.svg";
 
 const Header = () => {
   return (

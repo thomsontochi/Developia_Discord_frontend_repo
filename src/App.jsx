@@ -6,6 +6,11 @@ import Home from './pages/Home';
 import "./App.css";
 import Hero from './components/Hero';
 import Product from './components/Product';
+import Wcu from './components/layouts/Wcu';
+import PopularProduct from './components/layouts/PopularProduct';
+import Testimonials from './components/Testimonials';
+
+
 import About from './pages/About';
 import BlogSection from './pages/BlogSection';
 
@@ -14,6 +19,11 @@ function App() {
     <Router>
       <div className="site-wrap">
         <Header />
+        {/* <Hero/>
+        <Product/>
+        <PopularProduct/>
+        <Wcu/>
+        <Testimonials/> */}
         {/* <Hero/> */}
         {/* <Product/> */}
          <Routes>

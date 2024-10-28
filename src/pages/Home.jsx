@@ -15,6 +15,7 @@ const Home = () => {
     {/* <h1> this is home </h1> */}
       <Hero />
       <Product />
+      <WhyChooseUs />
       {/* <ProductSection />
       <WhyChooseUs />
       <WeHelp />

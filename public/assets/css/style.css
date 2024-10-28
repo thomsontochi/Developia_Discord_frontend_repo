@@ -1,8 +1,8 @@
 /*
-* Template Name: UntreeStore
-* Template Author: Untree.co
-* Author URI: https://untree.co/
-* License: https://creativecommons.org/licenses/by/3.0/
+* Template Name: Developia
+* Template Author: Devlopia.co
+* Author URI: 
+* License: 
 */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 body {
@@ -428,7 +428,8 @@ a {
       z-index: -1; }
 
 .testimonial-section {
-  padding: 3rem 0 7rem 0; }
+  padding: 7rem 0 7rem 0;
+  }
 
 .testimonial-slider-wrap {
   position: relative; }

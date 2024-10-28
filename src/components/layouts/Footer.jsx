@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import envelope_Image from "/src/assets/images/envelope-outline.svg";
-import sofa_Image from "/src/assets/images/sofa.png";
-import { menuData } from "/src/assets/TestimonialData";
+// import { Link } from 'react-router-dom';
+import envelope_Image from '../../../public/assets/images/envelope-outline.svg';
+import sofa_Image from '../../../public/assets/images/sofa.png';
+
+import { menuData } from '../../../public/assets/TestimonialData';
 
 // Font awesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

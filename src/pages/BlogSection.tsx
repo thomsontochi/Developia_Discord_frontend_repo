@@ -1,5 +1,5 @@
 import React from "react";
-import couch from "/src/assets/images/couch.png";
+import couch from "/assets/images/couch.png";
 import Testimonials from "../components/Testimonials";
 import BlogInfoComponent from "../components/BlogInfoComponent";
 
@@ -40,7 +40,7 @@ const BlogSection: React.FC<BlogSectionProps> = () => {
 
       <BlogInfoComponent />
 
-      <Testimonials />
+     <Testimonials />
     </div>
   );
 };

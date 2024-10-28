@@ -1,7 +1,7 @@
-import person_I from "../assets/images/person_1.jpg";
-import person_II from "../assets/images/person_2.jpg";
-import person_III from "../assets/images/person_3.jpg";
-import Post_1 from "/src/assets/images/post-1.jpg";
+import person_I from "/assets/images/person_1.jpg";
+import person_II from "/assets/images/person_2.jpg";
+import person_III from "/assets/images/person_3.jpg";
+import Post_1 from "/assets/images/post-1.jpg";
 
 
 
