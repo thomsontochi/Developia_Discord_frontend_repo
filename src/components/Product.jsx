@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import crossImage from "/assets/images/cross.svg";
 import Product_Image_I from "/assets/images/product-1.png";
 import Product_Image_II from "/assets/images/product-2.png";

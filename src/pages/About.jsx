@@ -1,7 +1,7 @@
 import React from 'react';
 import couch from "/assets/images/couch.png";
-import WhyChooseUs from '../components/WhyChooseUs';
-import TeamSection from '../components/TeamSection';
+// import WhyChooseUs from '../components/WhyChooseUs';
+// import TeamSection from '../components/TeamSection';
 import Testimonials from '../components/Testimonials';
 
 
