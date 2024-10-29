@@ -11,7 +11,7 @@ const Contact = () => {
                 <Header/>
                 <ContactHero/>
                 <div
-                    className={"container mx-auto col-7 my-5 "}>
+                    className={"container mx-auto col-7 my-5 py-5 "}>
 
                     <section className={"d-flex  justify-content-between align-items-center"}>
 
@@ -30,7 +30,7 @@ const Contact = () => {
                     </section>
 
 
-                    <div className="row row-cols-2 g-2">
+                    <div className="row row-cols-2 g-2 mt-5">
                         <div className="col">
                             <label htmlFor="exampleFormControlInput1" className="form-label">First Name</label>
                             <input type="email" className="form-control" id="exampleFormControlInput1"
@@ -56,6 +56,7 @@ const Contact = () => {
                             </div>
                         </div>
                     </div>
+                    <button type="button" className="btn btn-primary mt-4 mb-5">Send Message</button>
                 </div>
 
                 <Footer/>
