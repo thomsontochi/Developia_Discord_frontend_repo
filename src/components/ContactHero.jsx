@@ -1,16 +1,13 @@
 import React from "react";
 
-const Hero = () => {
+const ContactHero = () => {
     return (
-
-        // <!-- Start Hero Section -->
         <div className="hero">
             <div className="container">
                 <div className="row justify-content-between">
                     <div className="col-lg-6">
                         <div className="">
-                            <h1>Empowering WhatsApp Vendors <span
-                                className="d-block">with Seamless E-commerce Solutions</span></h1>
+                            <h1>Contact</h1>
                             <p className="mb-4">Join Developia Discord, where we connect WhatsApp vendors with customers
                                 effortlessly. Our platform provides a user-friendly interface, enabling vendors to
                                 showcase their products and manage orders directly through WhatsApp.</p>
@@ -29,8 +26,7 @@ const Hero = () => {
                 </div>
             </div>
         </div>
-
     );
 };
 
-export default Hero;
+export default ContactHero;
