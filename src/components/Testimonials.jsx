@@ -1,6 +1,8 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
+import { BsChevronRight } from "react-icons/bs";
+import { BsChevronLeft } from "react-icons/bs";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
@@ -44,12 +46,19 @@ const Testimonials = () => {
         </div>
 
         <div className="relative max-w-4xl mx-auto">
+
+          
+
           <Swiper
             modules={[Navigation, Autoplay, Pagination]}
             spaceBetween={30}
             slidesPerView={1}
-            navigation={true}
+            // navigation={true}
             pagination={{ clickable: true }}
+            navigation={{
+              nextEl: '.custom-next',
+              prevEl: '.custom-prev',
+            }}
             loop={true}
             autoplay={{
               delay: 3000,
@@ -59,11 +68,38 @@ const Testimonials = () => {
           >
             {testimonialData.map((testimonial) => (
               <SwiperSlide key={testimonial.id}>
-                <div className="px-4 py-8">
+
+                <div className="testimonial-slider">
+								
+								<div className="item">
+									<div className="row justify-content-center">
+										<div className="col-lg-8 mx-auto">
+
+											<div className="testimonial-block text-center">
+												<blockquote className="mb-5">
+													<p>&ldquo;{testimonial.content}&rdquo;</p>
+												</blockquote>
+
+												<div className="author-info">
+													<div className="author-pic">
+														<img src={testimonial.image} alt="Maria Jones" class="img-fluid w-16 h-16 
+                            rounded-full mx-auto object-cover" />
+													</div>
+													<h3 className="font-weight-bold">{testimonial.name}</h3>
+													<span className="position d-block mb-3">{testimonial.position}</span>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div> 
+                </div>
+
+                {/* <div className="px-4 py-8">
                   <div className="testimonial-block text-center">
-                    <blockquote className="mb-8">
+                    <blockquote className="mb-5">
                       <p className="text-lg italic text-gray-600">
-                        "{testimonial.content}"
+                     &ldquo;{testimonial.content} &rdquo;
                       </p>
                     </blockquote>
                     <div className="author-info">
@@ -82,10 +118,23 @@ const Testimonials = () => {
                       </span>
                     </div>
                   </div>
-                </div>
+                </div> */}
+
+
+
               </SwiperSlide>
             ))}
+
+           
+
+            <div className="custom-next"><BsChevronRight size={20}/></div>
+            <div className="custom-prev"><BsChevronLeft  size={20} /></div>
+
           </Swiper>
+
+     
+         
+
         </div>
       </div>
     </section>
