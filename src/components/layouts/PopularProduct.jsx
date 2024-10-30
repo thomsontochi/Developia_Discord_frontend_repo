@@ -1,9 +1,19 @@
-import React from "react";
-import { PopularProductData } from "../../../public/assets/TestimonialData";
+import React, {useEffect, useState} from "react";
+
 
 
 
 const PopularProduct = () => {
+
+    const [PopularProductData, setPopularProductData] = useState([]);
+
+    useEffect(() => {
+      fetch('/assets/TestimonialData.json')
+        .then((response) => response.json())
+        .then((data) => setPopularProductData(data.PopularProductData))
+        .catch((error) => console.error('Error loading testimonials:', error));
+    }, []);
+
 
     return (
         <div className="popular-product">

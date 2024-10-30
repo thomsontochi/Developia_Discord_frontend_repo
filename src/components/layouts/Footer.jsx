@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState }  from 'react';
 // import { Link } from 'react-router-dom';
-import envelope_Image from '../../../public/assets/images/envelope-outline.svg';
-import sofa_Image from '../../../public/assets/images/sofa.png';
+import envelope_Image from "/assets/images/envelope-outline.svg";
+import sofa_Image from "/assets/images/sofa.png";
 
-import { menuData } from '../../../public/assets/TestimonialData';
+
 
 // Font awesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -19,6 +19,19 @@ import { faLinkedin} from '@fortawesome/free-brands-svg-icons';
 
 
 const Footer = () => {
+
+  const [menuData, setmenuData] = useState([]);
+
+  useEffect(() => {
+    fetch('/assets/TestimonialData.json')
+      .then((response) => response.json())
+      .then((data) => setmenuData(data.menuData))
+      .catch((error) => console.error('Error loading testimonials:', error));
+  }, []);
+
+ 
+
+
   return (
        <>
 <footer class="footer-section mt-5">

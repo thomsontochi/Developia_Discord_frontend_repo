@@ -1,20 +1,30 @@
-import React from "react";
+import React, { useEffect, useState} from "react";
 // import Post_1 from "/assets/images/post-1.jpg";
 // import Post_2 from "/assets/images/post-2.jpg";
 // import Post_3 from "/assets/images/post-3.jpg";
 // import { BlogInfoComponentData } from "/assets/TestimonialData";
-import { BlogInfoComponentData } from "../../public/assets/TestimonialData";
 
 interface BlogInfoComponentProps {}
 
 const BlogInfoComponent: React.FC<BlogInfoComponentProps> = () => {
+
+  const [BlogInfoComponentData, setBlogInfoComponentData] = useState([]);
+
+  useEffect(() => {
+    fetch('/assets/TestimonialData.json')
+      .then((response) => response.json())
+      .then((data) => setBlogInfoComponentData(data.BlogInfoComponentData))
+      .catch((error) => console.error('Error loading testimonials:', error));
+  }, []);
+
+
   return (
     <div>
       <div className="blog-section">
         <div className="container">
           <div className="row">
 
-            {  BlogInfoComponentData.map((blog)=>{
+            {  BlogInfoComponentData.map((blog:any)=>{
 
                    return(
        

@@ -3,9 +3,9 @@ import couch from "/assets/images/couch.png";
 import Testimonials from "../components/Testimonials";
 import BlogInfoComponent from "../components/BlogInfoComponent";
 
-interface BlogSectionProps {}
 
-const BlogSection: React.FC<BlogSectionProps> = () => {
+
+const BlogSection= () => {
   return (
     <div>
       <div className="hero">

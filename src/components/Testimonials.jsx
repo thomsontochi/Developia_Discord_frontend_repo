@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import { BsChevronRight } from "react-icons/bs";
@@ -9,35 +9,25 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import "./testimonials.css"
+import { useEffect } from "react";
 
-const testimonialData = [
-  {
-    id: 1,
-    content:
-      "Developia Discord has transformed the way I connect with my customers. The platform is user-friendly, and I can easily manage my orders through WhatsApp. Highly recommend!",
-    name: "Maria Jones",
-    position: "CEO, Co-Founder, XYZ Inc.",
-    image: "/assets/images/person-1.png",
-  },
-  {
-    id: 2,
-    content:
-      "As a vendor, I appreciate the seamless integration with WhatsApp. It allows me to provide personalized service to my clients, and the sales have never been better!",
-    name: "John Smith",
-    position: "Owner, Smith's Crafts",
-    image: "/assets/images/person-1.png",
-  },
-  {
-    id: 3,
-    content:
-      "I love shopping through Developia Discord! The variety of products from different vendors is amazing, and the process is so convenient. I always find what I need!",
-    name: "Emily Johnson",
-    position: "Frequent Shopper",
-    image: "/assets/images/person-1.png",
-  },
-];
+// import { testimonialData } from "/assets/TestimonialData";
 
 const Testimonials = () => {
+
+
+  const [testimonialData, setTestimonialData] = useState([]);
+
+  useEffect(() => {
+    fetch('/assets/TestimonialData.json')
+      .then((response) => response.json())
+      .then((data) => setTestimonialData(data.testimonialData))
+      .catch((error) => console.error('Error loading testimonials:', error));
+  }, []);
+
+
+
+
   return (
     <section className="testimonial-section py-16">
       <div className="container mx-auto px-4">
