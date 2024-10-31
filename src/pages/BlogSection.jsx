@@ -38,7 +38,7 @@ const BlogSection= () => {
         </div>
       </div>
 
-      <BlogInfoComponent />
+    <BlogInfoComponent />
 
      <Testimonials />
     </div>
