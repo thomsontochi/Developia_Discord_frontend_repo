@@ -42,7 +42,7 @@ const Footer = () => {
     </div>
 
     <div class="row">
-      <div class="col-lg-8">
+      <div class="col-lg-8 marginTop">
         <div class="subscription-form">
           <h3 class="d-flex align-items-center"><span class="me-1">
             <img src={envelope_Image}alt="Image" className="img-fluid" />
@@ -66,7 +66,7 @@ const Footer = () => {
       </div>
     </div>
 
-    <div class="row g-5 mb-5">
+    <div class="row mb-5">
       <div class="col-lg-4">
         <div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Furni<span>.</span></a></div>
         <p class="mb-4">Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant</p>
@@ -80,7 +80,7 @@ const Footer = () => {
       </div>
 
       <div className="col-lg-8">
-        <div className="row links-wrap">
+        <div className="row  links-wrap">
           
           { menuData.map((data)=>{
 
