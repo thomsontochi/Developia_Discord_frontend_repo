@@ -1,10 +1,10 @@
 import React from 'react';
 
-import truck from "../assets/images/truck.svg";
-import bag from "../assets/images/bag.svg";
-import support from "../assets/images/support.svg";
-import returnImage from "../assets/images/return.svg";
-import chooseUsImage from "../assets/images/why-choose-us-img.jpg";
+// import truck from "../assets/images/truck.svg";
+// import bag from "../assets/images/bag.svg";
+// import support from "../assets/images/support.svg";
+// import returnImage from "../assets/images/return.svg";
+// import chooseUsImage from "../assets/images/why-choose-us-img.jpg";
 
 interface WhyChooseUsProps {
     

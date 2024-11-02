@@ -1,5 +1,5 @@
 import React from 'react';
-import couch from "/src/assets/images/couch.png";
+// import couch from "/src/assets/images/couch.png";
 import Testimonials from '../components/Testimonials';
 import BlogInfoComponent from '../components/BlogInfoComponent';
 

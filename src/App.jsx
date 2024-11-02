@@ -14,8 +14,11 @@ function App() {
     <Router>
       <div className="site-wrap">
         <Header />
-        {/* <Hero/> */}
-        {/* <Product/> */}
+        <Hero/>
+        <Product/>
+        {/* <PopularProduct/> */}
+        {/* <Wcu/> */}
+        {/* <Testimonials/> */}
          <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
