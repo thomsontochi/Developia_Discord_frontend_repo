@@ -13,14 +13,14 @@ const Header = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarsFurni">
           <ul className="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-          <li className="nav-item active"> <NavLink to="/" className="nav-link" >
-             Home 
-             </NavLink></li>
-            <li ><Link className="nav-link  " to="/shop">Shop</Link></li>
-            <li ><NavLink className="nav-link  " to="/about">About us</NavLink></li>
-            <li><Link className="nav-link" to="/services">Services</Link></li>
-            <li><Link className="nav-link " to="/BlogSection">Blog</Link></li>
-            <li><Link className="nav-link" to="/contact">Contact us</Link></li>
+            <li className="nav-item active">
+              <Link className="nav-link" to="/">Home</Link>
+            </li>
+            <li><Link className="nav-link" to="">Shop</Link></li>
+            <li><Link className="nav-link" to="">About us</Link></li>
+            <li><Link className="nav-link" to="">Services</Link></li>
+            <li><Link className="nav-link" to="">Blog</Link></li>
+            <li><Link className="nav-link" to="/contact">Contact Us</Link></li>
           </ul>
           <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
             <li><a className="nav-link" href="#"><img src={user} alt="User icon" /></a></li>

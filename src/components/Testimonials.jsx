@@ -11,7 +11,7 @@ import "swiper/css/pagination";
 import "./testimonials.css"
 import { useEffect } from "react";
 
-// import { testimonialData } from "/assets/TestimonialData";
+
 
 const Testimonials = () => {
 
@@ -85,31 +85,7 @@ const Testimonials = () => {
 								</div> 
                 </div>
 
-                {/* <div className="px-4 py-8">
-                  <div className="testimonial-block text-center">
-                    <blockquote className="mb-5">
-                      <p className="text-lg italic text-gray-600">
-                     &ldquo;{testimonial.content} &rdquo;
-                      </p>
-                    </blockquote>
-                    <div className="author-info">
-                      <div className="author-pic mb-4" style={{ marginBottom: '20px'}}>
-                        <img
-                          src={testimonial.image}
-                          alt={testimonial.name}
-                          className="w-16 h-16 rounded-full mx-auto object-cover"
-                        />
-                      </div>
-                      <h3 className="font-bold text-xl mb-1">
-                        {testimonial.name}
-                      </h3>
-                      <span className="position d-block mb-3">
-                        {testimonial.position}
-                      </span>
-                    </div>
-                  </div>
-                </div> */}
-
+               
 
 
               </SwiperSlide>
