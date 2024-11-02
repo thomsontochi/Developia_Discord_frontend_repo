@@ -1,8 +1,7 @@
-import React, { useEffect, useState} from "react";
-// import Post_1 from "/assets/images/post-1.jpg";
-// import Post_2 from "/assets/images/post-2.jpg";
-// import Post_3 from "/assets/images/post-3.jpg";
-// import { BlogInfoComponentData } from "/assets/TestimonialData";
+import React from 'react';
+// import Post_1 from "/src/assets/images/post-1.jpg";
+// import Post_2 from "/src/assets/images/post-2.jpg";
+// import Post_3 from "/src/assets/images/post-3.jpg";
 
 interface BlogInfoComponentProps {}
 

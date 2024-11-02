@@ -1,28 +1,28 @@
 import React from 'react';
-import Header from "../components/layouts/Header.jsx";
-import Hero from "../components/Hero.jsx";
-import Product from "../components/Product.jsx";
-import PopularProduct from "../components/layouts/PopularProduct.jsx";
-import Wcu from "../components/layouts/Wcu.jsx";
-import Testimonials from "../components/Testimonials.jsx";
-import Footer from "../components/layouts/Footer.jsx";
+// import Hero from '../components/home/Hero';
+import Hero from '../components/Hero';
+import Product from '../components/Product';
+// import ProductSection from '../components/home/ProductSection';
+import WhyChooseUs from '../components/WhyChooseUs';
+// import WeHelp from '../components/home/WeHelp';
+import PopularProduct from '../components/layouts/PopularProduct';
+import Testimonial from '../components/Testimonials';
+// import BlogSection from '../components/home/BlogSection';
 
 const Home = () => {
-    return (
-        <>
-           
-            <div className="site-wrap">
-                <Header/>
-                <Hero/>
-                <Product/>
-                <PopularProduct/>
-                <Wcu/>
-                <Testimonials/>
-
-                <Footer/>
-            </div>
-        </>
-    );
+  return (
+    <>
+    {/* <h1> this is home </h1> */}
+      {/* <Hero /> */}
+      {/* <Product /> */}
+      {/* <ProductSection /> */}
+      {/* <WhyChooseUs /> */}
+      {/* <WeHelp /> */}
+      {/* <PopularProduct /> */}
+      {/* <Testimonial /> */}
+      {/* <BlogSection /> */}
+    </>
+  );
 };
 
 export default Home;
