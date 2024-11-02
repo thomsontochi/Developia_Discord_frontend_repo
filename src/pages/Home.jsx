@@ -12,7 +12,6 @@ const Home = () => {
         <>
            
             <div className="site-wrap">
-                <Header/>
                 <Hero/>
                 <Product/>
                 <PopularProduct/>
