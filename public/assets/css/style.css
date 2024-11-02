@@ -236,11 +236,14 @@ a.more {
         top: -40px;
     }
 }
+<<<<<<< HEAD
 
           @media (max-width: 375px), (max-width: 414px), (max-width: 430px) {
             .hero .hero-img-wrap:after{
               right: -2px; }
           }
+=======
+>>>>>>> c4e25dbf8efab43e5e9f22b97e7d3c6bae407e9d
 
 .btn {
     font-weight: 600;
