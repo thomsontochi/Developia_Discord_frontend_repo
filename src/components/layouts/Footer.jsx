@@ -14,6 +14,19 @@ import { Link } from 'react-router-dom';
 
 
 const Footer = () => {
+
+  const [menuData, setmenuData] = useState([]);
+
+  useEffect(() => {
+    fetch('/assets/TestimonialData.json')
+      .then((response) => response.json())
+      .then((data) => setmenuData(data.menuData))
+      .catch((error) => console.error('Error loading testimonials:', error));
+  }, []);
+
+ 
+
+
   return (
     <footer className="footer-section">
           {/* <div>

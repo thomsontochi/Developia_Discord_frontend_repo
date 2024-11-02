@@ -6,11 +6,9 @@ import React from 'react';
 // import returnImage from "../assets/images/return.svg";
 // import chooseUsImage from "../assets/images/why-choose-us-img.jpg";
 
-interface WhyChooseUsProps {
-    
-}
 
-const WhyChooseUs: React.FC<WhyChooseUsProps>= () => {
+
+const WhyChooseUs = () => {
     return (
         <div>
               
