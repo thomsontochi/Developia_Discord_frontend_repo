@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
-import { BsChevronRight } from "react-icons/bs";
-import { BsChevronLeft } from "react-icons/bs";
+// import { BsChevronRight } from "react-icons/bs";
+// import { BsChevronLeft } from "react-icons/bs";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
@@ -60,6 +60,8 @@ const Testimonials = () => {
               <SwiperSlide key={testimonial.id}>
 
                 <div className="testimonial-slider">
+
+             
 								
 								<div className="item">
 									<div className="row justify-content-center">
@@ -72,7 +74,7 @@ const Testimonials = () => {
 
 												<div className="author-info">
 													<div className="author-pic">
-														<img src={testimonial.image} alt="Maria Jones" class="img-fluid w-16 h-16 
+														<img src={testimonial.image} alt="Maria Jones" className="img-fluid w-16 h-16 
                             rounded-full mx-auto object-cover" />
 													</div>
 													<h3 className="font-weight-bold">{testimonial.name}</h3>
@@ -92,9 +94,11 @@ const Testimonials = () => {
             ))}
 
            
-
-            <div className="custom-next"><BsChevronRight size={20}/></div>
-            <div className="custom-prev"><BsChevronLeft  size={20} /></div>
+                          {/*testimonial slider navigation begins here */}
+								<div className="custom-prev" ><span className="fa fa-chevron-left"></span></div>
+								<div className="custom-next" ><span className="fa fa-chevron-right"></span></div>
+						
+          
 
           </Swiper>
 

@@ -179,7 +179,7 @@ a.more {
 
 .hero p {
     color: rgba(255, 255, 255, 0.5);
-    margin-botom: 30px;
+    margin-bottom: 30px;
 }
 
 .hero .hero-img-wrap {
@@ -191,7 +191,7 @@ a.more {
     top: 0px;
     right: 0px;
     z-index: 2;
-    max-width: 780px;
+    /* max-width: 780px; */
     left: -20px;
 }
 
@@ -236,14 +236,11 @@ a.more {
         top: -40px;
     }
 }
-<<<<<<< HEAD
 
           @media (max-width: 375px), (max-width: 414px), (max-width: 430px) {
             .hero .hero-img-wrap:after{
               right: -2px; }
           }
-=======
->>>>>>> c4e25dbf8efab43e5e9f22b97e7d3c6bae407e9d
 
 .btn {
     font-weight: 600;
@@ -403,6 +400,7 @@ a.more {
 
 .why-choose-section .img-wrap {
     position: relative;
+    z-index: 1;
 }
 
 .why-choose-section .img-wrap:before {
@@ -410,7 +408,7 @@ a.more {
     content: "";
     width: 255px;
     height: 217px;
-    background-image: url("../images/dots-yellow.svg");
+    background-image: url("/assets/images/dots-yellow.svg");
     background-repeat: no-repeat;
     background-size: contain;
     -webkit-transform: translate(-40%, -40%);
@@ -462,8 +460,8 @@ a.more {
 .we-help-section .imgs-grid {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (1fr) [ 27 ];
-    grid-template-columns: repeat(27, 1fr);
+    -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns:repeat(27, 1fr);
     position: relative;
 }
 

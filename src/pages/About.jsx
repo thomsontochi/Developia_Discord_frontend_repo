@@ -1,7 +1,7 @@
 import React from 'react';
-// import couch from "/src/assets/images/couch.png";
 import WhyChooseUs from '../components/WhyChooseUs';
 import TeamSection from '../components/TeamSection';
+import Testimonials from '../components/Testimonials';
 
 
 
@@ -24,7 +24,7 @@ const About = () => {
 						</div>
 						<div className="col-lg-7">
 							<div className="hero-img-wrap">
-								<img src={couch} class="img-fluid" />
+								<img src="assets/images/couch.png" class="img-fluid" />
 							</div>
 						</div>
 					</div>
@@ -35,7 +35,7 @@ const About = () => {
         
              <WhyChooseUs />
 			 <TeamSection />
-			 <Testimonials />
+			  <Testimonials />
 			 {/* <Testimonials /> /* the tstimaonial component is in progress   */ }
          </div>
 		</>

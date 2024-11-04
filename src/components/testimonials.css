@@ -34,14 +34,12 @@ h3.font-bold.text-xl.mb-1 {
     color: #2f2f2f;
     display: none;
     /* color: #000;  */
-    /* font-size: 2rem;  */
+    /* font-size: .9rem;  */
   }
   
   .custom-next {
     right: 20px; 
-    /* background-color: #151414; */
-    /* color: white; */
-    padding: 15px;
+    padding: 20px;
     border-radius: 50%;
 
    /* display: flex; */
@@ -53,10 +51,7 @@ h3.font-bold.text-xl.mb-1 {
     left: 20px;
     
     border-radius: 50%;
-    /* background-color: #151414; */
-    /* color: white; */
-    padding: 15px;
-   /* display: flex; */
+    padding: 20px;
    justify-content: center; 
    align-items: center; 
   }
@@ -65,11 +60,11 @@ h3.font-bold.text-xl.mb-1 {
     color: #ffffff; 
 }
 
-.swiper-pagination-clickable .swiper-pagination-bullet{
-    background: #3b5d50;
+.swiper-pagination-clickable .swiper-pagination-bullet{    
+    background: #3b5d50;    
 }
 
-@media screen and (min-width:768px){
+@media screen and (min-width:768px){   
     .custom-prev, .custom-next{
       display: inline-flex
     }

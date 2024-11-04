@@ -2,31 +2,26 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Home from './pages/Home';
 import "./App.css";
-import Hero from './components/Hero';
-import Product from './components/Product';
-import About from './pages/About';
-import BlogSection from './pages/BlogSection';
+import Contact from "./pages/Contact.jsx";
+import BlogSection from './pages/BlogSection.jsx';
+import Header from './components/layouts/Header.jsx';
+import Footer from './components/layouts/Footer.jsx';
+import About from './pages/About.jsx';
+
 
 function App() {
-  return (
-    <Router>
-      <div className="site-wrap">
-        <Header />
-        <Hero/>
-        <Product/>
-        {/* <PopularProduct/> */}
-        {/* <Wcu/> */}
-        {/* <Testimonials/> */}
-         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/BlogSection" element={<BlogSection />} />
-        
-        </Routes> 
-        <Footer />
-      </div>
-    </Router>
-  );
+    return (
+        <Router>
+             <Header />
+            <Routes>
+                <Route path="/" element={<Home/>}/>
+                <Route path="/contact" element={<Contact/>}/>
+                <Route path="/BlogSection" element={<BlogSection />}/>
+                <Route path="/aboutPage" element={<About />}/>
+            </Routes>
+                <Footer />
+        </Router>
+    );
 }
 
 export default App;
