@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import cartIcon from "/assets/images/cart.svg";
-import user from "/assets/images/user.svg";
+// import cartIcon from "/src/assets/images/cart.svg";
+// import user from "/src/assets/images/user.svg";
 
 const Header = () => {
   return (
@@ -17,14 +17,14 @@ const Header = () => {
               <Link className="nav-link" to="/">Home</Link>
             </li>
             <li><Link className="nav-link" to="">Shop</Link></li>
-            <li><Link className="nav-link" to="">About us</Link></li>
+            <li><Link className="nav-link" to="/aboutPage">About us</Link></li>
             <li><Link className="nav-link" to="">Services</Link></li>
             <li><Link className="nav-link" to="/BlogSection">Blog</Link></li>
             <li><Link className="nav-link" to="/contact">Contact Us</Link></li>
           </ul>
           <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-            <li><a className="nav-link" href="#"><img src={user} alt="User icon" /></a></li>
-            <li><a className="nav-link" href="cart.html"><img src={cartIcon} alt="Cart icon" /></a></li>
+            <li><a className="nav-link" href="#"><img src="/assets/images/user.svg" alt="User icon" /></a></li>
+            <li><a className="nav-link" href="cart.html"><img src="/assets/images/cart.svg" alt="Cart icon" /></a></li>
           </ul>
         </div>
       </div>

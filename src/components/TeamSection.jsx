@@ -5,11 +5,9 @@ import React, { useEffect, useState} from 'react';
 // import person_IV from "/assets/images/person_4.jpg";
 
 
-interface TeamSectionProps {
-    
-}
 
-const TeamSection: React.FC<TeamSectionProps> = () => {
+
+const TeamSection = () => {
     
 	const [teamSectionData, setteamSectionData] = useState([]);
 
@@ -35,7 +33,7 @@ const TeamSection: React.FC<TeamSectionProps> = () => {
 				</div>
 
 				<div className="row">
-					 { teamSectionData.map((tdata:any)=>{
+					 { teamSectionData.map((tdata)=>{
 
 					     return(
 				

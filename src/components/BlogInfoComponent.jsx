@@ -1,12 +1,9 @@
-import React, { useEffect, useState} from "react";
-// import Post_1 from "/assets/images/post-1.jpg";
-// import Post_2 from "/assets/images/post-2.jpg";
-// import Post_3 from "/assets/images/post-3.jpg";
-// import { BlogInfoComponentData } from "/assets/TestimonialData";
+import React, {useEffect, useState} from 'react';
 
-interface BlogInfoComponentProps {}
 
-const BlogInfoComponent: React.FC<BlogInfoComponentProps> = () => {
+
+
+const BlogInfoComponent = () => {
 
   const [BlogInfoComponentData, setBlogInfoComponentData] = useState([]);
 
@@ -24,7 +21,7 @@ const BlogInfoComponent: React.FC<BlogInfoComponentProps> = () => {
         <div className="container">
           <div className="row">
 
-            {  BlogInfoComponentData.map((blog:any)=>{
+            {  BlogInfoComponentData.map((blog)=>{
 
                    return(
        
