@@ -4,6 +4,7 @@ import BlogInfoComponent from "../components/BlogInfoComponent";
 
 
 
+
 const BlogSection= () => {
   return (
     <div>
@@ -27,7 +28,7 @@ const BlogSection= () => {
 				</div>
 			</div>
 
-    <BlogInfoComponent />
+      <BlogInfoComponent />
 
    <Testimonials />
     </div>

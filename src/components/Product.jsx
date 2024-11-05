@@ -1,9 +1,6 @@
 import React from "react";
-import { Link } from 'react-router-dom';
-// import crossImage from "/src/assets/images/cross.svg";
-// import Product_Image_I from "/src/assets/images/product-1.png";
-// import Product_Image_II from "/src/assets/images/product-2.png";
-// import Product_Image_III from "/src/assets/images/product-3.png";
+
+
 
 const Product = () => {
     return (
