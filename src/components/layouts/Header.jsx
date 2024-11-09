@@ -1,5 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+// import cartIcon from "/src/assets/images/cart.svg";
+// import user from "/src/assets/images/user.svg";
 
 const Header = () => {
   return (
@@ -15,9 +17,9 @@ const Header = () => {
               <Link className="nav-link" to="/">Home</Link>
             </li>
             <li><Link className="nav-link" to="">Shop</Link></li>
-            <li><Link className="nav-link" to="">About us</Link></li>
+            <li><Link className="nav-link" to="/aboutPage">About us</Link></li>
             <li><Link className="nav-link" to="">Services</Link></li>
-            <li><Link className="nav-link" to="">Blog</Link></li>
+            <li><Link className="nav-link" to="/BlogSection">Blog</Link></li>
             <li><Link className="nav-link" to="/contact">Contact Us</Link></li>
           </ul>
           <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">

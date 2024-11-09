@@ -19,3 +19,54 @@ h3.font-bold.text-xl.mb-1 {
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
 }
+
+
+/* slider button css */
+
+.custom-next,
+  .custom-prev {
+    position: absolute;
+    top: 20%;
+    transform: translateY(-50%);
+    z-index: 10;
+    cursor: pointer;
+    background: rgba(59, 93, 80, 0.1);
+    color: #2f2f2f;
+    display: none;
+    /* color: #000;  */
+    /* font-size: .9rem;  */
+  }
+  
+  .custom-next {
+    right: 20px; 
+    padding: 20px;
+    border-radius: 50%;
+
+   /* display: flex; */
+   justify-content: center; 
+   align-items: center;
+  }
+  
+  .custom-prev {
+    left: 20px;
+    
+    border-radius: 50%;
+    padding: 20px;
+   justify-content: center; 
+   align-items: center; 
+  }
+  .custom-prev:hover, .custom-next:hover {
+    background: #3b5d50;
+    color: #ffffff; 
+}
+
+.swiper-pagination-clickable .swiper-pagination-bullet{    
+    background: #3b5d50;    
+}
+
+@media screen and (min-width:768px){   
+    .custom-prev, .custom-next{
+      display: inline-flex
+    }
+
+}
