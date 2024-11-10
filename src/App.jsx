@@ -7,19 +7,21 @@ import BlogSection from './pages/BlogSection.jsx';
 import Header from './components/layouts/Header.jsx';
 import Footer from './components/layouts/Footer.jsx';
 import About from './pages/About.jsx';
+import Shop from "./pages/Shop.jsx";
 
 
 function App() {
     return (
         <Router>
-             <Header />
+            <Header/>
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/contact" element={<Contact/>}/>
-                <Route path="/BlogSection" element={<BlogSection />}/>
-                <Route path="/aboutPage" element={<About />}/>
+                <Route path="/BlogSection" element={<BlogSection/>}/>
+                <Route path="/aboutPage" element={<About/>}/>
+                <Route path="/shopPage" element={<Shop/>}/>
             </Routes>
-                <Footer />
+            <Footer/>
         </Router>
     );
 }
