@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Link, NavLink, useLocation} from 'react-router-dom';
+import { Link, useLocation} from 'react-router-dom';
 
 
 const Header = () => {
@@ -30,12 +30,12 @@ const Header = () => {
         <div className="collapse navbar-collapse" id="navbarsFurni">
           <ul className="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
             <li className={`nav-item ${activeLink === '/' ? 'active' : ''}`} >
-              <NavLink className="nav-link" to="/"  onClick={() => handleLinkClick('/')} >Home</NavLink>
+              <Link className="nav-link" to="/"  onClick={() => handleLinkClick('/')} >Home</Link>
             </li>
             <li className={` ${activeLink === '/Shop' ? 'active' : ''}`} >
-            <NavLink className="nav-link" to="" >Shop</NavLink></li>
+            <Link className="nav-link" to="" >Shop</Link></li>
             <li className={` ${activeLink === '/aboutPage' ? 'active' : ''}`}>
-              <NavLink className="nav-link"  to="/aboutPage" >About us</NavLink></li>
+              <Link className="nav-link"  to="/aboutPage" >About us</Link></li>
             <li  className={` ${activeLink === '/ServicePage' ? 'active' : ''}`}>
               <Link className="nav-link" to="/ServicePage">Services</Link></li>
             <li className={` ${activeLink === '/BlogSection' ? 'active' : ''}`}>
