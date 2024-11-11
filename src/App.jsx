@@ -7,6 +7,7 @@ import BlogSection from './pages/BlogSection.jsx';
 import Header from './components/layouts/Header.jsx';
 import Footer from './components/layouts/Footer.jsx';
 import About from './pages/About.jsx';
+import ServicePage from './pages/ServicePage.jsx';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/contact" element={<Contact/>}/>
                 <Route path="/BlogSection" element={<BlogSection />}/>
                 <Route path="/aboutPage" element={<About />}/>
+                <Route path="/ServicePage" element={<ServicePage /> }/>
             </Routes>
                 <Footer />
         </Router>
