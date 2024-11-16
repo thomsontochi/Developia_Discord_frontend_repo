@@ -3,6 +3,7 @@ import About from '../pages/About';
 import Blog from '../pages/Blog';
 import Contact from '../pages/Contact';
 import NotFound from '../pages/NotFound';
+import ServicePage from '../pages/ServicePage';
 
 export const routes = [
     {
@@ -23,6 +24,16 @@ export const routes = [
     {
         path: '/contact',
         element: Contact,
+        title: 'Contact Us | Vendly'
+    },
+    {
+        path: '/service',
+        element: ServicePage,
+        title: 'Services | Vendly'
+    },
+    {
+        path: '/shop',
+        element: Shop,
         title: 'Contact Us | Vendly'
     },
     {

@@ -192,6 +192,57 @@
 		"productDecription": "Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio"
 	}
 
+],
+
+"ServicesWeOffer":[
+	{
+     "id": 1,
+	  "typeOfServices": "Fast & Free Shipping",
+	  "descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
+	  "ServicesLogo": "/assets/images/truck.svg"
+	},
+	{
+		"id": 2,
+		 "Easy to Shop": "Easy to Shop",
+		 "descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
+		 "ServicesLogo": "/assets/images/bag.svg"
+	   },
+	   {
+		"id": 3,
+		 "Easy to Shop": "24/7 Support",
+		 "descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
+		 "ServicesLogo": "/assets/images/support.svg"
+	   },
+	   {
+		"id": 4,
+		 "Easy to Shop": "Hassle Free Returns",
+		 "descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
+		 "ServicesLogo": "/assets/images/return.svg"
+	   },
+	   {
+		"id": 5,
+		 "typeOfServices": "Fast & Free Shipping",
+		 "descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
+		 "ServicesLogo": "/assets/images/truck.svg"
+	   },
+	   {
+		   "id": 6,
+			"Easy to Shop": "Easy to Shop",
+			"descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
+			"ServicesLogo": "/assets/images/bag.svg"
+		  },
+		  {
+		   "id": 7,
+			"Easy to Shop": "24/7 Support",
+			"descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
+			"ServicesLogo": "/assets/images/support.svg"
+		  },
+		  {
+		   "id": 8,
+			"Easy to Shop": "Hassle Free Returns",
+			"descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
+			"ServicesLogo": "/assets/images/return.svg"
+		  }
 ]
 
 }
