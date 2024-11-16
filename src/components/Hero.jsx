@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+// import Counch from "../assets/images/couch.png";
 
 const Hero = () => {
     return (
