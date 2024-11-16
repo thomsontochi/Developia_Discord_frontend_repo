@@ -13,9 +13,9 @@ const Header = () => {
   }, [location.pathname]);
 
   // Handler to set the active link when clicked
-  const handleLinkClick = (path) => {
-    setActiveLink(path);
-  }
+  // const handleLinkClick = (path) => {
+  //   setActiveLink(path);
+  // }
 
 
 
@@ -30,7 +30,7 @@ const Header = () => {
         <div className="collapse navbar-collapse" id="navbarsFurni">
           <ul className="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
             <li className={`nav-item ${activeLink === '/' ? 'active' : ''}`} >
-              <Link className="nav-link" to="/"  onClick={() => handleLinkClick('/')} >Home</Link>
+              <Link className="nav-link" to="/" >Home</Link>
             </li>
             <li className={` ${activeLink === '/Shop' ? 'active' : ''}`} >
             <Link className="nav-link" to="" >Shop</Link></li>
