@@ -32,11 +32,6 @@ export const routes = [
     title: "Services | Vendly",
   },
   {
-    path: "/shop",
-    element: Shop,
-    title: "Contact Us | Vendly",
-  },
-  {
     path: "*",
     element: NotFound,
     title: "404 - Page Not Found | Vendly",
