@@ -3,11 +3,11 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Home from './pages/Home';
 import "./App.css";
 import Contact from "./pages/Contact.jsx";
-import BlogSection from './pages/BlogSection.jsx';
+import BlogSection from './pages/Blog.jsx';
 import Header from './components/layouts/Header.jsx';
 import Footer from './components/layouts/Footer.jsx';
 import About from './pages/About.jsx';
-import ServicePage from './pages/ServicePage.jsx';
+import ServicePage from './pages/Services.jsx';
 
 
 function App() {

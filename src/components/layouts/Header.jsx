@@ -36,10 +36,10 @@ const Header = () => {
             <Link className="nav-link" to="" >Shop</Link></li>
             <li className={` ${activeLink === '/aboutPage' ? 'active' : ''}`}>
               <Link className="nav-link"  to="/aboutPage" >About us</Link></li>
-            <li  className={` ${activeLink === '/ServicePage' ? 'active' : ''}`}>
-              <Link className="nav-link" to="/ServicePage">Services</Link></li>
-            <li className={` ${activeLink === '/BlogSection' ? 'active' : ''}`}>
-              <Link className="nav-link" to="/BlogSection">Blog</Link></li>
+            <li  className={` ${activeLink === '/Service' ? 'active' : ''}`}>
+              <Link className="nav-link" to="/Service">Services</Link></li>
+            <li className={` ${activeLink === '/blog' ? 'active' : ''}`}>
+              <Link className="nav-link" to="/blog">Blog</Link></li>
             <li className={` ${activeLink === '/contact' ? 'active' : ''}`}>
               <Link className="nav-link" to="/contact">Contact Us</Link></li>
           </ul>
