@@ -3,9 +3,7 @@ import Testimonials from "../components/Testimonials";
 import BlogInfoComponent from "../components/BlogInfoComponent";
 
 
-
-
-const BlogSection= () => {
+const Blog= () => {
   return (
     <div>
 
@@ -16,12 +14,12 @@ const BlogSection= () => {
 							<div className="intro-excerpt">
 								<h1>Blog</h1>
 								<p className="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
-								<p><a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#" className="btn btn-white-outline">Explore</a></p>
+								<p><a href="" className="btn btn-secondary me-2">Shop Now</a><a href="#" className="btn btn-white-outline">Explore</a></p>
 							</div>
 						</div>
 						<div className="col-lg-7">
 							<div className="hero-img-wrap">
-								<img src="/assets/images/couch.png" class="img-fluid" />
+								<img src="/assets/images/couch.png" className="img-fluid" />
 							</div>
 						</div>
 					</div>
@@ -35,4 +33,4 @@ const BlogSection= () => {
   );
 };
 
-export default BlogSection;
+export default Blog;

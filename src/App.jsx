@@ -1,12 +1,9 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import Home from './pages/Home';
 import "./App.css";
-import Contact from "./pages/Contact.jsx";
-import BlogSection from './pages/BlogSection.jsx';
 import Header from './components/layouts/Header.jsx';
 import Footer from './components/layouts/Footer.jsx';
-import About from './pages/About.jsx';
+import { routes } from './routes/routes';
 import Shop from "./pages/Shop.jsx";
 
 
@@ -14,12 +11,15 @@ function App() {
     return (
         <Router>
             <Header/>
-            <Routes>
-                <Route path="/" element={<Home/>}/>
-                <Route path="/contact" element={<Contact/>}/>
-                <Route path="/BlogSection" element={<BlogSection/>}/>
-                <Route path="/aboutPage" element={<About/>}/>
-                <Route path="/shopPage" element={<Shop/>}/>
+             <Routes>
+                {routes.map(({ path, element: Element }) => (
+                    <Route 
+                        key={path} 
+                        path={path} 
+                        element={<Element/>} 
+                   />}/>
+                <Route path="/shopPage" element={<Shop/>
+                ))}
             </Routes>
             <Footer/>
         </Router>

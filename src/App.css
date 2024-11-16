@@ -40,3 +40,28 @@
 .read-the-docs {
   color: #888;
 } */
+
+
+.error-template {
+  padding: 40px 15px;
+}
+
+.error-template h1 {
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.error-template h2 {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.error-details {
+  color: #777;
+  font-size: 1.2rem;
+}
+
+.error-actions {
+  margin-top: 30px;
+}
