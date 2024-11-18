@@ -1,29 +1,32 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './components/layouts/Header';
-import Footer from './components/layouts/Footer';
-import Home from './pages/Home';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import "./App.css";
-import Hero from './components/Hero';
-import Product from './components/Product';
-import Wcu from './pages/Wcu';
+// import Contact from "./pages/Contact.jsx";
+// import BlogSection from './pages/Blog.jsx';
+import Header from './components/layouts/Header.jsx';
+import Footer from './components/layouts/Footer.jsx';
+// import About from './pages/About.jsx';
+// import ServicePage from './pages/ServicePage.jsx';
+import { routes } from './routes/routes';
+
+
 
 function App() {
-  return (
-    <Router>
-      <div className="site-wrap">
-        <Header />
-        <Hero/>
-        <Product/>
-        <Wcu/>
-         <Routes>
-          <Route path="/" element={<Home />} />
-        
-        </Routes> 
-        <Footer />
-      </div>
-    </Router>
-  );
+    return (
+        <Router>
+             <Header />    
+             <Routes>
+                {routes.map(({ path, element: Element }) => (
+                    <Route 
+                        key={path} 
+                        path={path} 
+                        element={<Element />} 
+                    />
+                ))}
+            </Routes>
+                <Footer />
+        </Router>
+    );
 }
 
 export default App;

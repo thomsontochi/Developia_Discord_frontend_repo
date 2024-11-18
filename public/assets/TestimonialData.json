@@ -1,0 +1,251 @@
+
+
+
+{
+
+ "testimonialData": [
+	{
+	  "id": 1,
+	  "content":
+		"Developia Discord has transformed the way I connect with my customers. The platform is user-friendly, and I can easily manage my orders through WhatsApp. Highly recommend!",
+	  "name": "Maria Jones",
+	  "position": "CEO, Co-Founder, XYZ Inc.",
+	 "image": "/assets/images/person-1.png"
+	},
+	{
+	  "id": 2,
+	  "content":
+		"As a vendor, I appreciate the seamless integration with WhatsApp. It allows me to provide personalized service to my clients, and the sales have never been better!",
+	  "name": "John Smith",
+	  "position": "Owner, Smith's Crafts",
+	  "image": "/assets/images/person_1.jpg"
+	},
+	{
+	  "id": 3,
+	  "content":
+		"I love shopping through Developia Discord! The variety of products from different vendors is amazing, and the process is so convenient. I always find what I need!",
+	 "name": "Emily Johnson",
+	  "position": "Frequent Shopper",
+	  "image": "/assets/images/person_3.jpg"
+	}
+  ],
+
+ "menuData":[
+	{
+	  "id": 1,
+	  "listOne":"About us",
+	  "listTwo": "Services",
+	  "listThree": "Blog",
+	  "listFour": "Contact us"
+
+	},
+	{
+		"id": 2,
+		"listOne":"Support",
+		"listTwo": "Knowledge base",
+		"listThree": "Live Chat"
+	  },
+	  {
+		"id": 3,
+		"listOne":"Jobs",
+		"listTwo": "Our team",
+		"listThree": "Leadership",
+		"listFour": "Privacy Policy"
+  
+	  },
+	  {
+		"id": 4,
+		"listOne":"Nordic Chair",
+		"listTwo": "Kruzo Aero",
+		"listThree": "Ergonomic Chair",
+		"listFour": ""
+  
+	  }
+
+
+],
+"BlogInfoComponentData":[
+
+	{
+		"id": 1,
+		"image": "/assets/images/post-1.jpg", 
+		"postContentEntry": "First Time Home Owner Ideas",
+		"name": "Kristin Watson",
+		"date": "Dec 19, 2021"
+	},
+	{
+		"id": 2,
+		"image": "/assets/images/post-2.jpg", 
+		"postContentEntry": "How To Keep Your Furniture Clean",
+		"name": "Robert Fox",
+		"date": "Dec 15, 2021"
+	},
+	{
+		"id": 3,
+		"image": "/assets/images/post-3.jpg", 
+		"postContentEntry": "Small Space Furniture Apartment Ideas",
+		"name": "Kristin Watson",
+		"date": "Dec 12, 2021"
+	},
+	{
+		"id": 4,
+		"image": "/assets/images/post-2.jpg", 
+		"postContentEntry": "First Time Home Owner Ideas",
+		"name": "Kristin Watson",
+		"date": "Dec 19, 2021"
+	},
+	{
+		"id": 5,
+		"image": "/assets/images/post-3.jpg", 
+		"postContentEntry": "How To Keep Your Furniture Clean",
+		"name": "Robert Fox",
+		"date": "Dec 15, 2021"
+	},
+	{
+		"id": 6,
+		"image": "/assets/images/post-1.jpg", 
+		"postContentEntry": "Small Space Furniture Apartment Ideas",
+		"name": "Kristin Watson",
+		"date": "Dec 12, 2021"
+	},
+	{
+		"id": 7,
+		"image": "/assets/images/post-2.jpg", 
+		"postContentEntry": "First Time Home Owner Ideas",
+		"name": "Kristin Watson",
+		"date": "Dec 19, 2021"
+	},
+	{
+		"id": 8,
+		"image": "/assets/images/post-1.jpg", 
+		"postContentEntry": "How To Keep Your Furniture Clean",
+		"name": "Robert Fox",
+		"date": "Dec 15, 2021"
+	},
+	{
+		"id": 9,
+		"image": "/assets/images/post-2.jpg", 
+		"postContentEntry": "Small Space Furniture Apartment Ideas",
+		"name": "Kristin Watson",
+		"date": "Dec 12, 2021"
+	}
+],
+
+ "teamSectionData":[
+	{
+		"id": 1,
+		"image": "/assets/images/person_1.jpg",
+		"firstName": "Lawson",
+		"lastName": "Arnold",
+		"designation": "CEO, Founder, Atty.",
+		"bioData":  "Separated they live in.Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."
+
+	},
+	{
+		"id": 2,
+		"image": "/assets/images/person_2.jpg",
+		"firstName": "Jeremy",
+		"lastName": "Walker",
+		"designation": "CEO, Founder, Atty.",
+		"bioData": "Separated they live in.Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."
+
+	},
+	{
+		"id": 3,
+		"image": "/assets/images/person_3.jpg",
+		"firstName": "Patrik",
+		"lastName": "White",
+		"designation": "CEO, Founder, Atty.",
+		"bioData": "Separated they live in.Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."
+
+
+	},
+	{
+		"id": 4,
+		"image": "/assets/images/person_4.jpg",
+		"firstName": "Kathryn",
+		"lastName": "Ryan",
+		"designation": "CEO, Founder, Atty.",
+		"bioData": "Separated they live in.Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."
+
+
+	}
+],
+
+ "PopularProductData":[
+	{
+		"id": 1,
+		"productImage": "/assets/images/product-1.png",
+		"productName": "Nordic Chair",
+		"productDecription": "Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio"
+	},
+	{
+		"id": 2,
+		"productImage": "/assets/images/product-2.png",
+		"productName": "Nordic Chair",
+		"productDecription": "Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio"
+	},
+	{
+		"id": 3,
+		"productImage": "/assets/images/product-3.png",
+		"productName": "Ergonomic Chair",
+		"productDecription": "Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio"
+	}
+
+],
+
+"ServicesWeOffer":[
+	{
+     "id": 1,
+	  "typeOfServices": "Fast & Free Shipping",
+	  "descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
+	  "ServicesLogo": "/assets/images/truck.svg"
+	},
+	{
+		"id": 2,
+		 "Easy to Shop": "Easy to Shop",
+		 "descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
+		 "ServicesLogo": "/assets/images/bag.svg"
+	   },
+	   {
+		"id": 3,
+		 "Easy to Shop": "24/7 Support",
+		 "descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
+		 "ServicesLogo": "/assets/images/support.svg"
+	   },
+	   {
+		"id": 4,
+		 "Easy to Shop": "Hassle Free Returns",
+		 "descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
+		 "ServicesLogo": "/assets/images/return.svg"
+	   },
+	   {
+		"id": 5,
+		 "typeOfServices": "Fast & Free Shipping",
+		 "descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
+		 "ServicesLogo": "/assets/images/truck.svg"
+	   },
+	   {
+		   "id": 6,
+			"Easy to Shop": "Easy to Shop",
+			"descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
+			"ServicesLogo": "/assets/images/bag.svg"
+		  },
+		  {
+		   "id": 7,
+			"Easy to Shop": "24/7 Support",
+			"descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
+			"ServicesLogo": "/assets/images/support.svg"
+		  },
+		  {
+		   "id": 8,
+			"Easy to Shop": "Hassle Free Returns",
+			"descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
+			"ServicesLogo": "/assets/images/return.svg"
+		  }
+]
+
+}
+
+
+
