@@ -45,7 +45,7 @@ const ServicePage = () => {
                      {
                         servicesData.map((services)=>{
                             return(
-					<div className="col-6 col-md-6 col-lg-3" key={services.id}>
+					<div className="col-6 col-md-6 col-lg-3 mb-2" key={services.id}>
 						<div className="feature">
 							<div className="icon">
 								<img src={services.ServicesLogo} alt="Image" class="imf-fluid" />
