@@ -33,19 +33,26 @@ const Header = () => {
               <Link className="nav-link" to="/" >Home</Link>
             </li>
             <li className={` ${activeLink === '/Shop' ? 'active' : ''}`} >
-            <Link className="nav-link" to="" >Shop</Link></li>
+            <Link className="nav-link" to="/Shop" >Shop</Link></li>
             <li className={` ${activeLink === '/about' ? 'active' : ''}`}>
               <Link className="nav-link"  to="/about" >About us</Link></li>
             <li  className={` ${activeLink === '/service' ? 'active' : ''}`}>
-              <Link className="nav-link" to="/ServicePage">Services</Link></li>
+              <Link className="nav-link" to="/service">Services</Link></li>
             <li className={` ${activeLink === '/blog' ? 'active' : ''}`}>
               <Link className="nav-link" to="/blog">Blog</Link></li>
             <li className={` ${activeLink === '/contact' ? 'active' : ''}`}>
               <Link className="nav-link" to="/contact">Contact Us</Link></li>
           </ul>
           <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-            <li><a className="nav-link" href="#"><img src="/assets/images/user.svg" alt="User icon" /></a></li>
-            <li><a className="nav-link" href=""><img src="/assets/images/cart.svg" alt="Cart icon" /></a></li>
+            <li>
+              <a className="nav-link" href="#">
+                <img src="/assets/images/user.svg" alt="User icon" />
+                </a>
+              </li>
+            <li>
+         <Link  to="/cart"> <a className="nav-link" href="">
+                <img src="/assets/images/cart.svg" alt="Cart icon" />
+                </a> </Link>  </li>
           </ul>
         </div>
       </div>

@@ -4,6 +4,7 @@ import Blog from '../pages/Blog';
 import Contact from '../pages/Contact';
 import NotFound from '../pages/NotFound';
 import ServicePage from '../pages/ServicePage';
+import Cart from '../pages/Cart';
 
 export const routes = [
     {
@@ -32,9 +33,9 @@ export const routes = [
         title: 'Services | Vendly'
     },
     {
-        path: '/shop',
-        element: Shop,
-        title: 'Contact Us | Vendly'
+        path: '/cart',
+        element: Cart,
+        title: 'Services | Vendly'
     },
     {
         path: '*',
