@@ -32,6 +32,22 @@ export const routes = [
     title: "Shop | Vendly",
   },
   {
+    path: "/auth/login",
+    element: Login,
+    title: "Login | Vendly",
+  },
+  {
+    path: "/auth/register",
+    element: Register,
+    title: "Register | Vendly",
+  },
+  {
+    path: "/auth/vendor/login",
+    element: VendorLogin,
+    title: "Vendor Login | Vendly",
+  },
+  
+  {
     path: "*",
     element: NotFound,
     title: "404 - Page Not Found | Vendly",

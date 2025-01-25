@@ -25,6 +25,7 @@ const Header = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarsFurni">
+
           <ul className="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
             <li className="nav-item active">
               <Link className="nav-link" to="/">
@@ -57,7 +58,8 @@ const Header = () => {
               </Link>
             </li>
           </ul>
-          <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+
+          {/* <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
             <li>
               <a className="nav-link" href="#">
                 <img src="/assets/images/user.svg" alt="User icon" />
@@ -68,7 +70,51 @@ const Header = () => {
                 <img src="/assets/images/cart.svg" alt="Cart icon" />
               </a>
             </li>
+          </ul> */}
+
+<ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img src="/assets/images/user.svg" alt="User icon" />
+              </a>
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <Link className="dropdown-item" to="/auth/login">
+                    Login
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/auth/register">
+                    Register
+                  </Link>
+                </li>
+                <li><hr className="dropdown-divider" /></li>
+                <li>
+                  <Link className="dropdown-item" to="/auth/vendor/login">
+                    Vendor Login
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/auth/vendor/register">
+                    Vendor Register
+                  </Link>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a className="nav-link" href="cart.html">
+                <img src="/assets/images/cart.svg" alt="Cart icon" />
+              </a>
+            </li>
           </ul>
+
         </div>
       </div>
     </nav>
