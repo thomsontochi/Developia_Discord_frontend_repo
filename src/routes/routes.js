@@ -5,6 +5,11 @@ import Blog from "../pages/Blog";
 import Contact from "../pages/Contact";
 import NotFound from "../pages/NotFound";
 
+import Login from "../pages/auth/Login";
+import Register from "../pages/auth/Register";
+import VendorLogin from "../pages/auth/VendorLogin";
+import VendorRegister from "../pages/auth/VendorRegister";
+
 export const routes = [
   {
     path: "/",
@@ -46,7 +51,11 @@ export const routes = [
     element: VendorLogin,
     title: "Vendor Login | Vendly",
   },
-  
+  {
+    path: "/auth/vendor/register",
+    element: VendorRegister,
+    title: "Vendor Register | Vendly",
+  },
   {
     path: "*",
     element: NotFound,
