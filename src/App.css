@@ -65,3 +65,141 @@
 .error-actions {
   margin-top: 30px;
 }
+
+
+
+/* Auth Layout Styles */
+/* Login Form Styles */
+.login-page {
+  min-height: 100vh;
+  background: linear-gradient(145deg, #f6f9ff 0%, #f8f9fa 100%);
+  padding: 1rem;
+}
+
+.login-page .card {
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  margin: 0 auto;
+}
+
+.login-page .card-body {
+  padding: 2rem !important;
+}
+
+@media (min-width: 768px) {
+  .login-page {
+    padding: 2rem;
+  }
+  
+  .login-page .card-body {
+    padding: 3rem !important;
+  }
+}
+
+/* Input groups */
+.login-page .input-group-text {
+  background: transparent;
+  border-radius: 12px 0 0 12px;
+  border-right: none;
+  padding: 0.75rem 1.25rem;
+}
+
+.login-page .form-control {
+  border-radius: 0 12px 12px 0;
+  font-size: 0.95rem;
+  border-left: none;
+  padding: 0.75rem 1.25rem;
+}
+
+.login-page .input-group-text i {
+  margin-right: 0.5rem; /* Add space after icon */
+  font-size: 1.1rem; /* Slightly larger icons */
+}
+
+.login-page .input-group .form-control {
+  padding-left: 2px !important; /* Force padding */
+}
+
+@media (max-width: 576px) {
+  .login-page .input-group-text {
+    padding: 0.5rem 1rem;
+  }
+  
+  .login-page .form-control {
+    padding: 0.5rem 1rem;
+  }
+}
+
+
+/* Social buttons */
+.login-page .social-btn {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e9ecef;
+  background: white;
+  color: #495057;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.login-page .social-btn:hover {
+  background: #f8f9fa;
+  border-color: #dee2e6;
+  transform: translateY(-1px);
+}
+
+.login-page .social-btn i {
+  font-size: 1.1rem;
+}
+
+/* Divider */
+.login-page hr {
+  margin: 0;
+  opacity: 0.15;
+}
+
+.login-page .position-relative span {
+  background-color: white;
+  z-index: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .login-page .card-body {
+    padding: 1.5rem !important;
+  }
+  
+  .login-page h3 {
+    font-size: 1.5rem;
+  }
+  
+  .login-page .input-group-lg > .form-control,
+  .login-page .input-group-lg > .input-group-text {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+  
+  .login-page .btn-lg {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+  
+  .login-page .social-btn {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Column width adjustments */
+@media (min-width: 768px) {
+  .login-page .col-md-8 {
+    max-width: 600px;
+  }
+}
+
+@media (min-width: 992px) {
+  .login-page .col-lg-6 {
+    max-width: 550px;
+  }
+}

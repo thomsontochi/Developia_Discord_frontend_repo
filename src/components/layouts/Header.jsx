@@ -59,65 +59,7 @@ const Header = () => {
             </li>
           </ul>
 
-          {/* <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-            <li>
-              <a className="nav-link" href="#">
-                <img src="/assets/images/user.svg" alt="User icon" />
-              </a>
-            </li>
-            <li>
-              <a className="nav-link" href="cart.html">
-                <img src="/assets/images/cart.svg" alt="Cart icon" />
-              </a>
-            </li>
-          </ul> */}
-
-          {/* <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <img src="/assets/images/user.svg" alt="User icon" />
-              </a>
-              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <Link className="dropdown-item" to="/auth/login">
-                    Login
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/auth/register">
-                    Register
-                  </Link>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/auth/vendor/login">
-                    Vendor Login
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/auth/vendor/register">
-                    Vendor Register
-                  </Link>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a className="nav-link" href="cart.html">
-                <img src="/assets/images/cart.svg" alt="Cart icon" />
-              </a>
-            </li>
-          </ul> */}
-
-<ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+          <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
             <li className="nav-item dropdown position-relative">
               <a
                 className="nav-link dropdown-toggle"
@@ -127,47 +69,77 @@ const Header = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                   <circle cx="12" cy="7" r="4"></circle>
                 </svg>
               </a>
-              <ul 
-                className="dropdown-menu dropdown-menu-end shadow-sm" 
+              <div
+                className="dropdown-menu dropdown-menu-end p-0 shadow-lg"
                 aria-labelledby="navbarDropdown"
                 style={{
-                  minWidth: '250px',
-                  border: 'none',
-                  marginTop: '10px'
+                  minWidth: "280px",
+                  border: "none",
+                  marginTop: "10px",
+                  borderRadius: "12px",
+                  overflow: "hidden",
                 }}
               >
-                <div className="px-4 py-3 border-bottom">
-                  <h6 className="m-0">Authentication</h6>
-                  <small className="text-muted">Choose your access</small>
+                <div className="bg-light p-3 border-bottom">
+                  <h6 className="m-0 text-dark fw-bold">
+                    Authentication Portal
+                  </h6>
+                  <small className="text-muted">Select your access type</small>
                 </div>
-                
-                <div className="py-1">
-                  <h6 className="dropdown-header">User</h6>
-                  <Link className="dropdown-item" to="/auth/login">
-                    Login
-                  </Link>
-                  <Link className="dropdown-item" to="/auth/register">
-                    Register
-                  </Link>
+
+                <div className="p-2">
+                  <div className="mb-2">
+                    <h6 className="dropdown-header text-muted px-2 py-1">
+                      Customer Access
+                    </h6>
+                    <Link
+                      to="/auth/login"
+                      className="dropdown-item rounded px-3 py-2 d-flex align-items-center hover-bg-light"
+                    >
+                      Login to Account
+                    </Link>
+                    <Link
+                      to="/auth/register"
+                      className="dropdown-item rounded px-3 py-2 d-flex align-items-center hover-bg-light"
+                    >
+                      Create New Account
+                    </Link>
+                  </div>
+
+                  <div className="border-top pt-2">
+                    <h6 className="dropdown-header text-muted px-2 py-1">
+                      Vendor Portal
+                    </h6>
+                    <Link
+                      to="/auth/vendor/login"
+                      className="dropdown-item rounded px-3 py-2 d-flex align-items-center hover-bg-light"
+                    >
+                      Vendor Login
+                    </Link>
+                    <Link
+                      to="/auth/vendor/register"
+                      className="dropdown-item rounded px-3 py-2 d-flex align-items-center hover-bg-light"
+                    >
+                      Become a Vendor
+                    </Link>
+                  </div>
                 </div>
-                
-                <div className="dropdown-divider"></div>
-                
-                <div className="py-1">
-                  <h6 className="dropdown-header">Vendor</h6>
-                  <Link className="dropdown-item" to="/auth/vendor/login">
-                    Vendor Login
-                  </Link>
-                  <Link className="dropdown-item" to="/auth/vendor/register">
-                    Vendor Register
-                  </Link>
-                </div>
-              </ul>
+              </div>
             </li>
             <li>
               <a className="nav-link" href="cart.html">
@@ -175,7 +147,6 @@ const Header = () => {
               </a>
             </li>
           </ul>
-         
         </div>
       </div>
     </nav>

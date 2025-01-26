@@ -6,10 +6,7 @@ const AuthLayout = ({ children }) => {
       <div className="auth-wrapper">
         <div className="auth-left">
           {/* Your brand/logo/image side */}
-          <div className="brand-section">
-            <img src="/your-logo.png" alt="Vendly" />
-            {/* Add any marketing content or images */}
-          </div>
+         
         </div>
         
         <div className="auth-right">
