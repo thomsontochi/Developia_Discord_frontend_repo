@@ -45,9 +45,9 @@ const Header = () => {
           </ul>
           <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
             <li>
-              <a className="nav-link" href="#">
+            <Link to="/Login"> <a className="nav-link" href="#">
                 <img src="/assets/images/user.svg" alt="User icon" />
-                </a>
+                </a> </Link> 
               </li>
             <li>
          <Link  to="/cart"> <a className="nav-link" href="">
