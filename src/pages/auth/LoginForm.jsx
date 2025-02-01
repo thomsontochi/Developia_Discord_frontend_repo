@@ -167,7 +167,7 @@ const LoginForm = () => {
                     <p className="small text-muted">
                       For business accounts{' '}
                       <Link
-                        to="/auth/vendor/login" // Make sure this matches your route path
+                        to="/auth/vendor/login"
                         className="text-decoration-none fw-medium text-primary"
                       >
                         login here
