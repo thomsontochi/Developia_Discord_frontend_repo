@@ -36,8 +36,6 @@ const LoginForm = () => {
                   </p>
                 </div>
 
-                
-
                 <form onSubmit={handleSubmit}>
                   {/* Email Input */}
                   <div className="mb-4">
@@ -58,7 +56,6 @@ const LoginForm = () => {
                         name="email"
                         value={credentials.email}
                         onChange={handleChange}
-                       
                         required
                       />
                     </div>
@@ -75,7 +72,7 @@ const LoginForm = () => {
                       </label>
                       <Link
                         to="/forgot-password"
-                        className="text-decoration-none small text-primary"
+                        className="text-decoration-none small text-primary fw-bold"
                       >
                         Forgot Password?
                       </Link>
@@ -99,14 +96,14 @@ const LoginForm = () => {
 
                   {/* Remember Me Checkbox */}
                   <div className="mb-4">
-                    <div className="form-check">
+                    <div className="form-check d-flex align-items-center gap-2">
                       <input
                         type="checkbox"
                         className="form-check-input"
                         id="remember"
                       />
                       <label
-                        className="form-check-label small text-muted"
+                        className="form-check-label small text-muted mt-1 fw-bold"
                         htmlFor="remember"
                       >
                         Keep me signed in
@@ -158,17 +155,17 @@ const LoginForm = () => {
                       New to our platform?{" "}
                       <Link
                         to="/auth/register"
-                        className="text-decoration-none fw-medium text-primary"
+                        className="text-decoration-none fw-medium text-primary fw-bold"
                       >
                         Create an account
                       </Link>
                     </p>
-                   
+
                     <p className="small text-muted">
-                      For business accounts{' '}
+                      For business accounts{" "}
                       <Link
                         to="/auth/vendor/login" // Make sure this matches your route path
-                        className="text-decoration-none fw-medium text-primary"
+                        className="text-decoration-none fw-medium text-primary fw-bold"
                       >
                         login here
                       </Link>
