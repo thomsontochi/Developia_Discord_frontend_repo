@@ -36,6 +36,8 @@ const LoginForm = () => {
                   </p>
                 </div>
 
+                
+
                 <form onSubmit={handleSubmit}>
                   {/* Email Input */}
                   <div className="mb-4">
@@ -161,10 +163,11 @@ const LoginForm = () => {
                         Create an account
                       </Link>
                     </p>
+                   
                     <p className="small text-muted">
-                      For business accounts{" "}
+                      For business accounts{' '}
                       <Link
-                        to="/auth/vendor/login"
+                        to="/auth/vendor/login" // Make sure this matches your route path
                         className="text-decoration-none fw-medium text-primary"
                       >
                         login here

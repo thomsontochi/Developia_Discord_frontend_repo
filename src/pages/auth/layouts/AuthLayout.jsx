@@ -10,7 +10,7 @@ const AuthLayout = ({ children }) => {
         </div>
         
         <div className="auth-right">
-          {/* Form container */}
+          {/* Form container */} 
           <div className="auth-form-container">
             {children}
           </div>

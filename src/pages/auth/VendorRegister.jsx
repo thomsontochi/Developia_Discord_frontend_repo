@@ -1,11 +1,11 @@
 import React from 'react';
 import AuthLayout from './layouts/AuthLayout';
-// import VendorRegisterForm from '../../components/auth/VendorRegisterForm';
+import VendorRegisterForm from './VendorRegisterForm';
 
 const VendorRegister = () => {
   return (
     <AuthLayout>
-      {/* <VendorRegisterForm /> */}
+      <VendorRegisterForm />
     </AuthLayout>
   );
 };
