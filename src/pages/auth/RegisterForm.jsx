@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    userType: 'user'
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    userType: "user",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -25,7 +25,7 @@ const RegisterForm = () => {
       alert("Passwords do not match");
       return;
     }
-    console.log('Registration submitted', formData);
+    console.log("Registration submitted", formData);
   };
 
   return (
@@ -38,23 +38,37 @@ const RegisterForm = () => {
                 {/* Welcome Message */}
                 <div className="text-center mb-5">
                   <h3 className="fw-bold mb-2">Create Account</h3>
-                  <p className="text-muted">Join Vendly as a {formData.userType}</p>
+                  <p className="text-muted">
+                    Join Vendly as a {formData.userType}
+                  </p>
                 </div>
 
                 {/* User Type Selector */}
                 <div className="d-flex gap-2 mb-4">
-                  <button 
+                  <button
                     type="button"
-                    className={`btn flex-grow-1 ${formData.userType === 'user' ? 'btn-primary' : 'btn-outline-secondary'}`}
-                    onClick={() => setFormData(prev => ({...prev, userType: 'user'}))}
+                    className={`btn flex-grow-1 ${
+                      formData.userType === "user"
+                        ? "btn-primary"
+                        : "btn-outline-secondary"
+                    }`}
+                    onClick={() =>
+                      setFormData((prev) => ({ ...prev, userType: "user" }))
+                    }
                   >
                     <i className="fas fa-user me-2"></i>
                     Regular User
                   </button>
-                  <button 
+                  <button
                     type="button"
-                    className={`btn flex-grow-1 ${formData.userType === 'vendor' ? 'btn-primary' : 'btn-outline-secondary'}`}
-                    onClick={() => setFormData(prev => ({...prev, userType: 'vendor'}))}
+                    className={`btn flex-grow-1 ${
+                      formData.userType === "vendor"
+                        ? "btn-primary"
+                        : "btn-outline-secondary"
+                    }`}
+                    onClick={() =>
+                      setFormData((prev) => ({ ...prev, userType: "vendor" }))
+                    }
                   >
                     <i className="fas fa-store me-2"></i>
                     Vendor
@@ -65,7 +79,9 @@ const RegisterForm = () => {
                   {/* Name Inputs */}
                   <div className="row mb-4">
                     <div className="col-md-6 mb-4 mb-md-0">
-                      <label className="form-label small fw-medium text-dark">First Name</label>
+                      <label className="form-label small fw-medium text-dark">
+                        First Name
+                      </label>
                       <div className="input-group input-group-lg">
                         <span className="input-group-text border-end-0">
                           <i className="fas fa-user text-primary opacity-50"></i>
@@ -76,13 +92,14 @@ const RegisterForm = () => {
                           name="firstName"
                           value={formData.firstName}
                           onChange={handleChange}
-                         
                           required
                         />
                       </div>
                     </div>
                     <div className="col-md-6">
-                      <label className="form-label small fw-medium text-dark">Last Name</label>
+                      <label className="form-label small fw-medium text-dark">
+                        Last Name
+                      </label>
                       <div className="input-group input-group-lg">
                         <span className="input-group-text border-end-0">
                           <i className="fas fa-user text-primary opacity-50"></i>
@@ -93,7 +110,6 @@ const RegisterForm = () => {
                           name="lastName"
                           value={formData.lastName}
                           onChange={handleChange}
-                         
                           required
                         />
                       </div>
@@ -102,7 +118,9 @@ const RegisterForm = () => {
 
                   {/* Email Input */}
                   <div className="mb-4">
-                    <label className="form-label small fw-medium text-dark">Email Address</label>
+                    <label className="form-label small fw-medium text-dark">
+                      Email Address
+                    </label>
                     <div className="input-group input-group-lg">
                       <span className="input-group-text border-end-0">
                         <i className="fas fa-envelope text-primary opacity-50"></i>
@@ -113,7 +131,6 @@ const RegisterForm = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                       
                         required
                       />
                     </div>
@@ -122,7 +139,9 @@ const RegisterForm = () => {
                   {/* Password Inputs */}
                   <div className="row mb-4">
                     <div className="col-md-6 mb-4 mb-md-0">
-                      <label className="form-label small fw-medium text-dark">Password</label>
+                      <label className="form-label small fw-medium text-dark">
+                        Password
+                      </label>
                       <div className="input-group input-group-lg">
                         <span className="input-group-text border-end-0">
                           <i className="fas fa-lock text-primary opacity-50"></i>
@@ -133,13 +152,14 @@ const RegisterForm = () => {
                           name="password"
                           value={formData.password}
                           onChange={handleChange}
-                        
                           required
                         />
                       </div>
                     </div>
                     <div className="col-md-6">
-                      <label className="form-label small fw-medium text-dark">Confirm Password</label>
+                      <label className="form-label small fw-medium text-dark">
+                        Confirm Password
+                      </label>
                       <div className="input-group input-group-lg">
                         <span className="input-group-text border-end-0">
                           <i className="fas fa-lock text-primary opacity-50"></i>
@@ -150,7 +170,6 @@ const RegisterForm = () => {
                           name="confirmPassword"
                           value={formData.confirmPassword}
                           onChange={handleChange}
-                        
                           required
                         />
                       </div>
@@ -158,7 +177,10 @@ const RegisterForm = () => {
                   </div>
 
                   {/* Submit Button */}
-                  <button type="submit" className="btn btn-primary w-100 btn-lg mb-4">
+                  <button
+                    type="submit"
+                    className="btn btn-primary w-100 btn-lg mb-4"
+                  >
                     Create Account
                   </button>
 
@@ -172,13 +194,19 @@ const RegisterForm = () => {
 
                   {/* Social Login */}
                   <div className="d-flex flex-column flex-md-row gap-3 mb-4">
-                    <button type="button" className="btn btn-outline-light flex-grow-1 social-btn">
+                    <button
+                      type="button"
+                      className="btn btn-outline-light flex-grow-1 social-btn"
+                    >
                       <div className="d-flex align-items-center justify-content-center gap-2">
                         <i className="fab fa-google text-danger"></i>
                         <span>Continue with Google</span>
                       </div>
                     </button>
-                    <button type="button" className="btn btn-outline-light flex-grow-1 social-btn">
+                    <button
+                      type="button"
+                      className="btn btn-outline-light flex-grow-1 social-btn"
+                    >
                       <div className="d-flex align-items-center justify-content-center gap-2">
                         <i className="fab fa-facebook text-primary"></i>
                         <span>Continue with Facebook</span>
@@ -189,8 +217,11 @@ const RegisterForm = () => {
                   {/* Login Link */}
                   <div className="text-center">
                     <p className="mb-0 text-muted small">
-                      Already have an account?{' '}
-                      <Link to="/auth/login" className="text-decoration-none fw-medium text-primary">
+                      Already have an account?{" "}
+                      <Link
+                        to="/auth/login"
+                        className="text-decoration-none fw-medium text-primary fw-bold"
+                      >
                         Sign in
                       </Link>
                     </p>

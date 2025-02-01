@@ -41,7 +41,6 @@
   color: #888;
 } */
 
-
 .error-template {
   padding: 40px 15px;
 }
@@ -66,12 +65,10 @@
   margin-top: 30px;
 }
 
-
-
 /* Auth Layout Styles */
 /* Login Form Styles */
 .login-page {
-  min-height: 100vh;
+  height: auto;
   background: linear-gradient(145deg, #f6f9ff 0%, #f8f9fa 100%);
   padding: 1rem;
 }
@@ -91,7 +88,7 @@
   .login-page {
     padding: 2rem;
   }
-  
+
   .login-page .card-body {
     padding: 3rem !important;
   }
@@ -118,19 +115,18 @@
 }
 
 .login-page .input-group .form-control {
-  padding-left: 2px !important; /* Force padding */
+  padding-left: 5px !important; /* Force padding */
 }
 
 @media (max-width: 576px) {
   .login-page .input-group-text {
     padding: 0.5rem 1rem;
   }
-  
+
   .login-page .form-control {
     padding: 0.5rem 1rem;
   }
 }
-
 
 /* Social buttons */
 .login-page .social-btn {
@@ -169,22 +165,22 @@
   .login-page .card-body {
     padding: 1.5rem !important;
   }
-  
+
   .login-page h3 {
     font-size: 1.5rem;
   }
-  
+
   .login-page .input-group-lg > .form-control,
   .login-page .input-group-lg > .input-group-text {
     padding: 0.5rem 1rem;
     font-size: 1rem;
   }
-  
+
   .login-page .btn-lg {
     padding: 0.5rem 1rem;
     font-size: 1rem;
   }
-  
+
   .login-page .social-btn {
     padding: 0.5rem;
     font-size: 0.85rem;
