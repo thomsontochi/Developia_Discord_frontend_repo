@@ -51,7 +51,7 @@ const Footer = () => {
 
 				<div className="row g-5 mb-5">
 					<div className="col-lg-4">
-						<div className="mb-4 footer-logo-wrap"><a href="#" className="footer-logo">Furni<span>.</span></a></div>
+						<div className="mb-4 footer-logo-wrap"><a href="#" className="footer-logo">Vendly<span>.</span></a></div>
 						<p className="mb-4">Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant</p>
 
 						<ul className="list-unstyled custom-social">

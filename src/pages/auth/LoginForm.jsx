@@ -1,24 +1,25 @@
-// src/pages/auth/LoginForm.jsx
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const LoginForm = () => {
+  const [userType, setUserType] = useState('user');
   const [credentials, setCredentials] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
+    storeId: '' // Only for vendor
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setCredentials((prev) => ({
+    setCredentials(prev => ({
       ...prev,
-      [name]: value,
+      [name]: value
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Login submitted", credentials);
+    console.log(`${userType} login submitted:`, credentials);
   };
 
   return (
@@ -28,25 +29,55 @@ const LoginForm = () => {
           <div className="col-md-8 col-lg-6">
             <div className="card border-0 shadow-lg">
               <div className="card-body p-5">
-                {/* Welcome Message */}
                 <div className="text-center mb-5">
                   <h3 className="fw-bold mb-2">Welcome Back!</h3>
-                  <p className="text-muted">
-                    Enter your credentials to access your account
-                  </p>
+                  <p className="text-muted">Sign in as {userType === 'vendor' ? 'Vendor' : 'Customer'}</p>
                 </div>
 
-                
+                {/* User Type Toggle */}
+                <div className="d-flex gap-2 mb-4">
+                  <button 
+                    type="button"
+                    className={`btn flex-grow-1 ${userType === 'user' ? 'btn-primary' : 'btn-outline-secondary'}`}
+                    onClick={() => setUserType('user')}
+                  >
+                    <i className="fas fa-user me-2"></i>
+                    Customer
+                  </button>
+                  <button 
+                    type="button"
+                    className={`btn flex-grow-1 ${userType === 'vendor' ? 'btn-primary' : 'btn-outline-secondary'}`}
+                    onClick={() => setUserType('vendor')}
+                  >
+                    <i className="fas fa-store me-2"></i>
+                    Vendor
+                  </button>
+                </div>
 
                 <form onSubmit={handleSubmit}>
+                  {/* Store ID (Only for vendors) */}
+                  {userType === 'vendor' && (
+                    <div className="mb-4">
+                      <label className="form-label small fw-medium text-dark">Store ID</label>
+                      <div className="input-group input-group-lg">
+                        <span className="input-group-text border-end-0">
+                          <i className="fas fa-store text-primary opacity-50"></i>
+                        </span>
+                        <input
+                          type="text"
+                          className="form-control border-start-0"
+                          name="storeId"
+                          value={credentials.storeId}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+                    </div>
+                  )}
+
                   {/* Email Input */}
                   <div className="mb-4">
-                    <label
-                      htmlFor="email"
-                      className="form-label small fw-medium text-dark"
-                    >
-                      Email Address
-                    </label>
+                    <label className="form-label small fw-medium text-dark">Email Address</label>
                     <div className="input-group input-group-lg">
                       <span className="input-group-text border-end-0">
                         <i className="fas fa-envelope text-primary opacity-50"></i>
@@ -54,11 +85,9 @@ const LoginForm = () => {
                       <input
                         type="email"
                         className="form-control border-start-0"
-                        id="email"
                         name="email"
                         value={credentials.email}
                         onChange={handleChange}
-                       
                         required
                       />
                     </div>
@@ -67,16 +96,8 @@ const LoginForm = () => {
                   {/* Password Input */}
                   <div className="mb-4">
                     <div className="d-flex justify-content-between align-items-center mb-1">
-                      <label
-                        htmlFor="password"
-                        className="form-label small fw-medium text-dark"
-                      >
-                        Password
-                      </label>
-                      <Link
-                        to="/forgot-password"
-                        className="text-decoration-none small text-primary"
-                      >
+                      <label className="form-label small fw-medium text-dark">Password</label>
+                      <Link to="/forgot-password" className="text-decoration-none small text-primary">
                         Forgot Password?
                       </Link>
                     </div>
@@ -87,11 +108,9 @@ const LoginForm = () => {
                       <input
                         type="password"
                         className="form-control border-start-0"
-                        id="password"
                         name="password"
                         value={credentials.password}
                         onChange={handleChange}
-                        placeholder="••••••••"
                         required
                       />
                     </div>
@@ -100,77 +119,27 @@ const LoginForm = () => {
                   {/* Remember Me Checkbox */}
                   <div className="mb-4">
                     <div className="form-check">
-                      <input
-                        type="checkbox"
-                        className="form-check-input"
-                        id="remember"
-                      />
-                      <label
-                        className="form-check-label small text-muted"
-                        htmlFor="remember"
-                      >
+                      <input type="checkbox" className="form-check-input" id="remember" />
+                      <label className="form-check-label small text-muted" htmlFor="remember">
                         Keep me signed in
                       </label>
                     </div>
                   </div>
 
                   {/* Submit Button */}
-                  <button
-                    type="submit"
-                    className="btn btn-primary w-100 btn-lg mb-4"
-                  >
-                    Sign In
+                  <button type="submit" className="btn btn-primary w-100 btn-lg mb-4">
+                    Sign In as {userType === 'vendor' ? 'Vendor' : 'Customer'}
                   </button>
 
-                  {/* Divider */}
-                  <div className="position-relative mb-4">
-                    <hr className="text-muted" />
-                    <span className="position-absolute top-50 start-50 translate-middle px-3 bg-white text-muted small">
-                      or continue with
-                    </span>
-                  </div>
-
-                  {/* Social Login */}
-                  <div className="d-flex flex-column flex-md-row gap-3 mb-4">
-                    <button
-                      type="button"
-                      className="btn btn-outline-light flex-grow-1 social-btn"
-                    >
-                      <div className="d-flex align-items-center justify-content-center gap-2">
-                        <i className="fab fa-google text-danger"></i>
-                        <span>Continue with Google</span>
-                      </div>
-                    </button>
-                    <button
-                      type="button"
-                      className="btn btn-outline-light flex-grow-1 social-btn"
-                    >
-                      <div className="d-flex align-items-center justify-content-center gap-2">
-                        <i className="fab fa-facebook text-primary"></i>
-                        <span>Continue with Facebook</span>
-                      </div>
-                    </button>
-                  </div>
-
-                  {/* Register Links */}
+                  {/* Register Link */}
                   <div className="text-center">
-                    <p className="mb-2 text-muted small">
-                      New to our platform?{" "}
-                      <Link
-                        to="/auth/register"
+                    <p className="mb-0 text-muted small">
+                      Don't have an account?{' '}
+                      <Link 
+                        to={userType === 'vendor' ? "/auth/vendor/register" : "/auth/register"} 
                         className="text-decoration-none fw-medium text-primary"
                       >
-                        Create an account
-                      </Link>
-                    </p>
-                   
-                    <p className="small text-muted">
-                      For business accounts{' '}
-                      <Link
-                        to="/auth/vendor/login"
-                        className="text-decoration-none fw-medium text-primary"
-                      >
-                        login here
+                        Create Account
                       </Link>
                     </p>
                   </div>

@@ -1,10 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
-// import { ChevronDown, User, LogIn, UserPlus, Store } from 'lucide-react';
-// import cartIcon from "/src/assets/images/cart.svg";
-// import user from "/src/assets/images/user.svg";
+import { Link , useLocation } from "react-router-dom";
 
 const Header = () => {
+
+  const location = useLocation();
+
+  const isActive = (path) => {
+    if (path === '/') {
+      return location.pathname === path;
+    }
+    return location.pathname.startsWith(path);
+  };
+
   return (
     <nav
       className="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark"
@@ -26,33 +33,33 @@ const Header = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarsFurni">
-          <ul className="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-            <li className="nav-item active">
+        <ul className="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+            <li className={`nav-item ${isActive('/') ? 'active' : ''}`}>
               <Link className="nav-link" to="/">
                 Home
               </Link>
             </li>
-            <li>
+            <li className={`nav-item ${isActive('/shop') ? 'active' : ''}`}>
               <Link className="nav-link" to="/shop">
                 Shop
               </Link>
             </li>
-            <li>
+            <li className={`nav-item ${isActive('/about') ? 'active' : ''}`}>
               <Link className="nav-link" to="/about">
                 About us
               </Link>
             </li>
-            <li>
-              <Link className="nav-link" to="">
+            <li className={`nav-item ${isActive('/services') ? 'active' : ''}`}>
+              <Link className="nav-link" to="/services">
                 Services
               </Link>
             </li>
-            <li>
+            <li className={`nav-item ${isActive('/blog') ? 'active' : ''}`}>
               <Link className="nav-link" to="/blog">
                 Blog
               </Link>
             </li>
-            <li>
+            <li className={`nav-item ${isActive('/contact') ? 'active' : ''}`}>
               <Link className="nav-link" to="/contact">
                 Contact Us
               </Link>

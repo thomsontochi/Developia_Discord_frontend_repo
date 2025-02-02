@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const RegisterForm = () => {
+
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -17,6 +20,15 @@ const RegisterForm = () => {
       ...prev,
       [name]: value
     }));
+  };
+
+  const handleUserTypeChange = (type) => {
+    if (type === 'vendor') {
+      // Navigate to vendor registration with steps
+      navigate('/auth/vendor/register');
+    } else {
+      setFormData(prev => ({...prev, userType: 'user'}));
+    }
   };
 
   const handleSubmit = (e) => {
@@ -41,25 +53,25 @@ const RegisterForm = () => {
                   <p className="text-muted">Join Vendly as a {formData.userType}</p>
                 </div>
 
-                {/* User Type Selector */}
+                {/* User Type button Selector */}
                 <div className="d-flex gap-2 mb-4">
-                  <button 
-                    type="button"
-                    className={`btn flex-grow-1 ${formData.userType === 'user' ? 'btn-primary' : 'btn-outline-secondary'}`}
-                    onClick={() => setFormData(prev => ({...prev, userType: 'user'}))}
-                  >
-                    <i className="fas fa-user me-2"></i>
-                    Regular User
-                  </button>
-                  <button 
-                    type="button"
-                    className={`btn flex-grow-1 ${formData.userType === 'vendor' ? 'btn-primary' : 'btn-outline-secondary'}`}
-                    onClick={() => setFormData(prev => ({...prev, userType: 'vendor'}))}
-                  >
-                    <i className="fas fa-store me-2"></i>
-                    Vendor
-                  </button>
-                </div>
+                <button 
+                  type="button"
+                  className={`btn flex-grow-1 ${formData.userType === 'user' ? 'btn-primary' : 'btn-outline-secondary'}`}
+                  onClick={() => handleUserTypeChange('user')} // Updated
+                >
+                  <i className="fas fa-user me-2"></i>
+                  Regular User
+                </button>
+                <button 
+                  type="button"
+                  className={`btn flex-grow-1 ${formData.userType === 'vendor' ? 'btn-primary' : 'btn-outline-secondary'}`}
+                  onClick={() => handleUserTypeChange('vendor')} // Updated
+                >
+                  <i className="fas fa-store me-2"></i>
+                  Vendor
+                </button>
+              </div>
 
                 <form onSubmit={handleSubmit}>
                   {/* Name Inputs */}
