@@ -1,72 +1,73 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const VendorRegistrationForm = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
-    full_name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    phone: '',
-    store_name: '',
-    store_description: '',
-    business_category: '',
-    address: '',
+    full_name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    phone: "",
+    store_name: "",
+    store_description: "",
+    business_category: "",
+    address: "",
     business_hours: {
-      monday: { open: '09:00', close: '17:00', isOpen: true },
-      tuesday: { open: '09:00', close: '17:00', isOpen: true },
-      wednesday: { open: '09:00', close: '17:00', isOpen: true },
-      thursday: { open: '09:00', close: '17:00', isOpen: true },
-      friday: { open: '09:00', close: '17:00', isOpen: true },
-      saturday: { open: '09:00', close: '17:00', isOpen: false },
-      sunday: { open: '09:00', close: '17:00', isOpen: false }
+      monday: { open: "09:00", close: "17:00", isOpen: true },
+      tuesday: { open: "09:00", close: "17:00", isOpen: true },
+      wednesday: { open: "09:00", close: "17:00", isOpen: true },
+      thursday: { open: "09:00", close: "17:00", isOpen: true },
+      friday: { open: "09:00", close: "17:00", isOpen: true },
+      saturday: { open: "09:00", close: "17:00", isOpen: false },
+      sunday: { open: "09:00", close: "17:00", isOpen: false },
     },
     payment_details: {
-      bank_name: '',
-      account_number: '',
-      account_holder: ''
+      bank_name: "",
+      account_number: "",
+      account_holder: "",
     },
-    store_logo: null
+    store_logo: null,
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleBusinessHoursChange = (day, field, value) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       business_hours: {
         ...prev.business_hours,
         [day]: {
           ...prev.business_hours[day],
-          [field]: field === 'isOpen' ? !prev.business_hours[day].isOpen : value
-        }
-      }
+          [field]:
+            field === "isOpen" ? !prev.business_hours[day].isOpen : value,
+        },
+      },
     }));
   };
 
   const handlePaymentDetailsChange = (field, value) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       payment_details: {
         ...prev.payment_details,
-        [field]: value
-      }
+        [field]: value,
+      },
     }));
   };
 
   const handleLogoChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
-        store_logo: file
+        store_logo: file,
       }));
     }
   };
@@ -77,12 +78,12 @@ const VendorRegistrationForm = () => {
       setStep(step + 1);
       return;
     }
-    console.log('Registration submitted', formData);
+    console.log("Registration submitted", formData);
   };
 
   const renderStep1 = () => (
     <>
-      <h5 className="mb-4">Account Information</h5>
+      <h5 className="mb-4 text-center">Account Information</h5>
       <div className="mb-4">
         <label className="form-label">Full Name</label>
         <div className="input-group input-group-lg">
@@ -265,7 +266,9 @@ const VendorRegistrationForm = () => {
               className="form-control form-control-lg"
               placeholder="Bank Name"
               value={formData.payment_details.bank_name}
-              onChange={(e) => handlePaymentDetailsChange('bank_name', e.target.value)}
+              onChange={(e) =>
+                handlePaymentDetailsChange("bank_name", e.target.value)
+              }
               required
             />
           </div>
@@ -275,7 +278,9 @@ const VendorRegistrationForm = () => {
               className="form-control form-control-lg"
               placeholder="Account Number"
               value={formData.payment_details.account_number}
-              onChange={(e) => handlePaymentDetailsChange('account_number', e.target.value)}
+              onChange={(e) =>
+                handlePaymentDetailsChange("account_number", e.target.value)
+              }
               required
             />
           </div>
@@ -285,7 +290,9 @@ const VendorRegistrationForm = () => {
               className="form-control form-control-lg"
               placeholder="Account Holder Name"
               value={formData.payment_details.account_holder}
-              onChange={(e) => handlePaymentDetailsChange('account_holder', e.target.value)}
+              onChange={(e) =>
+                handlePaymentDetailsChange("account_holder", e.target.value)
+              }
               required
             />
           </div>
@@ -304,11 +311,11 @@ const VendorRegistrationForm = () => {
                 <div className="text-center mb-5">
                   <h3 className="fw-bold mb-2">Vendor Registration</h3>
                   <p className="text-muted">Step {step} of 3</p>
-                  
+
                   {/* Progress Bar */}
-                  <div className="progress" style={{ height: '4px' }}>
-                    <div 
-                      className="progress-bar bg-primary" 
+                  <div className="progress" style={{ height: "4px" }}>
+                    <div
+                      className="progress-bar bg-primary"
                       style={{ width: `${(step / 3) * 100}%` }}
                     ></div>
                   </div>
@@ -321,26 +328,29 @@ const VendorRegistrationForm = () => {
 
                   <div className="d-flex justify-content-between mt-4">
                     {step > 1 && (
-                      <button 
-                        type="button" 
+                      <button
+                        type="button"
                         className="btn btn-outline-primary btn-lg"
                         onClick={() => setStep(step - 1)}
                       >
                         Back
                       </button>
                     )}
-                    <button 
-                      type="submit" 
+                    <button
+                      type="submit"
                       className="btn btn-primary btn-lg ms-auto"
                     >
-                      {step === 3 ? 'Complete Registration' : 'Continue'}
+                      {step === 3 ? "Complete Registration" : "Continue"}
                     </button>
                   </div>
 
                   <div className="text-center mt-4">
                     <p className="mb-0 text-muted small">
-                      Already have a vendor account?{' '}
-                      <Link to="/auth/vendor/login" className="text-decoration-none fw-medium text-primary">
+                      Already have a vendor account?{" "}
+                      <Link
+                        to="/auth/vendor/login"
+                        className="text-decoration-none fw-medium text-primary"
+                      >
                         Sign in
                       </Link>
                     </p>

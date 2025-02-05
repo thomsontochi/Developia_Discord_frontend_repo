@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const LoginForm = () => {
+  const [showPassword, setShowpassword] = useState(false);
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -19,6 +20,9 @@ const LoginForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Login submitted", credentials);
+  };
+  const togglePasswordVisibility = () => {
+    setShowpassword((prev) => !prev);
   };
 
   return (
@@ -70,19 +74,13 @@ const LoginForm = () => {
                       >
                         Password
                       </label>
-                      <Link
-                        to="/forgot-password"
-                        className="text-decoration-none small text-primary"
-                      >
-                        Forgot Password?
-                      </Link>
                     </div>
                     <div className="input-group input-group-lg">
                       <span className="input-group-text border-end-0">
                         <i className="fas fa-lock text-primary opacity-50"></i>
                       </span>
                       <input
-                        type="password"
+                        type={showPassword ? "text" : "password"}
                         className="form-control border-start-0"
                         id="password"
                         name="password"
@@ -91,19 +89,39 @@ const LoginForm = () => {
                         placeholder="••••••••"
                         required
                       />
+                      <span
+                        onClick={togglePasswordVisibility}
+                        className="input-group-text  border-0"
+                        style={{ cursor: "pointer" }}
+                      >
+                        <i
+                          className={
+                            showPassword
+                              ? "fa-regular fa-eye"
+                              : "fa-regular fa-eye-slash"
+                          }
+                        ></i>
+                      </span>
                     </div>
+                    <Link
+                      to="/forgot-password"
+                      className="text-decoration-none small text-primary float-end mt-2 mb-5"
+                    >
+                      {" "}
+                      Forgot Password?
+                    </Link>
                   </div>
 
                   {/* Remember Me Checkbox */}
-                  <div className="mb-4">
-                    <div className="form-check">
+                  <div className="mb-4 mt-5">
+                    <div className="form-check d-flex align-items-center gap-2">
                       <input
                         type="checkbox"
-                        className="form-check-input"
+                        className="form-check-input "
                         id="remember"
                       />
                       <label
-                        className="form-check-label small text-muted"
+                        className="form-check-label small text-muted "
                         htmlFor="remember"
                       >
                         Keep me signed in

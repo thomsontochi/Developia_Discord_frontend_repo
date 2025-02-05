@@ -1,24 +1,29 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const VendorLoginForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const [credentials, setCredentials] = useState({
-    email: '',
-    password: '',
-    storeId: '' // Additional field for vendors
+    email: "",
+    password: "",
+    storeId: "", // Additional field for vendors
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setCredentials(prev => ({
+    setCredentials((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Vendor Login submitted', credentials);
+    console.log("Vendor Login submitted", credentials);
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
   };
 
   return (
@@ -36,7 +41,9 @@ const VendorLoginForm = () => {
                 <form onSubmit={handleSubmit}>
                   {/* Store ID Input */}
                   <div className="mb-4">
-                    <label className="form-label small fw-medium text-dark">Store ID</label>
+                    <label className="form-label small fw-medium text-dark">
+                      Store ID
+                    </label>
                     <div className="input-group input-group-lg">
                       <span className="input-group-text border-end-0">
                         <i className="fas fa-store text-primary opacity-50"></i>
@@ -47,6 +54,7 @@ const VendorLoginForm = () => {
                         name="storeId"
                         value={credentials.storeId}
                         onChange={handleChange}
+                        placeholder="e.g. store123"
                         required
                       />
                     </div>
@@ -54,7 +62,9 @@ const VendorLoginForm = () => {
 
                   {/* Email Input */}
                   <div className="mb-4">
-                    <label className="form-label small fw-medium text-dark">Email Address</label>
+                    <label className="form-label small fw-medium text-dark">
+                      Email Address
+                    </label>
                     <div className="input-group input-group-lg">
                       <span className="input-group-text border-end-0">
                         <i className="fas fa-envelope text-primary opacity-50"></i>
@@ -65,6 +75,7 @@ const VendorLoginForm = () => {
                         name="email"
                         value={credentials.email}
                         onChange={handleChange}
+                        placeholder="johnOlabisi@gmail.com"
                         required
                       />
                     </div>
@@ -72,36 +83,58 @@ const VendorLoginForm = () => {
 
                   {/* Password Input */}
                   <div className="mb-4">
-                    <label className="form-label small fw-medium text-dark">Password</label>
+                    <label className="form-label small fw-medium text-dark">
+                      Password
+                    </label>
                     <div className="input-group input-group-lg">
                       <span className="input-group-text border-end-0">
                         <i className="fas fa-lock text-primary opacity-50"></i>
                       </span>
                       <input
-                        type="password"
+                        type={showPassword ? "text" : "password"}
                         className="form-control border-start-0"
                         name="password"
                         value={credentials.password}
                         onChange={handleChange}
+                        placeholder="••••••••"
                         required
                       />
+                      <span
+                        className="input-group-text cursor-pointer"
+                        onClick={togglePasswordVisibility}
+                      >
+                        <i
+                          className={`fas ${
+                            showPassword ? "fa-eye-slash" : "fa-eye"
+                          } text-primary opacity-50`}
+                        ></i>
+                      </span>
                     </div>
                   </div>
 
-                  <button type="submit" className="btn btn-primary w-100 btn-lg mb-4">
+                  <button
+                    type="submit"
+                    className="btn btn-primary w-100 btn-lg mb-4"
+                  >
                     Sign In as Vendor
                   </button>
 
                   <div className="text-center">
                     <p className="mb-0 text-muted small">
-                      Don't have a vendor account?{' '}
-                      <Link to="/auth/vendor/register" className="text-decoration-none fw-medium text-primary">
+                      Don't have a vendor account?{" "}
+                      <Link
+                        to="/auth/vendor/register"
+                        className="text-decoration-none fw-medium text-primary"
+                      >
                         Register as Vendor
                       </Link>
                     </p>
                     <p className="small text-muted mt-2">
-                      For customer accounts{' '}
-                      <Link to="/auth/login" className="text-decoration-none fw-medium text-primary">
+                      For customer accounts{" "}
+                      <Link
+                        to="/auth/login"
+                        className="text-decoration-none fw-medium text-primary"
+                      >
                         login here
                       </Link>
                     </p>
