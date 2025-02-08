@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
+import AuthService from '../../services/auth.service';
 
 const RegisterForm = () => {
 
   const navigate = useNavigate();
+  const { login } = useAuth();
+  const [error, setError] = useState('');
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -31,13 +35,21 @@ const RegisterForm = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
     if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match");
+      setError("Passwords don't match");
       return;
     }
-    console.log('Registration submitted', formData);
+
+    try {
+      const response = await AuthService.register(formData, formData.userType);
+      login(response.user);
+      navigate(formData.userType === 'vendor' ? '/vendor/dashboard' : '/dashboard');
+    } catch (err) {
+      setError(err.message || 'Registration failed');
+    }
   };
 
   return (
