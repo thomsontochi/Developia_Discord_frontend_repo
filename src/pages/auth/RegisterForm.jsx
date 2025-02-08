@@ -18,6 +18,15 @@ const RegisterForm = () => {
     userType: 'user'
   });
 
+  const [errors, setErrors] = useState({
+    general: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -37,20 +46,47 @@ const RegisterForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrors({ general: '' });
     
-    if (formData.password !== formData.confirmPassword) {
-      setError("Passwords don't match");
-      return;
-    }
+   // Password match validation
+   if (formData.password !== formData.confirmPassword) {
+    setErrors(prev => ({
+      ...prev,
+      password: "Passwords don't match",
+      confirmPassword: "Passwords don't match"
+    }));
+    return;
+  }
 
-    try {
-      const response = await AuthService.register(formData, formData.userType);
-      login(response.user);
-      navigate(formData.userType === 'vendor' ? '/vendor/dashboard' : '/dashboard');
-    } catch (err) {
-      setError(err.message || 'Registration failed');
+  //   try {
+  //     const response = await AuthService.register(formData, formData.userType);
+  //     login(response.user);
+  //     navigate(formData.userType === 'vendor' ? '/vendor/dashboard' : '/dashboard');
+  //   } catch (err) {
+  //     setError(err.message || 'Registration failed');
+  //   }
+  // };
+
+  try {
+    const response = await AuthService.register(formData, formData.userType);
+    login(response.user);
+    navigate(formData.userType === 'vendor' ? '/vendor/dashboard' : '/dashboard');
+  } catch (err) {
+    // Handle different types of errors
+    if (err.response?.data?.errors) {
+      // Laravel validation errors
+      setErrors(prev => ({
+        ...prev,
+        ...err.response.data.errors
+      }));
+    } else {
+      setErrors(prev => ({
+        ...prev,
+        general: err.message || 'Registration failed'
+      }));
     }
-  };
+  }
+};
 
   return (
     <div className="login-page py-5">
@@ -86,6 +122,12 @@ const RegisterForm = () => {
               </div>
 
                 <form onSubmit={handleSubmit}>
+
+                {errors.general && (
+                  <div className="alert alert-danger mb-4" role="alert">
+                    {errors.general}
+                  </div>
+                )}
                   {/* Name Inputs */}
                   <div className="row mb-4">
                     <div className="col-md-6 mb-4 mb-md-0">
@@ -103,6 +145,9 @@ const RegisterForm = () => {
                          
                           required
                         />
+                         {errors.firstName && (
+                          <div className="invalid-feedback">{errors.firstName}</div>
+                        )}
                       </div>
                     </div>
                     <div className="col-md-6">

@@ -20,17 +20,45 @@ class AuthService {
     //     }
     // }
 
+    // async login(credentials, userType) {
+    //     try {
+    //         await api.get('/sanctum/csrf-cookie');
+            
+    //         const endpoint = userType === 'vendor' 
+    //             ? '/api/v1/vendor/login'
+    //             : '/api/v1/login';
+                
+    //         const response = await api.post(endpoint, credentials);
+    //         return response.data;
+    //     } catch (error) {
+    //         throw this.handleError(error);
+    //     }
+    // }
+
     async login(credentials, userType) {
         try {
+            // First ensure we have the CSRF cookie
             await api.get('/sanctum/csrf-cookie');
+            
+            // Add a small delay to ensure cookie is set
+            await new Promise(resolve => setTimeout(resolve, 100));
             
             const endpoint = userType === 'vendor' 
                 ? '/api/v1/vendor/login'
                 : '/api/v1/login';
                 
             const response = await api.post(endpoint, credentials);
+            
+            // Store the token if returned
+            if (response.data.token) {
+                localStorage.setItem('token', response.data.token);
+                // Set the token in axios defaults
+                api.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
+            }
+            
             return response.data;
         } catch (error) {
+            console.error('Login error details:', error.response?.data);
             throw this.handleError(error);
         }
     }

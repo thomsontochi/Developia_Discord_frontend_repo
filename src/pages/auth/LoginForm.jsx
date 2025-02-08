@@ -25,6 +25,7 @@ const LoginForm = () => {
     }));
   };
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -40,6 +41,8 @@ const LoginForm = () => {
       setError(err.message || "Login failed");
     }
   };
+
+  
 
   return (
     <div className="login-page py-5">
@@ -84,6 +87,13 @@ const LoginForm = () => {
                 </div>
 
                 <form onSubmit={handleSubmit}>
+                  
+                {error && (
+                  <div className="alert alert-danger mb-4" role="alert">
+                    {error}
+                  </div>
+                )}
+
                   {/* Store ID (Only for vendors) */}
                   {userType === "vendor" && (
                     <div className="mb-4">
@@ -196,6 +206,8 @@ const LoginForm = () => {
                     </p>
                   </div>
                 </form>
+
+
               </div>
             </div>
           </div>
