@@ -10,6 +10,8 @@ import Register from "../pages/auth/Register";
 import VendorLogin from "../pages/auth/VendorLogin";
 import VendorRegister from "../pages/auth/VendorRegister";
 
+import GuestRoute from '../routes/GuestRoute';
+
 export const routes = [
   {
     path: "/",
@@ -40,21 +42,25 @@ export const routes = [
     path: "/auth/login",
     element: Login,
     title: "Login | Vendly",
+    guard: GuestRoute,
   },
   {
     path: "/auth/register",
     element: Register,
     title: "Register | Vendly",
+    guard: GuestRoute,
   },
   {
     path: "/auth/vendor/login",
     element: VendorLogin,
     title: "Vendor Login | Vendly",
+    guard: GuestRoute,
   },
   {
     path: "/auth/vendor/register",
     element: VendorRegister,
     title: "Vendor Register | Vendly",
+    guard: GuestRoute,
   },
   {
     path: "*",
