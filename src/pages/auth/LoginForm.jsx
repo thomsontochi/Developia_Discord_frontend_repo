@@ -34,8 +34,12 @@ const LoginForm = () => {
       console.log("Attempting login with:", { credentials, userType });
       const response = await AuthService.login(credentials, userType);
       console.log("Login response:", response);
-      login(response.user); // Update global auth state
-      navigate(userType === "vendor" ? "/vendor/dashboard" : "/dashboard");
+      // login(response.user); // Update global auth state
+      // navigate(userType === "vendor" ? "/vendor/dashboard" : "/dashboard");
+      if (response.user && response.token) {
+        login(response.user); // This will set isAuthenticated to true
+        navigate(userType === 'vendor' ? '/vendor/dashboard' : '/dashboard');
+    }
     } catch (err) {
       console.error("Login error:", err);
       setError(err.message || "Login failed");
@@ -94,33 +98,15 @@ const LoginForm = () => {
                   </div>
                 )}
 
-                  {/* Store ID (Only for vendors) */}
-                  {userType === "vendor" && (
-                    <div className="mb-4">
-                      <label className="form-label small fw-medium text-dark">
-                        Store ID
-                      </label>
-                      <div className="input-group input-group-lg">
-                        <span className="input-group-text border-end-0">
-                          <i className="fas fa-store text-primary opacity-50"></i>
-                        </span>
-                        <input
-                          type="text"
-                          className="form-control border-start-0"
-                          name="storeId"
-                          value={credentials.storeId}
-                          onChange={handleChange}
-                          required
-                        />
-                      </div>
-                    </div>
-                  )}
+                 
 
                   {/* Email Input */}
                   <div className="mb-4">
+
                     <label className="form-label small fw-medium text-dark">
                       Email Address
                     </label>
+
                     <div className="input-group input-group-lg">
                       <span className="input-group-text border-end-0">
                         <i className="fas fa-envelope text-primary opacity-50"></i>
@@ -134,14 +120,19 @@ const LoginForm = () => {
                         required
                       />
                     </div>
+
+                    { error.email && <div className="invalid-feedback">{error.email}</div> }
                   </div>
 
                   {/* Password Input */}
                   <div className="mb-4">
                     <div className="d-flex justify-content-between align-items-center mb-1">
+
                       <label className="form-label small fw-medium text-dark">
                         Password
                       </label>
+
+
                       <Link
                         to="/forgot-password"
                         className="text-decoration-none small text-primary"
@@ -150,9 +141,11 @@ const LoginForm = () => {
                       </Link>
                     </div>
                     <div className="input-group input-group-lg">
+
                       <span className="input-group-text border-end-0">
                         <i className="fas fa-lock text-primary opacity-50"></i>
                       </span>
+
                       <input
                         type="password"
                         className="form-control border-start-0"
@@ -161,6 +154,10 @@ const LoginForm = () => {
                         onChange={handleChange}
                         required
                       />
+                      { error.password && 
+                      <div className="invalid-feedback">{error.password}
+                      </div>
+                       }
                     </div>
                   </div>
 
