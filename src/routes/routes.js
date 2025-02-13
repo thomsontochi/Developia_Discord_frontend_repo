@@ -24,6 +24,11 @@ export const routes = [
     title: "Home | Vendly",
   },
   {
+    path: "/services",
+    element: ServicePage,
+    title: "Home | Vendly",
+  },
+  {
     path: "/about",
     element: About,
     title: "About Us | Vendly",

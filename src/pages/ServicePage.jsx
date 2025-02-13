@@ -22,7 +22,7 @@ const ServicePage = () => {
 						<div className="col-lg-5">
 							<div className="intro-excerpt">
 								<h1>Services</h1>
-								<p className="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
+								<p className="mb-4">Access 100% Genuine Products from Local & International Vendors.</p>
 								<p><a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#" className="btn btn-white-outline">Explore</a></p>
 							</div>
 						</div>

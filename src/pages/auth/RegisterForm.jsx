@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
+import AuthService from '../../services/auth.service';
 
 const RegisterForm = () => {
+
+  const navigate = useNavigate();
+  const { login } = useAuth();
+  const [error, setError] = useState('');
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -9,6 +16,15 @@ const RegisterForm = () => {
     password: '',
     confirmPassword: '',
     userType: 'user'
+  });
+
+  const [errors, setErrors] = useState({
+    general: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
   });
 
   const handleChange = (e) => {
@@ -19,14 +35,58 @@ const RegisterForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match");
-      return;
+  const handleUserTypeChange = (type) => {
+    if (type === 'vendor') {
+      // Navigate to vendor registration with steps
+      navigate('/auth/vendor/register');
+    } else {
+      setFormData(prev => ({...prev, userType: 'user'}));
     }
-    console.log('Registration submitted', formData);
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrors({ general: '' });
+    
+   // Password match validation
+   if (formData.password !== formData.confirmPassword) {
+    setErrors(prev => ({
+      ...prev,
+      password: "Passwords don't match",
+      confirmPassword: "Passwords don't match"
+    }));
+    return;
+  }
+
+  //   try {
+  //     const response = await AuthService.register(formData, formData.userType);
+  //     login(response.user);
+  //     navigate(formData.userType === 'vendor' ? '/vendor/dashboard' : '/dashboard');
+  //   } catch (err) {
+  //     setError(err.message || 'Registration failed');
+  //   }
+  // };
+
+  try {
+    const response = await AuthService.register(formData, formData.userType);
+    login(response.user);
+    navigate(formData.userType === 'vendor' ? '/vendor/dashboard' : '/dashboard');
+  } catch (err) {
+    // Handle different types of errors
+    if (err.response?.data?.errors) {
+      // Laravel validation errors
+      setErrors(prev => ({
+        ...prev,
+        ...err.response.data.errors
+      }));
+    } else {
+      setErrors(prev => ({
+        ...prev,
+        general: err.message || 'Registration failed'
+      }));
+    }
+  }
+};
 
   return (
     <div className="login-page py-5">
@@ -41,27 +101,33 @@ const RegisterForm = () => {
                   <p className="text-muted">Join Vendly as a {formData.userType}</p>
                 </div>
 
-                {/* User Type Selector */}
+                {/* User Type button Selector */}
                 <div className="d-flex gap-2 mb-4">
-                  <button 
-                    type="button"
-                    className={`btn flex-grow-1 ${formData.userType === 'user' ? 'btn-primary' : 'btn-outline-secondary'}`}
-                    onClick={() => setFormData(prev => ({...prev, userType: 'user'}))}
-                  >
-                    <i className="fas fa-user me-2"></i>
-                    Regular User
-                  </button>
-                  <button 
-                    type="button"
-                    className={`btn flex-grow-1 ${formData.userType === 'vendor' ? 'btn-primary' : 'btn-outline-secondary'}`}
-                    onClick={() => setFormData(prev => ({...prev, userType: 'vendor'}))}
-                  >
-                    <i className="fas fa-store me-2"></i>
-                    Vendor
-                  </button>
-                </div>
+                <button 
+                  type="button"
+                  className={`btn flex-grow-1 ${formData.userType === 'user' ? 'btn-primary' : 'btn-outline-secondary'}`}
+                  onClick={() => handleUserTypeChange('user')} // Updated
+                >
+                  <i className="fas fa-user me-2"></i>
+                  Regular User
+                </button>
+                <button 
+                  type="button"
+                  className={`btn flex-grow-1 ${formData.userType === 'vendor' ? 'btn-primary' : 'btn-outline-secondary'}`}
+                  onClick={() => handleUserTypeChange('vendor')} // Updated
+                >
+                  <i className="fas fa-store me-2"></i>
+                  Vendor
+                </button>
+              </div>
 
                 <form onSubmit={handleSubmit}>
+
+                {errors.general && (
+                  <div className="alert alert-danger mb-4" role="alert">
+                    {errors.general}
+                  </div>
+                )}
                   {/* Name Inputs */}
                   <div className="row mb-4">
                     <div className="col-md-6 mb-4 mb-md-0">
@@ -79,6 +145,9 @@ const RegisterForm = () => {
                          
                           required
                         />
+                         {errors.firstName && (
+                          <div className="invalid-feedback">{errors.firstName}</div>
+                        )}
                       </div>
                     </div>
                     <div className="col-md-6">

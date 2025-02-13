@@ -203,19 +203,19 @@
 	},
 	{
 		"id": 2,
-		 "Easy to Shop": "Easy to Shop",
-		 "descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
+		 "typeOfServices": "Easy to Shop",
+		 "descriptionOfServieces": "Access 100% Genuine Products from Local & International Vendors.",
 		 "ServicesLogo": "/assets/images/bag.svg"
 	   },
 	   {
 		"id": 3,
-		 "Easy to Shop": "24/7 Support",
+		 "typeOfServices": "24/7 Support",
 		 "descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
 		 "ServicesLogo": "/assets/images/support.svg"
 	   },
 	   {
 		"id": 4,
-		 "Easy to Shop": "Hassle Free Returns",
+		 "typeOfServices": "Hassle Free Returns",
 		 "descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
 		 "ServicesLogo": "/assets/images/return.svg"
 	   },
@@ -227,19 +227,19 @@
 	   },
 	   {
 		   "id": 6,
-			"Easy to Shop": "Easy to Shop",
+			"typeOfServices": "Easy to Shop",
 			"descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
 			"ServicesLogo": "/assets/images/bag.svg"
 		  },
 		  {
 		   "id": 7,
-			"Easy to Shop": "24/7 Support",
+			"typeOfServices": "24/7 Support",
 			"descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
 			"ServicesLogo": "/assets/images/support.svg"
 		  },
 		  {
 		   "id": 8,
-			"Easy to Shop": "Hassle Free Returns",
+			"typeOfServices": "Hassle Free Returns",
 			"descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
 			"ServicesLogo": "/assets/images/return.svg"
 		  }

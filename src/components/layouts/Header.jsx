@@ -1,24 +1,16 @@
-import React, {useState, useEffect} from 'react';
-import { Link, useLocation} from 'react-router-dom';
-
+import React from "react";
+import { Link , useLocation } from "react-router-dom";
 
 const Header = () => {
 
-  const [activeLink, setActiveLink] = useState('');
   const location = useLocation();
 
-  // Set the active link based on the current path
-  useEffect(() => {
-    setActiveLink(location.pathname);
-  }, [location.pathname]);
-
-  // Handler to set the active link when clicked
-  // const handleLinkClick = (path) => {
-  //   setActiveLink(path);
-  // }
-
-
-
+  const isActive = (path) => {
+    if (path === '/') {
+      return location.pathname === path;
+    }
+    return location.pathname.startsWith(path);
+  };
 
   return (
     <nav className="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
@@ -28,20 +20,37 @@ const Header = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarsFurni">
-          <ul className="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-            <li className={`nav-item ${activeLink === '/' ? 'active' : ''}`} >
-              <Link className="nav-link" to="/" >Home</Link>
+        <ul className="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+            <li className={`nav-item ${isActive('/') ? 'active' : ''}`}>
+              <Link className="nav-link" to="/">
+                Home
+              </Link>
             </li>
-            <li className={` ${activeLink === '/Shop' ? 'active' : ''}`} >
-            <Link className="nav-link" to="/Shop" >Shop</Link></li>
-            <li className={` ${activeLink === '/about' ? 'active' : ''}`}>
-              <Link className="nav-link"  to="/about" >About us</Link></li>
-            <li  className={` ${activeLink === '/service' ? 'active' : ''}`}>
-              <Link className="nav-link" to="/service">Services</Link></li>
-            <li className={` ${activeLink === '/blog' ? 'active' : ''}`}>
-              <Link className="nav-link" to="/blog">Blog</Link></li>
-            <li className={` ${activeLink === '/contact' ? 'active' : ''}`}>
-              <Link className="nav-link" to="/contact">Contact Us</Link></li>
+            <li className={`nav-item ${isActive('/shop') ? 'active' : ''}`}>
+              <Link className="nav-link" to="/shop">
+                Shop
+              </Link>
+            </li>
+            <li className={`nav-item ${isActive('/about') ? 'active' : ''}`}>
+              <Link className="nav-link" to="/about">
+                About us
+              </Link>
+            </li>
+            <li className={`nav-item ${isActive('/services') ? 'active' : ''}`}>
+              <Link className="nav-link" to="/services">
+                Services
+              </Link>
+            </li>
+            <li className={`nav-item ${isActive('/blog') ? 'active' : ''}`}>
+              <Link className="nav-link" to="/blog">
+                Blog
+              </Link>
+            </li>
+            <li className={`nav-item ${isActive('/contact') ? 'active' : ''}`}>
+              <Link className="nav-link" to="/contact">
+                Contact Us
+              </Link>
+            </li>
           </ul>
           <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
             <li>
