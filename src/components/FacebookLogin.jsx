@@ -2,25 +2,46 @@ import React, { useEffect } from "react";
 
 const FacebookLogin = () => {
     useEffect(() => {
-        window.fbAsyncInit = function () {
-            window.FB.init({
-                // appId: "1133904004967612",
-                appId: "1159221362481568",
-                // appId: "934822008839118",
+        const loadFacebookSDK = () => {
+            if (document.getElementById("facebook-jssdk")) {
+                console.log("Facebook SDK already loaded.");
+                return;
+            }
+
+            let script = document.createElement("script");
+            script.id = "facebook-jssdk";
+            script.src = "https://connect.facebook.net/en_US/sdk.js";
+            script.async = true;
+            script.onload = () => {
+                console.log("Facebook SDK loaded.");
+                initializeFacebookSDK();
+            };
+
+            document.body.appendChild(script);
+        };
+
+        const initializeFacebookSDK = () => {
+            if (!window.FB) {
+                console.error("Facebook SDK is not available.");
+                return;
+            }
+
+            console.log("Initializing Facebook SDK...");
+            if (window.FB.init({
+                appId: "934822008839118",
                 cookie: true,
-                xfbml: true,
-                version: "v22.0",
+                xfbml: false,
+                version: "v18.0",
+            })) {
+                console.log("Facebook SDK initialized.");
+            }
+
+            window.FB.getLoginStatus((response) => {
+                console.log("FB Login Status:", response);
             });
         };
 
-        (function (d, s, id) {
-            let js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "https://connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        })(document, "script", "facebook-jssdk");
+        loadFacebookSDK();
     }, []);
 
     const handleLogin = () => {
