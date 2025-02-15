@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import AuthService from "../../services/auth.service";
 
+// import * as bootstrap from 'bootstrap';
+
 const RegisterForm = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
@@ -37,6 +39,8 @@ const RegisterForm = () => {
     });
   }, []);
 
+  
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -52,6 +56,9 @@ const RegisterForm = () => {
       setFormData((prev) => ({ ...prev, userType: "user" }));
     }
   };
+
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -81,7 +88,7 @@ const RegisterForm = () => {
       const response = await AuthService.register(apiData, formData.userType);
 
       if (response.user && response.token) {
-        localStorage.setItem('token', response.token);
+        localStorage.setItem("token", response.token);
         login(response.user);
 
         if (formData.userType === "vendor") {
@@ -90,13 +97,13 @@ const RegisterForm = () => {
           navigate("/");
         }
       } else {
-        setErrors(prev => ({
+        setErrors((prev) => ({
           ...prev,
-          general: "Registration successful but received unexpected response"
+          general: "Registration successful but received unexpected response",
         }));
       }
     } catch (err) {
-      console.error('Registration error:', err);
+      console.error("Registration error:", err);
       if (err.response?.data?.errors) {
         const mappedErrors = {
           firstName: err.response.data.errors.first_name?.[0],
@@ -105,20 +112,24 @@ const RegisterForm = () => {
           password: err.response.data.errors.password?.[0],
           confirmPassword: err.response.data.errors.password_confirmation?.[0],
         };
-        setErrors(prev => ({
+        setErrors((prev) => ({
           ...prev,
-          ...mappedErrors
+          ...mappedErrors,
         }));
       } else {
-        setErrors(prev => ({
+        setErrors((prev) => ({
           ...prev,
-          general: err.message || 'Registration failed'
+          general: err.message || "Registration failed",
         }));
       }
     } finally {
       setLoading(false);
     }
   };
+
+
+ 
+
 
   return (
     <div className="login-page py-5">
@@ -183,12 +194,14 @@ const RegisterForm = () => {
                           value={formData.firstName}
                           onChange={handleChange}
                           required
-                          data-toggle="tooltip"
+                          data-bs-toggle="tooltip"
                           data-placement="top"
                           title="Enter your first name"
                         />
                         {errors.firstName && (
-                          <div className="invalid-feedback d-block">{errors.firstName}</div>
+                          <div className="invalid-feedback d-block">
+                            {errors.firstName}
+                          </div>
                         )}
                       </div>
                     </div>
@@ -207,12 +220,14 @@ const RegisterForm = () => {
                           value={formData.lastName}
                           onChange={handleChange}
                           required
-                          data-toggle="tooltip"
+                          data-bs-toggle="tooltip"
                           data-placement="top"
                           title="Enter your last name"
                         />
                         {errors.lastName && (
-                          <div className="invalid-feedback d-block">{errors.lastName}</div>
+                          <div className="invalid-feedback d-block">
+                            {errors.lastName}
+                          </div>
                         )}
                       </div>
                     </div>
@@ -233,12 +248,14 @@ const RegisterForm = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        data-toggle="tooltip"
+                        data-bs-toggle="tooltip"
                         data-placement="top"
                         title="Enter your email address"
                       />
                       {errors.email && (
-                        <div className="invalid-feedback d-block">{errors.email}</div>
+                        <div className="invalid-feedback d-block">
+                          {errors.email}
+                        </div>
                       )}
                     </div>
                   </div>
@@ -259,12 +276,14 @@ const RegisterForm = () => {
                           value={formData.password}
                           onChange={handleChange}
                           required
-                          data-toggle="tooltip"
+                          data-bs-toggle="tooltip"
                           data-placement="top"
                           title="Enter your password"
                         />
                         {errors.password && (
-                          <div className="invalid-feedback d-block">{errors.password}</div>
+                          <div className="invalid-feedback d-block">
+                            {errors.password}
+                          </div>
                         )}
                       </div>
                     </div>
@@ -283,12 +302,14 @@ const RegisterForm = () => {
                           value={formData.confirmPassword}
                           onChange={handleChange}
                           required
-                          data-toggle="tooltip"
+                          data-bs-toggle="tooltip"
                           data-placement="top"
                           title="Confirm your password"
                         />
                         {errors.confirmPassword && (
-                          <div className="invalid-feedback d-block">{errors.confirmPassword}</div>
+                          <div className="invalid-feedback d-block">
+                            {errors.confirmPassword}
+                          </div>
                         )}
                       </div>
                     </div>
@@ -300,7 +321,11 @@ const RegisterForm = () => {
                     disabled={loading}
                   >
                     {loading ? (
-                      <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                      <span
+                        className="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
                     ) : (
                       "Create Account"
                     )}
