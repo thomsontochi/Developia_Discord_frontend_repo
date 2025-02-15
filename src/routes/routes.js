@@ -9,6 +9,7 @@ import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
 import VendorLogin from "../pages/auth/VendorLogin";
 import VendorRegister from "../pages/auth/VendorRegister";
+import GoogleCallback from "../pages/auth/GoogleCallback";
 
 import GuestRoute from '../routes/GuestRoute';
 
@@ -60,6 +61,12 @@ export const routes = [
     path: "/auth/vendor/register",
     element: VendorRegister,
     title: "Vendor Register | Vendly",
+    guard: GuestRoute,
+  },
+  {
+    path: "/auth/callback",
+    element: GoogleCallback,
+    title: "Google Register | Vendly",
     guard: GuestRoute,
   },
   {

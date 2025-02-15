@@ -27,6 +27,16 @@ const RegisterForm = () => {
     confirmPassword: "",
   });
 
+  const clientId = "520024281147-g7jqtln3dfl9i4dt9hi28u7kgv2n237o.apps.googleusercontent.com"; // Replace with your actual Google OAuth Client ID
+  const redirectUri = "http://localhost:5173/auth/callback"; // Your redirect URI
+  const scope = "email profile openid";
+  const responseType = "code";
+
+  const handleGoogleLogin = () => {
+    const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope}`;
+    window.location.href = googleAuthUrl;
+  };
+
   useEffect(() => {
     // Initialize Bootstrap tooltips
     const tooltipTriggerList = [].slice.call(
@@ -317,6 +327,7 @@ const RegisterForm = () => {
                     <button
                       type="button"
                       className="btn btn-outline-light flex-grow-1 social-btn"
+                      onClick={handleGoogleLogin}
                     >
                       <div className="d-flex align-items-center justify-content-center gap-2">
                         <i className="fab fa-google text-danger"></i>
