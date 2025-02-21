@@ -7202,10 +7202,11 @@ fieldset:disabled .btn {
 }
 .bg-primary {
   --bs-bg-opacity: 1;
-  background-color: rgba(
+  /* background-color: rgba(
     var(--bs-primary-rgb),
     var(--bs-bg-opacity)
-  ) !important;
+  ) !important; */
+  background: #3b5d50;
 }
 .bg-secondary {
   --bs-bg-opacity: 1;
