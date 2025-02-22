@@ -19,6 +19,8 @@ import Cart from '../pages/Cart';
 
 import GuestRoute from '../routes/GuestRoute';
 
+import EmailVerificationResult from "../pages/auth/EmailVerificationResult";
+
 export const routes = [
   {
     path: "/",
@@ -73,6 +75,11 @@ export const routes = [
     element: VendorRegister,
     title: "Vendor Register | Vendly",
     guard: GuestRoute,
+  },
+  {
+    path: "/vendor/email-verification",
+    element: EmailVerificationResult,
+    title: "Email Verification | Vendly",
   },
   {
     path: "*",
