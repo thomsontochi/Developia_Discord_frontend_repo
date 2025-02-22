@@ -93,59 +93,123 @@ class AuthService {
     }
   }
 
-  // Error handling
-  // handleError(error) {
-  //     if (error.response) {
-  //         // The request was made and the server responded with a status code
-  //         // that falls out of the range of 2xx
-  //         return {
-  //             message: error.response.data.message,
-  //             status: error.response.status
-  //         };
-  //     } else if (error.request) {
-  //         // The request was made but no response was received
-  //         return {
-  //             message: 'No response from server',
-  //             status: 500
-  //         };
-  //     } else {
-  //         // Something happened in setting up the request that triggered an Error
-  //         return {
-  //             message: error.message,
-  //             status: 500
-  //         };
-  //     }
+  // async vendorRegisterStep1(data) {
+  //   try {
+  //     await api.get("/sanctum/csrf-cookie");
+  //     const response = await api.post("api/v1/vendor/register", {
+  //       full_name: data.full_name,
+  //       email: data.email,
+  //       password: data.password,
+  //       password_confirmation: data.password_confirmation
+  //     });
+  //     return response.data;
+  //   } catch (error) {
+  //     throw this.handleError(error);
+  //   }
   // }
 
-//   handleError(error) {
-//     if (error.response) {
-//       // Laravel validation errors
-//       if (error.response.data.errors) {
-//         return {
-//           message: "Validation failed",
-//           errors: error.response.data.errors,
-//         };
-//       }
-//       // Regular error message
-//       return {
-//         message: error.response.data.message || "An error occurred",
-//         status: error.response.status,
-//       };
-//     } else if (error.request) {
-//       return {
-//         message: "No response from server. Please check your connection.",
-//         status: 500,
-//       };
-//     } else {
-//       return {
-//         message: error.message || "An unexpected error occurred",
-//         status: 500,
-//       };
-//     }
-//   }
+  async vendorRegisterStep1(data) {
+    try {
+      await api.get("/sanctum/csrf-cookie");
+      
+      // console.log('Sending registration data:', {
+      //   full_name: data.full_name,
+      //   email: data.email,
+      //   password: data.password,
+      //   password_confirmation: data.password_confirmation
+      // });
+  
+      const response = await api.post("/api/v1/vendor/register", {
+        full_name: data.full_name,
+        email: data.email,
+        password: data.password,
+        password_confirmation: data.password_confirmation
+      });
+      
+      return response.data;
+    } catch (error) {
+      console.error('Registration error response:', error.response?.data);
+      throw this.handleError(error);
+    }
+  }
 
+  async vendorRegisterStep2(data) {
+    try {
+      const formData = new FormData();
+      formData.append('store_name', data.store_name);
+      formData.append('store_description', data.store_description);
+      formData.append('business_category', data.business_category);
+      formData.append('address', data.address);
+      if (data.store_logo) {
+        formData.append('store_logo', data.store_logo);
+      }
+  
+      const response = await api.post("/api/vendor/setup-store", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      return response.data;
+    } catch (error) {
+      throw this.handleError(error);
+    }
+  }
 
-handleError(error) {
+  async vendorRegisterStep3(data) {
+    try {
+      const response = await api.post("/api/vendor/setup-payment", {
+        payment_details: {
+          bank_name: data.bank_name,
+          account_number: data.account_number,
+          account_name: data.account_holder
+        }
+      });
+      return response.data;
+    } catch (error) {
+      throw this.handleError(error);
+    }
+  }
+
+  // async checkEmailVerification(email) {
+  //   try {
+  //     const response = await api.get("/api/v1/vendor/email/check-verification", { email });
+  //     return response.data.verified;
+  //   } catch (error) {
+  //     throw this.handleError(error);
+  //   }
+  // }
+
+  // async checkEmailVerification(email) {
+  //   try {
+  //     const token = localStorage.getItem('vendor_token'); 
+      
+  //     const response = await api.get("api/v1/check-verification", {
+  //       headers: {
+  //         'Authorization': `Bearer ${token}`
+  //       }
+  //     });
+  //     return response.data.verified;
+  //   } catch (error) {
+  //     console.error('Verification check failed:', error.response?.data);
+  //     throw this.handleError(error);
+  //   }
+  // }
+
+ 
+  async checkEmailVerification(email) {
+    try {
+      const response = await api.get(`/api/v1/check-verification/${email}`);
+      console.log('Verification response:', response.data); // Debug log
+      return response.data.verified;
+    } catch (error) {
+      console.error('Verification check failed:', error.response?.data);
+      throw this.handleError(error);
+    }
+  }
+
+  
+
+  handleError(error) {
     if (error.response) {
       // Handle Laravel validation errors
       if (error.response.status === 422) {
@@ -157,27 +221,25 @@ handleError(error) {
         }, {});
         return {
           message: error.response.data.message,
-          errors: formattedErrors
+          errors: formattedErrors,
         };
       }
       return {
-        message: error.response.data.message || 'An error occurred',
-        status: error.response.status
+        message: error.response.data.message || "An error occurred",
+        status: error.response.status,
       };
     } else if (error.request) {
       return {
-        message: 'No response from server. Please check your connection.',
-        status: 500
+        message: "No response from server. Please check your connection.",
+        status: 500,
       };
     } else {
       return {
-        message: error.message || 'An unexpected error occurred',
-        status: 500
+        message: error.message || "An unexpected error occurred",
+        status: 500,
       };
     }
   }
-
-
 }
 
 export default new AuthService();

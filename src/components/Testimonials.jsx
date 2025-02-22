@@ -47,7 +47,9 @@ const Testimonials = () => {
               <SwiperSlide key={testimonial.id}>
                 <div className="testimonial-block text-center">
                   <blockquote className="mb-5">
-                    <p>&ldquo;{testimonial.content}&rdquo;</p>
+                    <p className="text-break">
+                      &ldquo; {testimonial.content} 
+                      &rdquo;</p>
                   </blockquote>
                   <div className="author-info">
                     <div className="author-pic">
@@ -63,10 +65,11 @@ const Testimonials = () => {
                 </div>
               </SwiperSlide>
             ))}
-          </Swiper>
-          
           <div className="custom-prev"><span className="fa fa-chevron-left"></span></div>
           <div className="custom-next"><span className="fa fa-chevron-right"></span></div>
+          </Swiper>
+          
+        
         </div>
       </div>
     </section>

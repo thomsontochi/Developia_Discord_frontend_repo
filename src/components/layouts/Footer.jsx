@@ -52,7 +52,7 @@ const Footer = () => {
 				<div className="row g-5 mb-5">
 					<div className="col-lg-4">
 						<div className="mb-4 footer-logo-wrap"><a href="#" className="footer-logo">Vendly<span>.</span></a></div>
-						<p className="mb-4">Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant</p>
+						<p className="mb-4">Vendly offers the widest assortment at an unbeatable price, providing customers with high-quality products, seamless shopping experiences, and fast, reliable delivery services.</p>
 
 						<ul className="list-unstyled custom-social">
 							<li><a href="#"><span className="fa fa-brands fa-facebook-f"></span></a></li>
@@ -84,7 +84,7 @@ const Footer = () => {
 				<div className="border-top copyright">
 					<div className="row pt-4">
 						<div className="col-lg-6">
-							<p className="mb-2 text-center text-lg-start">Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> Distributed By <a hreff="https://themewagon.com">Developia Discord</a> </p>
+							<p className="mb-2 text-center text-lg-start">Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love and Distributed By Developia Discord </p>
 						</div>
 
 						<div className="col-lg-6 text-center text-lg-end">

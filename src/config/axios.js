@@ -12,10 +12,40 @@ const api = axios.create({
 });
 
 // Add response interceptor for better error handling
+// api.interceptors.response.use(
+//     response => response,
+//     error => {
+//         console.error('API Error:', error.response?.data);
+//         return Promise.reject(error);
+//     }
+// );
+
+
+api.interceptors.request.use(
+    (config) => {
+        // const token = localStorage.getItem('token');
+        const token = localStorage.getItem('vendor_token');
+        // console.log('Current token:', token); // Debug
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+            console.log('Request headers:', config.headers);
+        }
+        return config;
+    },
+    (error) => {
+        return Promise.reject(error);
+    }
+);
+
+
 api.interceptors.response.use(
     response => response,
     error => {
-        console.error('API Error:', error.response?.data);
+        if (error.response?.status === 401) {
+            // Handle unauthorized access
+            // localStorage.removeItem('token');
+            localStorage.removeItem('vendor_token');
+        }
         return Promise.reject(error);
     }
 );

@@ -198,51 +198,28 @@
 	{
      "id": 1,
 	  "typeOfServices": "Fast & Free Shipping",
-	  "descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
+	  "descriptionOfServieces": "Get your orders delivered quickly and at no extra cost! Enjoy reliable, doorstep delivery with Vendly fast and efficient shipping service.",
 	  "ServicesLogo": "/assets/images/truck.svg"
 	},
 	{
 		"id": 2,
 		 "typeOfServices": "Easy to Shop",
-		 "descriptionOfServieces": "Access 100% Genuine Products from Local & International Vendors.",
+		 "descriptionOfServieces": "A seamless shopping experience at your fingertips! Browse, select, and checkout effortlessly with our user-friendly platform.",
 		 "ServicesLogo": "/assets/images/bag.svg"
 	   },
 	   {
 		"id": 3,
 		 "typeOfServices": "24/7 Support",
-		 "descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
+		 "descriptionOfServieces": "We’re here for you anytime, anywhere! Our dedicated support team is available 24/7 to assist with your inquiries and ensure a smooth shopping experience.",
 		 "ServicesLogo": "/assets/images/support.svg"
 	   },
 	   {
 		"id": 4,
 		 "typeOfServices": "Hassle Free Returns",
-		 "descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
+		 "descriptionOfServieces": "Shop with confidence! If you're not satisfied, our easy return policy ensures a stress-free process for refunds or exchanges.",
 		 "ServicesLogo": "/assets/images/return.svg"
-	   },
-	   {
-		"id": 5,
-		 "typeOfServices": "Fast & Free Shipping",
-		 "descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
-		 "ServicesLogo": "/assets/images/truck.svg"
-	   },
-	   {
-		   "id": 6,
-			"typeOfServices": "Easy to Shop",
-			"descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
-			"ServicesLogo": "/assets/images/bag.svg"
-		  },
-		  {
-		   "id": 7,
-			"typeOfServices": "24/7 Support",
-			"descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
-			"ServicesLogo": "/assets/images/support.svg"
-		  },
-		  {
-		   "id": 8,
-			"typeOfServices": "Hassle Free Returns",
-			"descriptionOfServieces": "Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.",
-			"ServicesLogo": "/assets/images/return.svg"
-		  }
+	   }
+	 
 ]
 
 }
