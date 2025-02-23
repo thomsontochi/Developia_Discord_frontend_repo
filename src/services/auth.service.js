@@ -1,39 +1,8 @@
 import api from "../config/axios";
+// import axios from 'axios';
 
 class AuthService {
   // Regular user authentication
-
-  // async login(email, password) {
-  //     try {
-  //         // First, get CSRF cookie
-  //         await api.get('/sanctum/csrf-cookie');
-
-  //         // Then, attempt login
-  //         const response = await api.post('/api/v1/login', {
-  //             email,
-  //             password
-  //         });
-
-  //         return response.data;
-  //     } catch (error) {
-  //         throw this.handleError(error);
-  //     }
-  // }
-
-  // async login(credentials, userType) {
-  //     try {
-  //         await api.get('/sanctum/csrf-cookie');
-
-  //         const endpoint = userType === 'vendor'
-  //             ? '/api/v1/vendor/login'
-  //             : '/api/v1/login';
-
-  //         const response = await api.post(endpoint, credentials);
-  //         return response.data;
-  //     } catch (error) {
-  //         throw this.handleError(error);
-  //     }
-  // }
 
   async login(credentials, userType) {
     try {
@@ -93,121 +62,146 @@ class AuthService {
     }
   }
 
-  // async vendorRegisterStep1(data) {
-  //   try {
-  //     await api.get("/sanctum/csrf-cookie");
-  //     const response = await api.post("api/v1/vendor/register", {
-  //       full_name: data.full_name,
-  //       email: data.email,
-  //       password: data.password,
-  //       password_confirmation: data.password_confirmation
-  //     });
-  //     return response.data;
-  //   } catch (error) {
-  //     throw this.handleError(error);
-  //   }
-  // }
-
   async vendorRegisterStep1(data) {
     try {
       await api.get("/sanctum/csrf-cookie");
-      
-      // console.log('Sending registration data:', {
-      //   full_name: data.full_name,
-      //   email: data.email,
-      //   password: data.password,
-      //   password_confirmation: data.password_confirmation
-      // });
-  
+
       const response = await api.post("/api/v1/vendor/register", {
         full_name: data.full_name,
         email: data.email,
         password: data.password,
-        password_confirmation: data.password_confirmation
+        password_confirmation: data.password_confirmation,
       });
-      
+
+      // Store token from response
+      if (response.data.token) {
+        localStorage.setItem("token", response.data.token);
+        api.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${response.data.token}`;
+        console.log("Token stored:", response.data.token);
+      }
+
+      // Store email for verification check
+      localStorage.setItem("pending_verification_email", data.email);
+
       return response.data;
     } catch (error) {
-      console.error('Registration error response:', error.response?.data);
+      console.error("Registration error:", error.response?.data);
+      throw this.handleError(error);
+    }
+  }
+
+  // Add verification check method
+  async checkVerificationStatus() {
+    const email = localStorage.getItem("pending_verification_email");
+    if (!email) return null;
+
+    try {
+      const response = await api.get(`/api/v1/check-verification/${email}`);
+      return response.data;
+    } catch (error) {
+      console.error("Verification check error:", error);
       throw this.handleError(error);
     }
   }
 
   async vendorRegisterStep2(data) {
     try {
-      const formData = new FormData();
-      formData.append('store_name', data.store_name);
-      formData.append('store_description', data.store_description);
-      formData.append('business_category', data.business_category);
-      formData.append('address', data.address);
-      if (data.store_logo) {
-        formData.append('store_logo', data.store_logo);
+      const token = localStorage.getItem("token");
+      console.log("Token before store setup:", token);
+
+      if (!token) {
+        throw new Error("Authentication required");
       }
-  
-      const response = await api.post("/api/vendor/setup-store", formData, {
+
+      // Create FormData
+      const formData = new FormData();
+      formData.append("store_name", data.store_name);
+      formData.append("store_description", data.store_description);
+      formData.append("business_category", data.business_category);
+      formData.append("address", data.address);
+      if (data.store_logo) {
+        formData.append("store_logo", data.store_logo);
+      }
+
+      // Use your api instance instead of axios directly
+      const response = await api.post("/api/v1/vendor/setup-store", formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+          "Content-Type": "multipart/form-data",
+        },
       });
+
       return response.data;
     } catch (error) {
+      console.error("Complete error:", error);
       throw this.handleError(error);
     }
   }
 
   async vendorRegisterStep3(data) {
     try {
-      const response = await api.post("/api/vendor/setup-payment", {
-        payment_details: {
-          bank_name: data.bank_name,
-          account_number: data.account_number,
-          account_name: data.account_holder
+        const token = localStorage.getItem("token");
+        if (!token) {
+            throw new Error("Authentication required");
         }
-      });
-      return response.data;
+
+        // First get CSRF cookie
+        await api.get('/sanctum/csrf-cookie');
+
+        const response = await api.post("/api/v1/vendor/setup-payment", 
+            {
+              payment_details: {
+                bank_name: data.payment_details.bank_name,
+                account_number: data.payment_details.account_number,
+                account_name: data.payment_details.account_holder 
+            }
+            },
+            {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+        );
+
+        return response.data;
     } catch (error) {
+        console.error("Payment setup error:", error);
+        throw this.handleError(error);
+    }
+}
+
+  async getOnboardingStatus() {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) return null;
+
+      const response = await api.get("/api/v1/vendor/profile", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      return {
+        currentStep: response.data.vendor.onboarding_step.current_step,
+        completedSteps: response.data.vendor.onboarding_step.completed_steps,
+      };
+    } catch (error) {
+      console.error("Onboarding status error:", error);
       throw this.handleError(error);
     }
   }
 
-  // async checkEmailVerification(email) {
-  //   try {
-  //     const response = await api.get("/api/v1/vendor/email/check-verification", { email });
-  //     return response.data.verified;
-  //   } catch (error) {
-  //     throw this.handleError(error);
-  //   }
-  // }
-
-  // async checkEmailVerification(email) {
-  //   try {
-  //     const token = localStorage.getItem('vendor_token'); 
-      
-  //     const response = await api.get("api/v1/check-verification", {
-  //       headers: {
-  //         'Authorization': `Bearer ${token}`
-  //       }
-  //     });
-  //     return response.data.verified;
-  //   } catch (error) {
-  //     console.error('Verification check failed:', error.response?.data);
-  //     throw this.handleError(error);
-  //   }
-  // }
-
- 
   async checkEmailVerification(email) {
     try {
       const response = await api.get(`/api/v1/check-verification/${email}`);
-      console.log('Verification response:', response.data); // Debug log
+      console.log("Verification response:", response.data); // Debug log
       return response.data.verified;
     } catch (error) {
-      console.error('Verification check failed:', error.response?.data);
+      console.error("Verification check failed:", error.response?.data);
       throw this.handleError(error);
     }
   }
-
-  
 
   handleError(error) {
     if (error.response) {

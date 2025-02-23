@@ -29,6 +29,25 @@ const VendorRegistrationForm = () => {
     step3: false
   });
 
+
+  const [categories, setCategories] = useState([
+    { id: 'retail', name: 'Retail & Consumer Goods' },
+    { id: 'food', name: 'Food & Beverages' },
+    { id: 'electronics', name: 'Electronics & Technology' },
+    { id: 'fashion', name: 'Fashion & Apparel' },
+    { id: 'health', name: 'Health & Beauty' },
+    { id: 'home', name: 'Home & Garden' },
+    { id: 'sports', name: 'Sports & Fitness' },
+    { id: 'toys', name: 'Toys & Games' },
+    { id: 'books', name: 'Books & Stationery' },
+    { id: 'automotive', name: 'Automotive' },
+    { id: 'jewelry', name: 'Jewelry & Accessories' },
+    { id: 'art', name: 'Art & Crafts' },
+    { id: 'pets', name: 'Pet Supplies' },
+    { id: 'music', name: 'Musical Instruments' },
+    { id: 'other', name: 'Other' }
+  ]);
+
   // Error handling
   const [error, setError] = useState({});
   const [validationErrors, setValidationErrors] = useState({});
@@ -62,7 +81,7 @@ const VendorRegistrationForm = () => {
     payment_details: {
       bank_name: "",
       account_number: "",
-      account_holder: "",
+      account_name: "",
     }
   });
 
@@ -72,21 +91,7 @@ const VendorRegistrationForm = () => {
 
   // Check for verification from URL params
 
-  // useEffect(() => {
-  //   const verified = searchParams.get('verified');
-  //   const verifiedEmail = searchParams.get('email');
-    
-    
-  //   if (verified === 'true' && verifiedEmail === formData.email) {
-  //     setVerificationStatus({
-  //       checking: false,
-  //       verified: true,
-  //       message: "Email verified successfully!"
-  //     });
-  //     steps[0].completed = true;
-  //     setTimeout(() => setStep(2), 1500);
-  //   }
-  // }, [searchParams, formData.email]);
+ 
 
   useEffect(() => {
     const verified = searchParams.get('verified');
@@ -214,14 +219,27 @@ const VendorRegistrationForm = () => {
     if (!formData.store_description) errors.store_description = "Store description is required";
     if (!formData.business_category) errors.business_category = "Business category is required";
     if (!formData.address) errors.address = "Address is required";
+
+
+    // File validation
+    if (formData.store_logo) {
+      const maxSize = 5 * 1024 * 1024; // 5MB
+      if (formData.store_logo.size > maxSize) {
+        errors.store_logo = "File size should be less than 5MB";
+      }
+      if (!formData.store_logo.type.startsWith('image/')) {
+        errors.store_logo = "Please upload an image file";
+      }
+    }
     return errors;
+
   };
 
   const validateStep3 = () => {
     const errors = {};
     if (!formData.payment_details.bank_name) errors.bank_name = "Bank name is required";
     if (!formData.payment_details.account_number) errors.account_number = "Account number is required";
-    if (!formData.payment_details.account_holder) errors.account_holder = "Account holder name is required";
+    if (!formData.payment_details.account_name) errors.account_name = "Account holder name is required";
     return errors;
   };
 
@@ -238,7 +256,7 @@ const VendorRegistrationForm = () => {
       case 3:
         return formData.payment_details.bank_name && 
                formData.payment_details.account_number && 
-               formData.payment_details.account_holder;
+               formData.payment_details.account_name;
       default:
         return false;
     }
@@ -312,6 +330,15 @@ const VendorRegistrationForm = () => {
         showToast.success("Please check your email for verification link");
       } 
       else if (step === 2) {
+
+        console.log('Submitting step 2 with data:', {
+          store_name: formData.store_name,
+          store_description: formData.store_description,
+          business_category: formData.business_category,
+          address: formData.address,
+          store_logo: formData.store_logo
+        });
+
         setStepLoading(prev => ({...prev, step2: true}));
         await AuthService.vendorRegisterStep2({
           store_name: formData.store_name,
@@ -475,8 +502,12 @@ const VendorRegistrationForm = () => {
   
       <div className="mb-4">
         <label className="form-label">Business Category</label>
-        <select
-          className={`form-select form-select-lg ${
+        <div className="input-group input-group-lg">
+          <span className="input-group-text border-end-0 bg-transparent">
+            <i className="fas fa-briefcase text-primary"></i>
+          </span>
+          <select
+          className={`form-select border-start-0 ${
             validationErrors.business_category || error.business_category ? "is-invalid" : ""
           }`}
           name="business_category"
@@ -485,42 +516,79 @@ const VendorRegistrationForm = () => {
           required
         >
           <option value="">Select Category</option>
-          <option value="retail">Retail</option>
-          <option value="food">Food & Beverage</option>
-          <option value="electronics">Electronics</option>
-          <option value="fashion">Fashion</option>
-          <option value="health">Health & Beauty</option>
-          <option value="other">Other</option>
+          {categories.map(category => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          ))}
         </select>
+        </div>
         {renderError("business_category")}
       </div>
   
       <div className="mb-4">
         <label className="form-label">Store Description</label>
-        <textarea
-          className={`form-control ${
-            validationErrors.store_description || error.store_description ? "is-invalid" : ""
-          }`}
-          name="store_description"
-          value={formData.store_description}
-          onChange={handleChange}
-          rows="3"
-          required
-        ></textarea>
+        <div className="input-group input-group-lg">
+          <span className="input-group-text border-end-0 bg-transparent">
+            <i className="fas fa-align-left text-primary"></i>
+          </span>
+          <textarea
+            className={`form-control border-start-0 ${
+              validationErrors.store_description || error.store_description ? "is-invalid" : ""
+            }`}
+            name="store_description"
+            value={formData.store_description}
+            onChange={handleChange}
+            rows="3"
+            required
+          ></textarea>
+        </div>
         {renderError("store_description")}
       </div>
+
+      
+<div className="mb-4">
+  <label className="form-label">Store Address</label>
+  <div className="input-group input-group-lg">
+    <span className="input-group-text border-end-0 bg-transparent">
+      <i className="fas fa-map-marker-alt text-primary"></i>
+    </span>
+    <input
+      type="text"
+      className={`form-control border-start-0 ${
+        validationErrors.address || error.address ? "is-invalid" : ""
+      }`}
+      name="address"
+      value={formData.address}
+      onChange={handleChange}
+      placeholder="Store Address"
+      required
+    />
+  </div>
+  {renderError("address")}
+</div>
   
       <div className="mb-4">
         <label className="form-label">Store Logo</label>
-        <div className="input-group">
-          <input
-            type="file"
-            className={`form-control ${
-              validationErrors.store_logo || error.store_logo ? "is-invalid" : ""
-            }`}
-            accept="image/*"
-            onChange={handleLogoChange}
-          />
+        <div className="input-group input-group-lg">
+          <span className="input-group-text border-end-0 bg-transparent">
+            <i className="fas fa-image text-primary"></i>
+          </span>
+          <div className="custom-file-input border-start-0 form-control">
+            <input
+              type="file"
+              className="d-none"
+              id="store_logo"
+              accept="image/*"
+              onChange={handleLogoChange}
+            />
+            <label 
+              className="custom-file-label w-100 text-muted" 
+              htmlFor="store_logo"
+            >
+              {formData.store_logo ? formData.store_logo.name : 'Choose store logo...'}
+            </label>
+          </div>
         </div>
         {renderError("store_logo")}
       </div>
@@ -603,14 +671,14 @@ const VendorRegistrationForm = () => {
             <input
               type="text"
               className={`form-control form-control-lg ${
-                validationErrors.account_holder || error.account_holder ? "is-invalid" : ""
+                validationErrors.account_name || error.account_name ? "is-invalid" : ""
               }`}
               placeholder="Account Holder Name"
-              value={formData.payment_details.account_holder}
-              onChange={(e) => handlePaymentDetailsChange("account_holder", e.target.value)}
+              value={formData.payment_details.account_name}
+              onChange={(e) => handlePaymentDetailsChange("account_name", e.target.value)}
               required
             />
-            {renderError("account_holder")}
+            {renderError("account_name")}
           </div>
         </div>
       </div>
@@ -708,6 +776,7 @@ const VendorRegistrationForm = () => {
       </div>
     </div>
   );
+  
 };
 
 export default VendorRegistrationForm;

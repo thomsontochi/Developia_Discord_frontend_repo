@@ -1,34 +1,27 @@
 import axios from 'axios';
-//axios.js acts as your API client:
 
 const api = axios.create({
     baseURL: 'http://discordecommercebackend.test',
     withCredentials: true, // Important for cookies/session handling
     headers: {
-        'Content-Type': 'application/json',
         'Accept': 'application/json',
         'X-Requested-With': 'XMLHttpRequest'
     }
 });
 
-// Add response interceptor for better error handling
-// api.interceptors.response.use(
-//     response => response,
-//     error => {
-//         console.error('API Error:', error.response?.data);
-//         return Promise.reject(error);
-//     }
-// );
-
+// Remove any default Content-Type as it will be set per request
+delete api.defaults.headers.common['Content-Type'];
 
 api.interceptors.request.use(
     (config) => {
-        // const token = localStorage.getItem('token');
-        const token = localStorage.getItem('vendor_token');
-        // console.log('Current token:', token); // Debug
+        const token = localStorage.getItem('token');
         if (token) {
             config.headers.Authorization = `Bearer ${token}`;
-            console.log('Request headers:', config.headers);
+        }
+        // Add CSRF token if available
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+        if (csrfToken) {
+            config.headers['X-CSRF-TOKEN'] = csrfToken;
         }
         return config;
     },
@@ -37,14 +30,11 @@ api.interceptors.request.use(
     }
 );
 
-
 api.interceptors.response.use(
     response => response,
     error => {
         if (error.response?.status === 401) {
-            // Handle unauthorized access
-            // localStorage.removeItem('token');
-            localStorage.removeItem('vendor_token');
+            localStorage.removeItem('token');
         }
         return Promise.reject(error);
     }
