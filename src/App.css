@@ -203,3 +203,64 @@
     max-width: 550px;
   }
 }
+
+/* Add to your existing .login-page CSS */
+.login-page .form-select {
+  border-radius: 0 12px 12px 0;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.25rem;
+  height: auto;
+}
+
+.login-page textarea.form-control {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.login-page .input-group-lg > .form-control,
+.login-page .input-group-lg > .form-select {
+  min-height: 48px;
+}
+
+.login-page input[type="file"].form-control {
+  padding: 0.375rem 0.75rem;
+  line-height: 1.5;
+}
+
+/* Ensure consistent border styling */
+.login-page .input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+  margin-left: -1px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* Add to App.css */
+.login-page .input-group-text {
+  border-right: 1px solid #dee2e6;
+  margin-right: -1px;
+}
+
+.login-page .custom-file-input {
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.login-page .custom-file-input label {
+  margin: 0;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.login-page .form-select {
+  cursor: pointer;
+}
+
+/* Remove border-left: none from existing rules */
+.login-page .form-control,
+.login-page .form-select {
+  border-left: 1px solid #dee2e6;
+}

@@ -13,6 +13,8 @@ import GoogleCallback from "../pages/auth/GoogleCallback";
 
 import GuestRoute from '../routes/GuestRoute';
 
+import EmailVerificationResult from "../pages/auth/EmailVerificationResult";
+
 export const routes = [
   {
     path: "/",
@@ -64,10 +66,16 @@ export const routes = [
     guard: GuestRoute,
   },
   {
+<<<<<<< HEAD
     path: "/auth/callback",
     element: GoogleCallback,
     title: "Google Register | Vendly",
     guard: GuestRoute,
+=======
+    path: "/vendor/email-verification",
+    element: EmailVerificationResult,
+    title: "Email Verification | Vendly",
+>>>>>>> 77783c678c9452ee2eb509fa6d6a491d074855c2
   },
   {
     path: "*",
