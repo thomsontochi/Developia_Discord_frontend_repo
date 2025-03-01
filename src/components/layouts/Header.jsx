@@ -75,121 +75,6 @@ const Header = () => {
             </li>
           </ul>
 
-          {/* <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-              </a>
-              {isAuthenticated ? (
-                <ul className="dropdown-menu dropdown-menu-end">
-                  <li className="p-3">
-                    <div className="d-flex align-items-center">
-                      <div
-                        className="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3"
-                        style={{ width: "48px", height: "48px" }}
-                      >
-                        {user?.first_name?.charAt(0).toUpperCase()}
-                      </div>
-                      <div>
-                        <h6 className="mb-0">
-                          {user?.first_name} {user?.last_name}
-                        </h6>
-                        <small className="text-muted">{user?.email}</small>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <Link
-                      className="dropdown-item"
-                      to={
-                        user?.userType === "vendor"
-                          ? "/vendor/dashboard"
-                          : "/dashboard"
-                      }
-                    >
-                      <i className="fas fa-tachometer-alt me-2"></i> Dashboard
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" to="/profile">
-                      <i className="fas fa-user-cog me-2"></i> Profile Settings
-                    </Link>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <button
-                      onClick={handleLogout}
-                      className="dropdown-item text-danger"
-                    >
-                      <i className="fas fa-sign-out-alt me-2"></i> Logout
-                    </button>
-                  </li>
-                </ul>
-              ) : (
-                <ul className="dropdown-menu dropdown-menu-end">
-                  <li>
-                    <h6 className="dropdown-header">Welcome to Vendly</h6>
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" to="/auth/login">
-                      <i className="fas fa-sign-in-alt me-2"></i> Login
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" to="/auth/register">
-                      <i className="fas fa-user-plus me-2"></i> Register
-                    </Link>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <h6 className="dropdown-header">Vendor Access</h6>
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" to="/auth/vendor/login">
-                      <i className="fas fa-store me-2"></i> Vendor Login
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" to="/auth/vendor/register">
-                      <i className="fas fa-store-alt me-2"></i> Become a Vendor
-                    </Link>
-                  </li>
-                </ul>
-              )}
-            </li>
-            <li>
-              <Link className="nav-link" to="/cart">
-                <img src="/assets/images/cart.svg" alt="Cart icon" />
-              </Link>
-            </li>
-          </ul> */}
-
           <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
             <li className="nav-item dropdown position-relative">
               <a
@@ -216,6 +101,7 @@ const Header = () => {
               </a>
 
               {isAuthenticated ? (
+                 // Authenticated user menu
                 <div
                   className="dropdown-menu dropdown-menu-end shadow-lg p-0"
                   style={{
@@ -308,6 +194,7 @@ const Header = () => {
                   </div>
                 </div>
               ) : (
+                  // Guest menu - don't show this when authenticated
                 <div
                   className="dropdown-menu dropdown-menu-end shadow-lg p-0"
                   style={{
@@ -390,7 +277,7 @@ const Header = () => {
                     </div>
                   </div>
                 </div>
-              )}
+                  )}
             </li>
             <li>
               <Link className="nav-link" to="/cart">

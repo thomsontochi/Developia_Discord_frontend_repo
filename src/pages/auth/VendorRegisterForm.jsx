@@ -314,52 +314,106 @@ const VendorRegistrationForm = () => {
     }
 
     try {
-      if (step === 1) {
-        setStepLoading(prev => ({...prev, step1: true}));
-        await AuthService.vendorRegisterStep1({
-          full_name: formData.full_name,
-          email: formData.email,
-          password: formData.password,
-          password_confirmation: formData.confirmPassword,
-        });
-        setVerificationStatus({
-          checking: true,
-          verified: false,
-          message: "Please check your email for verification link",
-        });
-        showToast.success("Please check your email for verification link");
-      } 
-      else if (step === 2) {
 
-        console.log('Submitting step 2 with data:', {
-          store_name: formData.store_name,
-          store_description: formData.store_description,
-          business_category: formData.business_category,
-          address: formData.address,
-          store_logo: formData.store_logo
-        });
 
-        setStepLoading(prev => ({...prev, step2: true}));
-        await AuthService.vendorRegisterStep2({
-          store_name: formData.store_name,
-          store_description: formData.store_description,
-          business_category: formData.business_category,
-          address: formData.address,
-          store_logo: formData.store_logo,
-        });
-        steps[1].completed = true;
-        setStep(3);
-        showToast.success("Store information saved successfully");
-      } 
-      else if (step === 3) {
-        setStepLoading(prev => ({...prev, step3: true}));
-        await AuthService.vendorRegisterStep3({
-          payment_details: formData.payment_details
-        });
-        steps[2].completed = true;
-        showToast.success("Registration completed successfully!");
-        navigate("/vendor/dashboard");
-      }
+        if (step === 1) {
+          setStepLoading(prev => ({...prev, step1: true}));
+          await AuthService.vendorRegisterStep1({
+            full_name: formData.full_name,
+            email: formData.email,
+            password: formData.password,
+            password_confirmation: formData.confirmPassword,
+          });
+          setVerificationStatus({
+            checking: true,
+            verified: false,
+            message: "Please check your email for verification link",
+          });
+          showToast.success("Please check your email for verification link");
+        } 
+
+        else if (step === 2) {
+
+          console.log('Submitting step 2 with data:', {
+            store_name: formData.store_name,
+            store_description: formData.store_description,
+            business_category: formData.business_category,
+            address: formData.address,
+            store_logo: formData.store_logo
+          });
+
+          setStepLoading(prev => ({...prev, step2: true}));
+          await AuthService.vendorRegisterStep2({
+            store_name: formData.store_name,
+            store_description: formData.store_description,
+            business_category: formData.business_category,
+            address: formData.address,
+            store_logo: formData.store_logo,
+          });
+          steps[1].completed = true;
+          setStep(3);
+          showToast.success("Store information saved successfully");
+        } 
+
+        else if (step === 3) {
+          setStepLoading(prev => ({...prev, step3: true}));
+          try {
+            // Send payment details to backend
+            const response = await AuthService.vendorRegisterStep3({
+              payment_details: formData.payment_details
+            });
+        
+            console.log("Step 3 response:", response); // Debug log
+        
+            // Get the current token
+            const token = localStorage.getItem('token');
+        
+            // Update auth context with user data
+            login({
+              token: token,
+              email: formData.email,
+              vendor: true,
+              payment_details: formData.payment_details,
+              ...response.vendor // Spread any additional vendor data from response
+            });
+        
+            // Store user data in localStorage
+            localStorage.setItem('user', JSON.stringify({
+              email: formData.email,
+              vendor: true,
+              payment_details: formData.payment_details,
+              ...response.vendor
+            }));
+        
+            // Mark step as completed
+            steps[2].completed = true;
+            
+            // Show success message
+            showToast.success("Registration completed successfully! Redirecting to dashboard...");
+            
+            // Redirect to dashboard
+            navigate("/vendor/dashboard");
+          } catch (err) {
+            console.error("Registration error:", err);
+            setStepLoading({step1: false, step2: false, step3: false});
+            
+            if (err.errors) {
+              setValidationErrors(err.errors);
+              if (err.message) showToast.error(err.message);
+            } else {
+              showToast.error(err.message || "Registration failed. Please try again.");
+              setError({
+                general: err.message || "An error occurred during registration"
+              });
+            }
+          } finally {
+            setStepLoading(prev => ({...prev, step3: false}));
+          }
+        }
+        
+
+
+
     } catch (err) {
       console.error("Registration error:", err);
       setStepLoading({step1: false, step2: false, step3: false});

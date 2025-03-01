@@ -4,19 +4,15 @@ import Header from "./components/layouts/Header.jsx";
 import Footer from "./components/layouts/Footer.jsx";
 import { routes } from "./routes/routes";
 import { AuthProvider } from "./contexts/AuthContext";
-
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-import '../public/custom-toast.css';
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "../public/custom-toast.css";
+import './styles/vendor-dashboard.css';
 
 function App() {
   return (
     <AuthProvider>
       <Router>
-        <Header />
-
         <ToastContainer
           position="top-right"
           autoClose={3000}
@@ -30,25 +26,39 @@ function App() {
           theme="light"
         />
 
-
         <Routes>
-          {routes.map(({ path, element: Element, guard: Guard }) => (
-            <Route
-              key={path}
-              path={path}
-              element={
-                Guard ? (
-                  <Guard>
-                    <Element />
-                  </Guard>
-                ) : (
-                  <Element />
-                )
-              }
-            />
-          ))}
+          {routes.map(({ path, element: Element, guard: Guard }) => {
+            const isVendorRoute = path.startsWith("/vendor");
+
+            return (
+              <Route
+                key={path}
+                path={path}
+                element={
+                  Guard ? (
+                    <Guard>
+                      {isVendorRoute ? (
+                        <Element />
+                      ) : (
+                        <>
+                          <Header />
+                          <Element />
+                          <Footer />
+                        </>
+                      )}
+                    </Guard>
+                  ) : (
+                    <>
+                      <Header />
+                      <Element />
+                      <Footer />
+                    </>
+                  )
+                }
+              />
+            );
+          })}
         </Routes>
-        <Footer />
       </Router>
     </AuthProvider>
   );

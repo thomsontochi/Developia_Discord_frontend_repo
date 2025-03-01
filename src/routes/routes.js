@@ -11,8 +11,9 @@ import VendorLogin from "../pages/auth/VendorLogin";
 import VendorRegister from "../pages/auth/VendorRegister";
 
 import GuestRoute from '../routes/GuestRoute';
-
+import VendorRoute from '../routes/VendorRoute';
 import EmailVerificationResult from "../pages/auth/EmailVerificationResult";
+import VendorDashboard from "../pages/vendor/Dashboard";
 
 export const routes = [
   {
@@ -68,6 +69,12 @@ export const routes = [
     path: "/vendor/email-verification",
     element: EmailVerificationResult,
     title: "Email Verification | Vendly",
+  },
+  {
+    path: "/vendor/dashboard",
+    element: VendorDashboard, 
+    title: "Vendor Dashboard | Vendly",
+    guard: VendorRoute,
   },
   {
     path: "*",
