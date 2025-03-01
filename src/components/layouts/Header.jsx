@@ -138,22 +138,19 @@ const Header = () => {
 
                   {/* Enhanced Menu Items */}
                   <div className="py-2">
-                    <Link
-                      to={
-                        user?.userType === "vendor"
-                          ? "/vendor/dashboard"
-                          : "/dashboard"
-                      }
-                      className="dropdown-item px-4 py-2 d-flex align-items-center"
-                    >
-                      <i className="fas fa-tachometer-alt me-3 text-primary"></i>
-                      <div>
-                        <strong className="d-block">Dashboard</strong>
-                        <small className="text-muted">
-                          View your dashboard
-                        </small>
-                      </div>
-                    </Link>
+                 
+                      <Link
+                        to={user?.vendor ? "/vendor/dashboard" : "/dashboard"}
+                        className="dropdown-item px-4 py-2 d-flex align-items-center"
+                      >
+                        <i className="fas fa-tachometer-alt me-3 text-primary"></i>
+                        <div>
+                          <strong className="d-block">Dashboard</strong>
+                          <small className="text-muted">
+                            View your dashboard
+                          </small>
+                        </div>
+                      </Link>
 
                     <Link
                       to="/profile"
