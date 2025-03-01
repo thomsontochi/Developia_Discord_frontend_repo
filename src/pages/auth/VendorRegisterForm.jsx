@@ -656,7 +656,7 @@ const VendorRegistrationForm = () => {
           </div>
           <div className="col-md-6">
             <input
-              type="text"
+              type="tel"
               className={`form-control form-control-lg ${
                 validationErrors.account_number || error.account_number ? "is-invalid" : ""
               }`}

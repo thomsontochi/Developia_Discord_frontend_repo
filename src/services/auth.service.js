@@ -142,31 +142,46 @@ class AuthService {
   async vendorRegisterStep3(data) {
     try {
         const token = localStorage.getItem("token");
+        console.log("Token for payment setup:", token);
         if (!token) {
             throw new Error("Authentication required");
         }
 
-        // First get CSRF cookie
-        await api.get('/sanctum/csrf-cookie');
+        // Log the raw incoming data
+        console.log("Raw incoming data:", data);
 
-        const response = await api.post("/api/v1/vendor/setup-payment", 
-            {
-              payment_details: {
-                bank_name: data.payment_details.bank_name,
-                account_number: data.payment_details.account_number,
-                account_name: data.payment_details.account_holder 
-            }
-            },
+        // Extract payment details from nested structure
+        const paymentData = {
+            bank_name: data.payment_details.bank_name,
+            account_number: data.payment_details.account_number,
+            account_name: data.payment_details.account_name
+        };
+
+        console.log("Sending payment data:", paymentData);
+
+        // First get CSRF cookie
+        await api.get("/sanctum/csrf-cookie");
+
+        const response = await api.post(
+            "/api/v1/vendor/setup-payment",
+            paymentData,  // Send the flattened data
             {
                 headers: {
-                    'Content-Type': 'application/json'
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
                 }
             }
         );
 
+        console.log("Payment setup response:", response.data);
         return response.data;
     } catch (error) {
-        console.error("Payment setup error:", error);
+        console.error("Payment setup error:", {
+            message: error.message,
+            response: error.response?.data,
+            status: error.response?.status,
+            validationErrors: error.response?.data?.errors
+        });
         throw this.handleError(error);
     }
 }
