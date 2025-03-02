@@ -1,17 +1,15 @@
-// VendorLoginForm.jsx
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from "../../contexts/AuthContext";
 import AuthService from "../../services/auth.service";
+import { loginSchema, validateForm } from '../../validation/schemas';
 
 const VendorLoginForm = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
   const [error, setError] = useState("");
-  const [loginMethod, setLoginMethod] = useState('email'); // 'email' or 'storeId'
-  
   const [credentials, setCredentials] = useState({
-    identifier: '', // This will be either email or storeId
+    email: '', // Changed from identifier to email
     password: '',
   });
 
@@ -28,18 +26,33 @@ const VendorLoginForm = () => {
     setError("");
 
     try {
-      const loginData = {
+      console.log('Attempting validation with:', {
+        email: credentials.email,
         password: credentials.password,
-        [loginMethod]: credentials.identifier // This will be either email or storeId
-      };
+        userType: 'vendor'
+      });
 
-      console.log("Attempting vendor login with:", loginData);
-      const response = await AuthService.login(loginData, 'vendor');
-      console.log("Login response:", response);
-      login(response.user);
-      navigate("/vendor/dashboard");
+      const validationResult = await validateForm(loginSchema, {
+        email: credentials.email,
+        password: credentials.password,
+        userType: 'vendor'
+      });
+
+      if (!validationResult.success) {
+        console.log('Validation failed:', validationResult.errors);
+        setError(validationResult.errors);
+        return;
+      }
+
+      console.log('Validation passed, attempting login');
+      const response = await AuthService.login(credentials, 'vendor');
+      
+      if (response.user && response.token) {
+        login(response.user);
+        navigate("/vendor/dashboard");
+      }
     } catch (err) {
-      console.error("Login error:", err);
+      console.error('Login error:', err);
       setError(err.message || "Login failed");
     }
   };
@@ -58,48 +71,31 @@ const VendorLoginForm = () => {
 
                 {error && (
                   <div className="alert alert-danger mb-4" role="alert">
-                    {error}
+                    {typeof error === 'string' ? error : Object.values(error)[0]}
                   </div>
                 )}
 
                 <form onSubmit={handleSubmit}>
-                  {/* Login Method Toggle */}
-                  <div className="btn-group w-100 mb-4">
-                    <button
-                      type="button"
-                      className={`btn ${loginMethod === 'email' ? 'btn-primary' : 'btn-outline-secondary'}`}
-                      onClick={() => setLoginMethod('email')}
-                    >
-                      Login with Email
-                    </button>
-                    <button
-                      type="button"
-                      className={`btn ${loginMethod === 'storeId' ? 'btn-primary' : 'btn-outline-secondary'}`}
-                      onClick={() => setLoginMethod('storeId')}
-                    >
-                      Login with Store ID
-                    </button>
-                  </div>
-
-                  {/* Identifier Input (Email or Store ID) */}
+                  {/* Email Input */}
                   <div className="mb-4">
                     <label className="form-label small fw-medium text-dark">
-                      {loginMethod === 'email' ? 'Email Address' : 'Store ID'}
+                      Email Address
                     </label>
                     <div className="input-group input-group-lg">
                       <span className="input-group-text border-end-0">
-                        <i className={`fas fa-${loginMethod === 'email' ? 'envelope' : 'store'} text-primary opacity-50`}></i>
+                        <i className="fas fa-envelope text-primary opacity-50"></i>
                       </span>
                       <input
-                        type={loginMethod === 'email' ? 'email' : 'text'}
+                        type="email"
                         className="form-control border-start-0"
-                        name="identifier"
-                        value={credentials.identifier}
+                        name="email"
+                        value={credentials.email}
                         onChange={handleChange}
-                        placeholder={loginMethod === 'email' ? 'Enter your email' : 'Enter your store ID'}
+                        placeholder="Enter your email"
                         required
                       />
                     </div>
+                    {error.email && <div className="invalid-feedback d-block">{error.email}</div>}
                   </div>
 
                   {/* Password Input */}
@@ -118,13 +114,13 @@ const VendorLoginForm = () => {
                         required
                       />
                     </div>
+                    {error.password && <div className="invalid-feedback d-block">{error.password}</div>}
                   </div>
 
                   <button type="submit" className="btn btn-primary w-100 btn-lg mb-4">
                     Sign In as Vendor
                   </button>
 
-                  {/* Links */}
                   <div className="text-center">
                     <p className="mb-0 text-muted small">
                       Don't have a vendor account?{' '}

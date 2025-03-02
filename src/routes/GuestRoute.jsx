@@ -1,6 +1,6 @@
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { showToast } from '../utility/toast';
+import { showToast } from '../utils/toast';
 import { useEffect, useRef } from 'react';
 
 const GuestRoute = ({ children }) => {

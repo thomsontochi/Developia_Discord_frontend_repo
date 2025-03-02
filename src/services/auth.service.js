@@ -79,7 +79,7 @@ class AuthService {
         api.defaults.headers.common[
           "Authorization"
         ] = `Bearer ${response.data.token}`;
-        console.log("Token stored:", response.data.token);
+        // console.log("Token stored:", response.data.token);
       }
 
       // Store email for verification check
@@ -109,7 +109,7 @@ class AuthService {
   async vendorRegisterStep2(data) {
     try {
       const token = localStorage.getItem("token");
-      console.log("Token before store setup:", token);
+      // console.log("Token before store setup:", token);
 
       if (!token) {
         throw new Error("Authentication required");
@@ -142,13 +142,13 @@ class AuthService {
   async vendorRegisterStep3(data) {
     try {
         const token = localStorage.getItem("token");
-        console.log("Token for payment setup:", token);
+        // console.log("Token for payment setup:", token);
         if (!token) {
             throw new Error("Authentication required");
         }
 
         // Log the raw incoming data
-        console.log("Raw incoming data:", data);
+        // console.log("Raw incoming data:", data);
 
         // Extract payment details from nested structure
         const paymentData = {
@@ -157,7 +157,7 @@ class AuthService {
             account_name: data.payment_details.account_name
         };
 
-        console.log("Sending payment data:", paymentData);
+        // console.log("Sending payment data:", paymentData);
 
         // First get CSRF cookie
         await api.get("/sanctum/csrf-cookie");
@@ -173,7 +173,7 @@ class AuthService {
             }
         );
 
-        console.log("Payment setup response:", response.data);
+        // console.log("Payment setup response:", response.data);
         return response.data;
     } catch (error) {
         console.error("Payment setup error:", {
@@ -210,7 +210,7 @@ class AuthService {
   async checkEmailVerification(email) {
     try {
       const response = await api.get(`/api/v1/check-verification/${email}`);
-      console.log("Verification response:", response.data); // Debug log
+      // console.log("Verification response:", response.data); // Debug log
       return response.data.verified;
     } catch (error) {
       console.error("Verification check failed:", error.response?.data);

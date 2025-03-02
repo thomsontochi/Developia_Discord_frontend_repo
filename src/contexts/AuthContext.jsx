@@ -1,57 +1,95 @@
-import { createContext, useState, useContext , useEffect } from 'react';
-
-//AuthContext.jsx manages authentication state:
+import { createContext, useState, useContext, useEffect } from "react";
+import * as jose from "jose";
+import { logError } from "../utils/logger";
+import { config } from "../config/env";
 
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-    const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    const initializeAuth = async () => {
+      try {
+        const token = sessionStorage.getItem("token");
+        const storedUser = sessionStorage.getItem("user");
 
-    useEffect(() => {
-        // Check for stored auth data on component mount
-        const storedUser = localStorage.getItem('user');
-        const storedToken = localStorage.getItem('token');
-        
-        if (storedUser && storedToken) {
-            const userData = JSON.parse(storedUser);
-            setUser(userData);
-            // setUser(JSON.parse(storedUser));
-            setIsAuthenticated(true);
+        if (token && storedUser) {
+          // Verify token validity
+          await jose.jwtVerify(
+            token,
+            new TextEncoder().encode(config.JWT_SECRET)
+          );
+          setUser(JSON.parse(storedUser));
+          setIsAuthenticated(true);
         }
-        
+      } catch (error) {
+        logError(error, "Auth Initialization Error");
+        // Clear invalid auth data
+        sessionStorage.removeItem("token");
+        sessionStorage.removeItem("user");
+      } finally {
         setIsLoading(false);
-    }, []);
-
-    const login = (userData) => {
-        setUser(userData);
-        setIsAuthenticated(true);
-        localStorage.setItem('user', JSON.stringify(userData));
+      }
     };
 
-    const logout = () => {
-        setUser(null);
-        setIsAuthenticated(false);
-        localStorage.removeItem('user');
-        localStorage.removeItem('token');
-    };
+    initializeAuth();
+  }, []);
 
-    if (isLoading) {
-        return <div>Loading...</div>; // Or your loading component
+  const login = async (userData) => {
+    try {
+      // Sanitize user data before storing
+      const sanitizedUser = {
+        id: userData.id,
+        email: userData.email,
+        name: userData.name,
+        role: userData.role,
+      };
+
+      sessionStorage.setItem("user", JSON.stringify(sanitizedUser));
+      setUser(sanitizedUser);
+      setIsAuthenticated(true);
+    } catch (error) {
+      logError(error, "Login Error");
+      throw error;
     }
+  };
 
-    return (
-        <AuthContext.Provider value={{ 
-            user, 
-            isAuthenticated, 
-            login, 
-            logout 
-        }}>
-            {children}
-        </AuthContext.Provider>
-    );
+  const logout = () => {
+    try {
+      sessionStorage.removeItem("user");
+      sessionStorage.removeItem("token");
+      setUser(null);
+      setIsAuthenticated(false);
+    } catch (error) {
+      logError(error, "Logout Error");
+    }
+  };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <AuthContext.Provider
+      value={{
+        user,
+        isAuthenticated,
+        login,
+        logout,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context;
+};

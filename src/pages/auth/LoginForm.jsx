@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import AuthService from "../../services/auth.service";
+import { loginSchema, validateForm } from '../../validation/schemas';
+import Logger from '../../utils/logger';
 
 const LoginForm = () => {
   // const [userType, setUserType] = useState('user');
@@ -29,19 +31,30 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-
+  
     try {
-      console.log("Attempting login with:", { credentials, userType });
+      // Validate form data
+      const validationResult = await validateForm(loginSchema, {
+        email: credentials.email,
+        password: credentials.password,
+        userType
+      });
+  
+      if (!validationResult.success) {
+        Logger.debug('Login validation failed', validationResult.errors);
+        setError(validationResult.errors);
+        return;
+      }
+  
+      Logger.debug('Login validation passed, attempting login');
       const response = await AuthService.login(credentials, userType);
-      console.log("Login response:", response);
-      // login(response.user); // Update global auth state
-      // navigate(userType === "vendor" ? "/vendor/dashboard" : "/dashboard");
+      
       if (response.user && response.token) {
-        login(response.user); // This will set isAuthenticated to true
+        login(response.user);
         navigate(userType === 'vendor' ? '/vendor/dashboard' : '/dashboard');
-    }
+      }
     } catch (err) {
-      console.error("Login error:", err);
+      Logger.error(err, 'Login submission error');
       setError(err.message || "Login failed");
     }
   };

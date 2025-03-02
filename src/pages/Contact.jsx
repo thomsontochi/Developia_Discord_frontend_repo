@@ -1,5 +1,3 @@
-// import Header from "../components/layouts/Header.jsx";
-import Footer from "../components/layouts/Footer.jsx";
 import React from "react";
 import ContactHero from "../components/ContactHero.jsx";
 import './contact.css'

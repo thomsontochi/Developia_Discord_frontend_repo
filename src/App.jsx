@@ -1,66 +1,75 @@
+// App.jsx
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Header from "./components/layouts/Header.jsx";
-import Footer from "./components/layouts/Footer.jsx";
+
 import { routes } from "./routes/routes";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ToastContainer } from "react-toastify";
+import ErrorBoundary from "./components/ErrorBoundary"; // Add this
 import "react-toastify/dist/ReactToastify.css";
 import "../public/custom-toast.css";
 import './styles/vendor-dashboard.css';
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
-
-        <Routes>
-          {routes.map(({ path, element: Element, guard: Guard }) => {
-            const isVendorRoute = path.startsWith("/vendor");
-
-            return (
-              <Route
-                key={path}
-                path={path}
-                element={
-                  Guard ? (
-                    <Guard>
-                      {isVendorRoute ? (
-                        <Element />
-                      ) : (
-                        <>
-                          <Header />
-                          <Element />
-                          <Footer />
-                        </>
-                      )}
-                    </Guard>
-                  ) : (
-                    <>
-                      <Header />
-                      <Element />
-                      <Footer />
-                    </>
-                  )
-                }
-              />
-            );
-          })}
-        </Routes>
-      </Router>
-    </AuthProvider>
+    <ErrorBoundary>
+      <AuthProvider>
+        <Router>
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
+          <Routes>
+            {routes.map((route) => {
+              if (route.children) {
+                return (
+                  <Route key={route.path} path={route.path} element={<route.element />}>
+                    {route.children.map((child) => (
+                      <Route
+                        key={child.path}
+                        path={child.path}
+                        element={
+                          child.guard ? (
+                            <child.guard>
+                              <child.element />
+                            </child.guard>
+                          ) : (
+                            <child.element />
+                          )
+                        }
+                      />
+                    ))}
+                  </Route>
+                );
+              }
+              return (
+                <Route
+                  key={route.path}
+                  path={route.path}
+                  element={
+                    route.guard ? (
+                      <route.guard>
+                        <route.element />
+                      </route.guard>
+                    ) : (
+                      <route.element />
+                    )
+                  }
+                />
+              );
+            })}
+          </Routes>
+        </Router>
+      </AuthProvider>
+    </ErrorBoundary>
   );
 }
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { showToast } from '../../utility/toast';
+import { showToast } from '../../utils/toast';
 import AuthService from '../../services/auth.service';
 
 const EmailVerificationResult = () => {

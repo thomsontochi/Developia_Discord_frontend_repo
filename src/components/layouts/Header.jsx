@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-import { showToast } from "../../utility/toast";
+import { showToast } from "../../utils/toast";
 
 const Header = () => {
   const location = useLocation();

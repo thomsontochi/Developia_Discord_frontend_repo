@@ -1,12 +1,24 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom'; // Add useNavigate
 import { useAuth } from '../../../contexts/AuthContext';
+import { showToast } from '../../../utils/toast'; // Import toast
 
 const VendorSidebar = ({ isOpen }) => {
   const location = useLocation();
+  const navigate = useNavigate(); // Add navigation
   const { logout } = useAuth();
 
   const isActive = (path) => location.pathname === path ? 'active' : '';
+
+  const handleLogout = () => {
+    try {
+      logout(); // This clears the auth context and localStorage
+      showToast.success("Successfully logged out!");
+      navigate('/'); // Redirect to home page
+    } catch (error) {
+      showToast.error("Logout failed. Please try again.");
+    }
+  };
 
   return (
     <aside className={`vendor-sidebar ${isOpen ? '' : 'collapsed'}`}>
@@ -53,7 +65,7 @@ const VendorSidebar = ({ isOpen }) => {
             </Link>
             
             <button 
-              onClick={logout} 
+              onClick={handleLogout} // Changed to handleLogout
               className="nav-link text-danger border-0 bg-transparent w-100 text-start"
             >
               <i className="fas fa-sign-out-alt me-3"></i>

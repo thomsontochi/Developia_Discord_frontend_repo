@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import AuthService from "../../services/auth.service";
 import { useAuth } from "../../contexts/AuthContext";
-import { showToast } from "../../utility/toast";
+import { showToast } from "../../utils/toast";
 
 const VendorRegistrationForm = () => {
   const navigate = useNavigate();
@@ -334,13 +334,13 @@ const VendorRegistrationForm = () => {
 
         else if (step === 2) {
 
-          console.log('Submitting step 2 with data:', {
-            store_name: formData.store_name,
-            store_description: formData.store_description,
-            business_category: formData.business_category,
-            address: formData.address,
-            store_logo: formData.store_logo
-          });
+          // console.log('Submitting step 2 with data:', {
+          //   store_name: formData.store_name,
+          //   store_description: formData.store_description,
+          //   business_category: formData.business_category,
+          //   address: formData.address,
+          //   store_logo: formData.store_logo
+          // });
 
           setStepLoading(prev => ({...prev, step2: true}));
           await AuthService.vendorRegisterStep2({
@@ -363,7 +363,7 @@ const VendorRegistrationForm = () => {
               payment_details: formData.payment_details
             });
         
-            console.log("Step 3 response:", response); // Debug log
+            // console.log("Step 3 response:", response); // Debug log
         
             // Get the current token
             const token = localStorage.getItem('token');
