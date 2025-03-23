@@ -1,0 +1,38 @@
+:root {
+    /* Brand Colors */
+    --brand-primary: #2C3E50;      /* Deep Blue-Gray (replacing #3b5d50) */
+    --brand-primary-dark: #1a2530;  /* Darker shade for hover */
+    --brand-primary-light: rgba(44, 62, 80, 0.1); /* Light shade for backgrounds */
+    
+    --brand-accent: #E67E22;        /* Warm Orange (replacing #f9bf29) */
+    --brand-accent-dark: #D35400;   /* Darker orange for hover */
+    --brand-accent-light: rgba(230, 126, 34, 0.1); /* Light shade for backgrounds */
+  
+    /* Neutral Colors */
+    --neutral-100: #F8FAFC;  /* Lightest - Background */
+    --neutral-200: #E2E8F0;  /* Light - Borders */
+    --neutral-300: #94A3B8;  /* Medium - Muted Text */
+    --neutral-400: #475569;  /* Dark - Body Text */
+    --neutral-500: #1E293B;  /* Darkest - Headings */
+  
+    /* Status Colors */
+    --status-success: #10B981;  /* Success/Completed */
+    --status-warning: #F59E0B;  /* Warning/Pending */
+    --status-danger: #EF4444;   /* Error/Failed */
+    --status-info: #3B82F6;     /* Information */
+  
+    /* Common Elements */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --border-radius-sm: 0.375rem;
+    --border-radius-md: 0.5rem;
+    --border-radius-lg: 1rem;
+  
+    /* Typography */
+    --font-family: 'Inter', sans-serif;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+  }

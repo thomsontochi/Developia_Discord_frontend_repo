@@ -6,9 +6,19 @@
 */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 
+:root {
+    --primary: var(--brand-primary);
+    --primary-hover: var(--brand-primary-dark);
+    --accent: var(--brand-accent);
+    --accent-hover: var(--brand-accent-dark);
+  }
+
 body {
     overflow-x: hidden;
     position: relative;
+
+    color: var(--neutral-400);
+    background-color: var(--neutral-100);
 }
 
 body {
@@ -38,8 +48,9 @@ a.more {
     font-weight: 600;
 }
 
+/* Navigation */
 .custom-navbar {
-    background: #3b5d50 !important;
+    background: var(--brand-primary) !important;
     padding-top: 20px;
     padding-bottom: 20px;
 }
@@ -87,7 +98,7 @@ a.more {
         bottom: 0;
         left: 8px;
         right: 8px;
-        background: #f9bf29;
+        background: var(--brand-accent);
         height: 5px;
         opacity: 1;
         visibility: visible;
@@ -137,8 +148,9 @@ a.more {
     margin-right: 20px;
 }
 
+/* Hero Section */
 .hero {
-    background: #3b5d50;
+    background: var(--brand-primary);
     padding: calc(4rem - 30px) 0 0rem 0;
 }
 
@@ -263,25 +275,25 @@ a.more {
     box-shadow: none;
 }
 
+/* Buttons */
 .btn.btn-primary {
-    background: #3b5d50;
-    border-color: #3b5d50;
+    background: var(--brand-primary);
+    border-color: var(--brand-primary);
 }
 
 .btn.btn-primary:hover {
-    background: #314d43;
-    border-color: #314d43;
+    background: var(--brand-primary-dark);
+    border-color: var(--brand-primary-dark);
 }
 
 .btn.btn-secondary {
-    color: #2f2f2f;
-    background: #f9bf29;
-    border-color: #f9bf29;
+    background: var(--brand-accent);
+    border-color: var(--brand-accent);
 }
 
 .btn.btn-secondary:hover {
-    background: #f8b810;
-    border-color: #f8b810;
+    background: var(--brand-accent-dark);
+    border-color: var(--brand-accent-dark);
 }
 
 .btn.btn-white-outline {
@@ -371,7 +383,7 @@ a.more {
     right: 0;
     position: absolute;
     content: "";
-    background: #dce5e4;
+    background: var(--neutral-200);
     height: 0%;
     z-index: -1;
     border-radius: 10px;
@@ -436,7 +448,7 @@ a.more {
     width: 33px;
     height: 33px;
     position: absolute;
-    background: rgba(59, 93, 80, 0.2);
+    background: var(--brand-primary-light);
     border-radius: 50%;
     right: -8px;
     bottom: 0;
@@ -535,7 +547,7 @@ a.more {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    border: 2px solid #3b5d50;
+    border: 2px solid var(--brand-primary);
     position: absolute;
     left: 0;
     top: 8px;
@@ -765,6 +777,7 @@ a.more {
     opacity: .7;
 }
 
+/* Footer */
 .footer-section {
     padding: 80px 0;
     background: #ffffff;
@@ -803,7 +816,7 @@ a.more {
 .footer-section .subscription-form h3 {
     font-size: 18px;
     font-weight: 500;
-    color: #3b5d50;
+    color: var(--brand-primary);
 }
 
 .footer-section .subscription-form .form-control {
@@ -816,7 +829,7 @@ a.more {
     outline: none;
     -webkit-box-shadow: none;
     box-shadow: none;
-    border-color: #3b5d50;
+    border-color: var(--brand-primary);
     -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
 }
@@ -870,7 +883,7 @@ a.more {
     font-size: 32px;
     font-weight: 500;
     text-decoration: none;
-    color: #3b5d50;
+    color: var(--brand-primary);
 }
 
 .footer-section .custom-social li {
@@ -884,14 +897,14 @@ a.more {
     text-align: center;
     line-height: 40px;
     display: inline-block;
-    background: #dce5e4;
-    color: #3b5d50;
+    background: var(--brand-primary-light);
+    color: var(--brand-primary);
     border-radius: 50%;
 }
 
 .footer-section .custom-social li a:hover {
-    background: #3b5d50;
-    color: #ffffff;
+    background: var(--brand-primary);
+    color: var(--neutral-100);
 }
 
 .footer-section .border-top {
@@ -937,6 +950,7 @@ a.more {
     font-size: 14px;
 }
 
+/* Service Icons */
 .service {
     line-height: 1.5;
 }
@@ -949,7 +963,7 @@ a.more {
     height: 50px;
     line-height: 50px;
     text-align: center;
-    background: #3b5d50;
+    background: var(--brand-primary);
     margin-right: 20px;
     color: #ffffff;
 }
@@ -987,7 +1001,7 @@ textarea {
 }
 
 .site-blocks-table tbody tr:first-child td {
-    border-top: 1px solid #3b5d50 !important;
+    border-top: 1px solid var(--brand-primary) !important;
 }
 
 .site-blocks-table .btn {
@@ -1010,13 +1024,14 @@ textarea {
     border-radius: 10px !important;
 }
 
+/* Text Colors */
 .text-primary {
-    color: #3b5d50 !important;
+    color: var(--brand-primary) !important;
 }
 
 .thankyou-icon {
     position: relative;
-    color: #3b5d50;
+    color: var(--brand-primary);
 }
 
 .thankyou-icon:before {
@@ -1025,5 +1040,26 @@ textarea {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: rgba(59, 93, 80, 0.2);
+    background: var(--brand-primary-light);
+}
+
+body {
+    color: var(--neutral-400);
+    background-color: var(--neutral-100);
+}
+
+a {
+    color: var(--neutral-500);
+}
+
+a:hover {
+    color: var(--neutral-400);
+}
+
+.feature h3 {
+    color: var(--neutral-500);
+}
+
+.feature p {
+    color: var(--neutral-400);
 }

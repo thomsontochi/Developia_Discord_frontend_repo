@@ -1,4 +1,63 @@
-/* App.css */
+@import './styles/variables.css';
+
+
+/* Base styles */
+body {
+  font-family: var(--font-family);
+  background-color: var(--neutral-100);
+  color: var(--neutral-400);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--brand-primary);
+  border-color: var(--brand-primary);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--brand-primary-dark);
+  border-color: var(--brand-primary-dark);
+}
+
+.btn-accent {
+  background-color: var(--brand-accent);
+  border-color: var(--brand-accent);
+  color: white;
+}
+
+.btn-accent:hover {
+  background-color: var(--brand-accent-dark);
+  border-color: var(--brand-accent-dark);
+}
+
+/* Vendor Dashboard */
+.vendor-sidebar {
+  background: var(--brand-primary);
+  color: white;
+}
+
+/* Text colors */
+.text-primary {
+  color: var(--brand-primary) !important;
+}
+
+.text-accent {
+  color: var(--brand-accent) !important;
+}
+
+.text-muted {
+  color: var(--neutral-300) !important;
+}
+
+/* Cards */
+.card {
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  border-color: var(--neutral-200);
+}
+
+
 .error-template {
   padding: 40px 15px;
 }
