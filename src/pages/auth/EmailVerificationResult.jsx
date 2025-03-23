@@ -21,7 +21,7 @@ const EmailVerificationResult = () => {
             window.opener.postMessage({ 
               type: 'EMAIL_VERIFIED',
               email: email 
-            }, window.location.origin);
+            }, window.FRONTEND_URL);
             
             // Show success message
             showToast.success('Email verified! You can close this tab and continue registration.');
@@ -31,6 +31,7 @@ const EmailVerificationResult = () => {
           }
         } catch (error) {
           showToast.error('Verification failed. Please try again.');
+          navigate('/auth/vendor/register');
         }
       }
     };
