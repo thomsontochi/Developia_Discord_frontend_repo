@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import AuthService from "../../services/auth.service";
-
-// import * as bootstrap from 'bootstrap';
 
 const RegisterForm = () => {
   const navigate = useNavigate();
@@ -29,24 +27,20 @@ const RegisterForm = () => {
     confirmPassword: "",
   });
 
-  useEffect(() => {
-    // Initialize Bootstrap tooltips
-    const tooltipTriggerList = [].slice.call(
-      document.querySelectorAll('[data-toggle="tooltip"]')
-    );
-    tooltipTriggerList.map(function (tooltipTriggerEl) {
-      return new window.bootstrap.Tooltip(tooltipTriggerEl);
-    });
-  }, []);
-
-  
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
+    
+    // Clear validation errors when user types
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ""
+      }));
+    }
   };
 
   const handleUserTypeChange = (type) => {
@@ -57,12 +51,9 @@ const RegisterForm = () => {
     }
   };
 
-
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrors({ general: "" });
+    setErrors({ general: "", firstName: "", lastName: "", email: "", password: "", confirmPassword: "" });
     setLoading(true);
 
     if (formData.password !== formData.confirmPassword) {
@@ -127,254 +118,218 @@ const RegisterForm = () => {
     }
   };
 
-
- 
-
-
   return (
-    <div className="login-page py-5">
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-md-8 col-lg-6">
-            <div className="card border-0 shadow-lg">
-              <div className="card-body p-5">
-                <div className="text-center mb-5">
-                  <h3 className="fw-bold mb-2">Create Account</h3>
-                  <p className="text-muted">
-                    Join Vendly as a {formData.userType}
-                  </p>
-                </div>
+    <div className="card border-0 shadow-lg">
+      <div className="card-body p-4 p-md-5">
+        <div className="text-center mb-4">
+          <h2 className="fw-bold">Create Account</h2>
+          <p className="text-muted">Join Vendly as a {formData.userType}</p>
+        </div>
 
-                <div className="d-flex gap-2 mb-4">
-                  <button
-                    type="button"
-                    className={`btn flex-grow-1 ${
-                      formData.userType === "user"
-                        ? "btn-primary"
-                        : "btn-outline-secondary"
-                    }`}
-                    onClick={() => handleUserTypeChange("user")}
-                  >
-                    <i className="fas fa-user me-2"></i>
-                    Regular User
-                  </button>
-                  <button
-                    type="button"
-                    className={`btn flex-grow-1 ${
-                      formData.userType === "vendor"
-                        ? "btn-primary"
-                        : "btn-outline-secondary"
-                    }`}
-                    onClick={() => handleUserTypeChange("vendor")}
-                  >
-                    <i className="fas fa-store me-2"></i>
-                    Vendor
-                  </button>
-                </div>
+        <div className="d-flex mb-4">
+          <button
+            type="button"
+            className={`btn flex-grow-1 rounded-pill ${
+              formData.userType === "user" ? "btn-success" : "btn-outline-secondary"
+            }`}
+            onClick={() => handleUserTypeChange("user")}
+          >
+            <i className="fas fa-user me-2"></i>
+            Regular User
+          </button>
+          <button
+            type="button"
+            className={`btn flex-grow-1 rounded-pill ms-2 ${
+              formData.userType === "vendor" ? "btn-success" : "btn-outline-secondary"
+            }`}
+            onClick={() => handleUserTypeChange("vendor")}
+          >
+            <i className="fas fa-store me-2"></i>
+            Vendor
+          </button>
+        </div>
 
-                <form onSubmit={handleSubmit}>
-                  {errors.general && (
-                    <div className="alert alert-danger mb-4" role="alert">
-                      {errors.general}
-                    </div>
-                  )}
-                  <div className="row mb-4">
-                    <div className="col-md-6 mb-4 mb-md-0">
-                      <label className="form-label small fw-medium text-dark">
-                        First Name
-                      </label>
-                      <div className="input-group input-group-lg">
-                        <span className="input-group-text border-end-0">
-                          <i className="fas fa-user text-primary opacity-50"></i>
-                        </span>
-                        <input
-                          type="text"
-                          className="form-control border-start-0"
-                          name="firstName"
-                          value={formData.firstName}
-                          onChange={handleChange}
-                          required
-                          data-bs-toggle="tooltip"
-                          data-placement="top"
-                          title="Enter your first name"
-                        />
-                        {errors.firstName && (
-                          <div className="invalid-feedback d-block">
-                            {errors.firstName}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                    <div className="col-md-6">
-                      <label className="form-label small fw-medium text-dark">
-                        Last Name
-                      </label>
-                      <div className="input-group input-group-lg">
-                        <span className="input-group-text border-end-0">
-                          <i className="fas fa-user text-primary opacity-50"></i>
-                        </span>
-                        <input
-                          type="text"
-                          className="form-control border-start-0"
-                          name="lastName"
-                          value={formData.lastName}
-                          onChange={handleChange}
-                          required
-                          data-bs-toggle="tooltip"
-                          data-placement="top"
-                          title="Enter your last name"
-                        />
-                        {errors.lastName && (
-                          <div className="invalid-feedback d-block">
-                            {errors.lastName}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mb-4">
-                    <label className="form-label small fw-medium text-dark">
-                      Email Address
-                    </label>
-                    <div className="input-group input-group-lg">
-                      <span className="input-group-text border-end-0">
-                        <i className="fas fa-envelope text-primary opacity-50"></i>
-                      </span>
-                      <input
-                        type="email"
-                        className="form-control border-start-0"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        data-bs-toggle="tooltip"
-                        data-placement="top"
-                        title="Enter your email address"
-                      />
-                      {errors.email && (
-                        <div className="invalid-feedback d-block">
-                          {errors.email}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="row mb-4">
-                    <div className="col-md-6 mb-4 mb-md-0">
-                      <label className="form-label small fw-medium text-dark">
-                        Password
-                      </label>
-                      <div className="input-group input-group-lg">
-                        <span className="input-group-text border-end-0">
-                          <i className="fas fa-lock text-primary opacity-50"></i>
-                        </span>
-                        <input
-                          type="password"
-                          className="form-control border-start-0"
-                          name="password"
-                          value={formData.password}
-                          onChange={handleChange}
-                          required
-                          data-bs-toggle="tooltip"
-                          data-placement="top"
-                          title="Enter your password"
-                        />
-                        {errors.password && (
-                          <div className="invalid-feedback d-block">
-                            {errors.password}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                    <div className="col-md-6">
-                      <label className="form-label small fw-medium text-dark">
-                        Confirm Password
-                      </label>
-                      <div className="input-group input-group-lg">
-                        <span className="input-group-text border-end-0">
-                          <i className="fas fa-lock text-primary opacity-50"></i>
-                        </span>
-                        <input
-                          type="password"
-                          className="form-control border-start-0"
-                          name="confirmPassword"
-                          value={formData.confirmPassword}
-                          onChange={handleChange}
-                          required
-                          data-bs-toggle="tooltip"
-                          data-placement="top"
-                          title="Confirm your password"
-                        />
-                        {errors.confirmPassword && (
-                          <div className="invalid-feedback d-block">
-                            {errors.confirmPassword}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="btn btn-primary w-100 btn-lg mb-4"
-                    disabled={loading}
-                  >
-                    {loading ? (
-                      <span
-                        className="spinner-border spinner-border-sm"
-                        role="status"
-                        aria-hidden="true"
-                      ></span>
-                    ) : (
-                      "Create Account"
-                    )}
-                  </button>
-
-                  <div className="position-relative mb-4">
-                    <hr className="text-muted" />
-                    <span className="position-absolute top-50 start-50 translate-middle px-3 bg-white text-muted small">
-                      or register with
-                    </span>
-                  </div>
-
-                  <div className="d-flex flex-column flex-md-row gap-3 mb-4">
-                    <button
-                      type="button"
-                      className="btn btn-outline-light flex-grow-1 social-btn"
-                    >
-                      <div className="d-flex align-items-center justify-content-center gap-2">
-                        <i className="fab fa-google text-danger"></i>
-                        <span>Continue with Google</span>
-                      </div>
-                    </button>
-                    <button
-                      type="button"
-                      className="btn btn-outline-light flex-grow-1 social-btn"
-                    >
-                      <div className="d-flex align-items-center justify-content-center gap-2">
-                        <i className="fab fa-facebook text-primary"></i>
-                        <span>Continue with Facebook</span>
-                      </div>
-                    </button>
-                  </div>
-
-                  <div className="text-center">
-                    <p className="mb-0 text-muted small">
-                      Already have an account?{" "}
-                      <Link
-                        to="/auth/login"
-                        className="text-decoration-none fw-medium text-primary"
-                      >
-                        Sign in
-                      </Link>
-                    </p>
-                  </div>
-                </form>
+        <form onSubmit={handleSubmit}>
+          {errors.general && (
+            <div className="alert alert-danger mb-4" role="alert">
+              {errors.general}
+            </div>
+          )}
+          
+          <div className="row mb-4">
+            <div className="col-md-6 mb-3 mb-md-0">
+              <label className="form-label small fw-medium text-dark mb-1">
+                First Name
+              </label>
+              <div className="input-group">
+                <span className="input-group-text border-end-0 bg-transparent">
+                  <i className="fas fa-user text-success opacity-50"></i>
+                </span>
+                <input
+                  type="text"
+                  className={`form-control border-start-0 ${errors.firstName ? "is-invalid" : ""}`}
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                 
+                  required
+                />
+                {errors.firstName && (
+                  <div className="invalid-feedback">{errors.firstName}</div>
+                )}
+              </div>
+            </div>
+            
+            <div className="col-md-6">
+              <label className="form-label small fw-medium text-dark mb-1">
+                Last Name
+              </label>
+              <div className="input-group">
+                <span className="input-group-text border-end-0 bg-transparent">
+                  <i className="fas fa-user text-success opacity-50"></i>
+                </span>
+                <input
+                  type="text"
+                  className={`form-control border-start-0 ${errors.lastName ? "is-invalid" : ""}`}
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                
+                  required
+                />
+                {errors.lastName && (
+                  <div className="invalid-feedback">{errors.lastName}</div>
+                )}
               </div>
             </div>
           </div>
-        </div>
+
+          <div className="mb-4">
+            <label className="form-label small fw-medium text-dark mb-1">
+              Email Address
+            </label>
+            <div className="input-group">
+              <span className="input-group-text border-end-0 bg-transparent">
+                <i className="fas fa-envelope text-success opacity-50"></i>
+              </span>
+              <input
+                type="email"
+                className={`form-control border-start-0 ${errors.email ? "is-invalid" : ""}`}
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+              
+                required
+              />
+              {errors.email && (
+                <div className="invalid-feedback">{errors.email}</div>
+              )}
+            </div>
+          </div>
+
+          <div className="row mb-4">
+            <div className="col-md-6 mb-3 mb-md-0">
+              <label className="form-label small fw-medium text-dark mb-1">
+                Password
+              </label>
+              <div className="input-group">
+                <span className="input-group-text border-end-0 bg-transparent">
+                  <i className="fas fa-lock text-success opacity-50"></i>
+                </span>
+                <input
+                  type="password"
+                  className={`form-control border-start-0 ${errors.password ? "is-invalid" : ""}`}
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                
+                  required
+                />
+                {errors.password && (
+                  <div className="invalid-feedback">{errors.password}</div>
+                )}
+              </div>
+            </div>
+            
+            <div className="col-md-6">
+              <label className="form-label small fw-medium text-dark mb-1">
+                Confirm Password
+              </label>
+              <div className="input-group">
+                <span className="input-group-text border-end-0 bg-transparent">
+                  <i className="fas fa-lock text-success opacity-50"></i>
+                </span>
+                <input
+                  type="password"
+                  className={`form-control border-start-0 ${errors.confirmPassword ? "is-invalid" : ""}`}
+                  name="confirmPassword"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                
+                  required
+                />
+                {errors.confirmPassword && (
+                  <div className="invalid-feedback">{errors.confirmPassword}</div>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            className="btn btn-success w-100 py-3 mb-4 rounded-pill"
+            disabled={loading}
+          >
+            {loading ? (
+              <span
+                className="spinner-border spinner-border-sm me-2"
+                role="status"
+                aria-hidden="true"
+              ></span>
+            ) : null}
+            {loading ? "Creating Account..." : "Create Account"}
+          </button>
+
+          <div className="position-relative mb-4">
+            <hr className="text-muted" />
+            <span className="position-absolute top-50 start-50 translate-middle px-3 bg-white text-muted small">
+              or register with
+            </span>
+          </div>
+
+          <div className="d-flex flex-column flex-md-row gap-3 mb-4">
+            <button
+              type="button"
+              className="btn btn-outline-secondary flex-grow-1 social-btn rounded-pill"
+            >
+              <div className="d-flex align-items-center justify-content-center gap-2">
+                <i className="fab fa-google text-danger"></i>
+                <span>Continue with Google</span>
+              </div>
+            </button>
+            <button
+              type="button"
+              className="btn btn-outline-secondary flex-grow-1 social-btn rounded-pill"
+            >
+              <div className="d-flex align-items-center justify-content-center gap-2">
+                <i className="fab fa-facebook text-primary"></i>
+                <span>Continue with Facebook</span>
+              </div>
+            </button>
+          </div>
+
+          <div className="text-center">
+            <p className="mb-0 text-muted">
+              Already have an account?{" "}
+              <Link
+                to="/auth/login"
+                className="text-decoration-none fw-medium text-success"
+              >
+                Sign in
+              </Link>
+            </p>
+          </div>
+        </form>
       </div>
     </div>
   );

@@ -758,75 +758,70 @@ const VendorRegistrationForm = () => {
   // =========================================
 
   return (
-    <div className="login-page py-5">
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-md-8 col-lg-6">
-            <div className="card border-0 shadow-lg">
-              <div className="card-body p-5">
-                {error.general && (
-                  <div className="alert alert-danger" role="alert">
-                    {error.general}
-                  </div>
-                )}
+    <div className="card border-0 shadow-lg">
+      <div className="card-body p-5">
+        {error.general && (
+          <div className="alert alert-danger" role="alert">
+            {error.general}
+          </div>
+        )}
 
-                {step === 1 && verificationStatus.checking && <EmailVerificationStatus />}
+        {step === 1 && verificationStatus.checking && <EmailVerificationStatus />}
 
-                <div className="text-center mb-5">
-                  <h3 className="fw-bold mb-2">Vendor Registration</h3>
-                  <p className="text-muted">Step {step} of 3</p>
-                  <div className="progress" style={{ height: "4px" }}>
-                    <div
-                      className="progress-bar bg-primary"
-                      style={{ width: `${(step / 3) * 100}%` }}
-                    />
-                  </div>
-                </div>
-
-                <form onSubmit={handleSubmit}>
-                  {step === 1 && renderStep1()}
-                  {step === 2 && renderStep2()}
-                  {step === 3 && renderStep3()}
-
-                  <div className="d-flex justify-content-between mt-4">
-                  {step > 1 && !verificationStatus.verified && (
-                        <button
-                          type="button"
-                          className="btn btn-outline-primary btn-lg"
-                          onClick={() => setStep(step - 1)}
-                        >
-                          Back
-                        </button>
-                      )}
-                    <button
-                      type="submit"
-                      className="btn btn-primary btn-lg ms-auto"
-                      disabled={!canProceedToNextStep() || stepLoading[`step${step}`]}
-                    >
-                      {stepLoading[`step${step}`] ? (
-                        <>
-                          <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true" />
-                          Loading...
-                        </>
-                      ) : (
-                        step === 3 ? "Complete Registration" : "Continue"
-                      )}
-                    </button>
-                  </div>
-
-                  <div className="text-center mt-4">
-                    <p className="mb-0 text-muted small">
-                      Already have a vendor account?{" "}
-                      <Link to="/auth/vendor/login" className="text-decoration-none fw-medium text-primary">
-                        Sign in
-                      </Link>
-                    </p>
-                  </div>
-                </form>
-              </div>
-            </div>
+        <div className="text-center mb-4">
+          <h2 className="fw-bold">Vendor Registration</h2>
+          <p className="text-muted">Step {step} of 3</p>
+          <div className="progress mb-4" style={{ height: "4px" }}>
+            <div
+              className="progress-bar"
+              style={{ 
+                width: `${(step / 3) * 100}%`,
+                backgroundColor: '#3b5d50' 
+              }}
+            />
           </div>
         </div>
+
+        <form onSubmit={handleSubmit}>
+          {step === 1 && renderStep1()}
+          {step === 2 && renderStep2()}
+          {step === 3 && renderStep3()}
+
+          <div className="d-flex justify-content-between mt-4">
+          {step > 1 && !verificationStatus.verified && (
+                <button
+                  type="button"
+                  className="btn btn-outline-primary btn-lg"
+                  onClick={() => setStep(step - 1)}
+                >
+                  Back
+                </button>
+              )}
+            <button
+              type="submit"
+              className="btn btn-primary btn-lg ms-auto"
+              disabled={!canProceedToNextStep() || stepLoading[`step${step}`]}
+            >
+              {stepLoading[`step${step}`] ? (
+                <>
+                  <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true" />
+                  Loading...
+                </>
+              ) : (
+                step === 3 ? "Complete Registration" : "Continue"
+              )}
+            </button>
+          </div>
+
+          <div className="text-center mt-4">
+            <p className="mb-0 text-muted small">
+              Already have a vendor account?{" "}
+              <Link to="/auth/vendor/login" className="text-decoration-none fw-medium text-primary">
+                Sign in
+              </Link>
+            </p>
+          </div>
+        </form>
       </div>
     </div>
   );

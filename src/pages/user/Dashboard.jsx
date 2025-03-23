@@ -231,76 +231,8 @@ const Dashboard = () => {
         </div>
       </div>
       
-      <style jsx>{`
-        .bg-gradient-primary {
-          background: linear-gradient(135deg, #4a6cf7 0%, #2146c7 100%);
-        }
-        
-        .hero-section {
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        }
-        
-        .hero-shapes .shape-1,
-        .hero-shapes .shape-2,
-        .hero-shapes .shape-3 {
-          position: absolute;
-          background: rgba(255, 255, 255, 0.1);
-          border-radius: 50%;
-        }
-        
-        .hero-shapes .shape-1 {
-          width: 150px;
-          height: 150px;
-          top: -50px;
-          right: -50px;
-        }
-        
-        .hero-shapes .shape-2 {
-          width: 100px;
-          height: 100px;
-          bottom: -30px;
-          right: 10%;
-        }
-        
-        .hero-shapes .shape-3 {
-          width: 50px;
-          height: 50px;
-          bottom: 50px;
-          left: 10%;
-        }
-        
-        .stats-card {
-          transition: all 0.3s ease;
-        }
-        
-        .stats-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
-        }
-        
-        .icon {
-          width: 48px;
-          height: 48px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        
-        .stat-shape {
-          width: 150px;
-          height: 150px;
-          border-radius: 50%;
-          background: rgba(var(--bs-primary-rgb), 0.03);
-          bottom: -75px;
-          right: -75px;
-        }
-        
-        .empty-state-icon {
-          width: 80px;
-          height: 80px;
-        }
-      `}</style>
       
+
     </div>
   );
 };

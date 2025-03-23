@@ -1,16 +1,37 @@
-// App.jsx
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
-
-import { routes } from "./routes/routes";
+import { routes } from "./routes/routes.jsx";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ToastContainer } from "react-toastify";
-import ErrorBoundary from "./components/ErrorBoundary"; // Add this
+import ErrorBoundary from "./components/ErrorBoundary";
 import "react-toastify/dist/ReactToastify.css";
 import "../public/custom-toast.css";
-import './styles/vendor-dashboard.css';
+import "./styles/vendor-dashboard.css";
+import NotFound from "./pages/NotFound";
+import GuestRoute from "./routes/GuestRoute";
+import VendorRoute from "./routes/VendorRoute";
+import AuthRoute from "./routes/AuthRoute";
 
 function App() {
+  
+  const renderElement = (Component, guardType) => {
+    if (!Component) return null;
+    
+    //console.log('Rendering component with guard type:', guardType || 'None');
+    
+    // Apply the appropriate guard based on guardType
+    if (guardType === 'guest') {
+      return <GuestRoute><Component /></GuestRoute>;
+    } else if (guardType === 'vendor') {
+      return <VendorRoute><Component /></VendorRoute>;
+    } else if (guardType === 'auth') {
+      return <AuthRoute><Component /></AuthRoute>;
+    }
+    
+    // No guard
+    return <Component />;
+  };
+
   return (
     <ErrorBoundary>
       <AuthProvider>
@@ -29,43 +50,47 @@ function App() {
           />
           <Routes>
             {routes.map((route) => {
+              // Handle parent routes with children
               if (route.children) {
+                const ParentComponent = route.element;
                 return (
-                  <Route key={route.path} path={route.path} element={<route.element />}>
-                    {route.children.map((child) => (
-                      <Route
-                        key={child.path}
-                        path={child.path}
-                        element={
-                          child.guard ? (
-                            <child.guard>
-                              <child.element />
-                            </child.guard>
-                          ) : (
-                            <child.element />
-                          )
-                        }
-                      />
-                    ))}
+                  <Route 
+                    key={route.path} 
+                    path={route.path} 
+                    element={ParentComponent && <ParentComponent />}
+                  >
+                    {/* Map through child routes */}
+                    {route.children.map((child) => {
+                      const ChildComponent = child.element;
+                      const guardType = child.guardType;
+                      
+                      return (
+                        <Route
+                          key={`${route.path}/${child.path}`}
+                          path={child.path}
+                          element={renderElement(ChildComponent, guardType)}
+                        />
+                      );
+                    })}
                   </Route>
                 );
               }
+
+              // Handle single routes
+              const RouteComponent = route.element;
+              const guardType = route.guardType;
+
               return (
                 <Route
                   key={route.path}
                   path={route.path}
-                  element={
-                    route.guard ? (
-                      <route.guard>
-                        <route.element />
-                      </route.guard>
-                    ) : (
-                      <route.element />
-                    )
-                  }
+                  element={renderElement(RouteComponent, guardType)}
                 />
               );
             })}
+
+            {/* Fallback route for 404 */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>
       </AuthProvider>

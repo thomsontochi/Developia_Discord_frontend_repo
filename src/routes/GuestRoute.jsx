@@ -4,23 +4,29 @@ import { showToast } from '../utils/toast';
 import { useEffect, useRef } from 'react';
 
 const GuestRoute = ({ children }) => {
-    const { isAuthenticated, user } = useAuth();
-    const location = useLocation();
-    const hasShownToast = useRef(false);
-
-    useEffect(() => {
-        if (isAuthenticated && !hasShownToast.current) {
-            hasShownToast.current = true;
-            showToast.auth(`Welcome back ${user.first_name}!`);
-        }
-    }, [isAuthenticated, user]);
-
-    if (isAuthenticated) {
-        const redirectPath = user?.userType === 'vendor' ? '/vendor/dashboard' : '/';
-        return <Navigate to={redirectPath} replace />;
+  const { isAuthenticated, user } = useAuth();
+  const location = useLocation();
+  const hasShownToast = useRef(false);
+  
+  useEffect(() => {
+    if (isAuthenticated && !hasShownToast.current) {
+      hasShownToast.current = true;
+      const userName = user?.full_name || user?.first_name || 'Vendor';
+      showToast.auth(`Welcome back ${userName}!`);
     }
-
-    return children;
+  }, [isAuthenticated, user]);
+  
+  //console.log('GuestRoute - isAuthenticated:', isAuthenticated);
+  
+  if (isAuthenticated) {
+    const redirectPath = user?.userType === 'vendor' ? '/vendor/dashboard' : '/';
+    //console.log('GuestRoute - Redirecting to:', redirectPath);
+    return <Navigate to={redirectPath} replace />;
+  }
+  
+  //console.log('GuestRoute - Rendering protected component');
+  return children;
 };
+
 
 export default GuestRoute;

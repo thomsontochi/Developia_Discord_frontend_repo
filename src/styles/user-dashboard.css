@@ -1,53 +1,164 @@
-.user-dashboard .hero {
+/* src/styles/user-dashboard.css */
+
+/* ==========================================
+   Base Dashboard Styles
+========================================== */
+.user-dashboard {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+  }
+  
+  /* ==========================================
+     Hero Section
+  ========================================== */
+  .hero-section {
     background-color: #3b5d50;
     padding: 40px 0;
-    border-radius: 12px;
+    border-radius: 20px;
     color: white;
-  }
-  
-  .user-dashboard .feature {
-    padding: 30px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    transition: transform 0.2s;
-  }
-  
-  .user-dashboard .feature:hover {
-    transform: translateY(-5px);
-  }
-  
-  .user-dashboard .icon {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background: rgba(59, 93, 80, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-  }
-  
-  .user-dashboard .card {
-    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+    position: relative;
     overflow: hidden;
   }
   
-  .user-dashboard .btn-outline-primary {
-    border-color: #3b5d50;
+  /* Hero Background Gradient */
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, #3b5d50 0%, #2d4b3e 100%);
+  }
+  
+  /* Hero Shape Decorations */
+  .hero-shapes .shape-1,
+  .hero-shapes .shape-2,
+  .hero-shapes .shape-3 {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+  }
+  
+  .hero-shapes .shape-1 {
+    width: 150px;
+    height: 150px;
+    top: -50px;
+    right: -50px;
+  }
+  
+  .hero-shapes .shape-2 {
+    width: 100px;
+    height: 100px;
+    bottom: -30px;
+    right: 10%;
+  }
+  
+  .hero-shapes .shape-3 {
+    width: 50px;
+    height: 50px;
+    bottom: 50px;
+    left: 10%;
+  }
+  
+  /* ==========================================
+     Stats Cards
+  ========================================== */
+  .stats-card {
+    transition: all 0.3s ease;
+    border-radius: 15px;
+    border: none;
+    background: white;
+    padding: 1.5rem;
+  }
+  
+  .stats-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(59, 93, 80, 0.1) !important;
+  }
+  
+  .stat-shape {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(59, 93, 80, 0.03);
+    bottom: -75px;
+    right: -75px;
+    position: absolute;
+  }
+  
+  /* ==========================================
+     Icons & Badges
+  ========================================== */
+  .icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+  }
+  
+  .icon.primary {
+    background: rgba(59, 93, 80, 0.1);
     color: #3b5d50;
   }
   
-  .user-dashboard .btn-outline-primary:hover {
+  /* ==========================================
+     Cards & Buttons
+  ========================================== */
+  .dashboard-card {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .dashboard-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Button Styles */
+  .btn-outline-primary {
+    color: #3b5d50;
+    border-color: #3b5d50;
+  }
+  
+  .btn-outline-primary:hover {
     background-color: #3b5d50;
     color: white;
   }
   
-  .user-dashboard .btn-primary {
+  .btn-primary {
     background-color: #3b5d50;
     border-color: #3b5d50;
   }
   
-  .user-dashboard .btn-primary:hover {
+  .btn-primary:hover {
     background-color: #2d4b3e;
+  }
+  
+  /* ==========================================
+     Responsive Adjustments
+  ========================================== */
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+  
+    .stats-card {
+      margin-bottom: 1rem;
+    }
+  
+    .hero-shapes {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .hero-section h1 {
+      font-size: 1.8rem;
+    }
+  
+    .stats-card {
+      padding: 1rem;
+    }
   }
