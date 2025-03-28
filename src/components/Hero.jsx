@@ -18,7 +18,7 @@ const Hero = () => {
 					</div>
 					<div className="col-lg-6">
 						<div className="hero-img-wrap">
-							<img src="/assets/images/couch.png" className="img-fluid" alt="E-commerce illustration" /> {/* Self-closing tag */}
+							<img src="/assets/images/Pngtree.png" className="img-fluid" alt="E-commerce illustration" /> {/* Self-closing tag */}
 						</div>
 					</div>
 				</div>

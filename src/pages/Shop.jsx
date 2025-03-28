@@ -1,87 +1,71 @@
+import React from "react";
 import ShopHero from "../components/ShopHero";
+import CategoryNav from "../components/CategoryNav";
+import ProductGrid from "../components/ProductGrid";
+import VendorQuickView from "../components/VendorQuickView";
 
 const Shop = () => {
-  const products = [
-    {
-      productImage: "/assets/images/product-3.png",
-      header: "Nodic Chair",
-      price: "$50.00",
-      iconCross: "/assets/images/cross.svg",
-    },
-    {
-      productImage: "/assets/images/product-1.png",
-      header: "Nordic Chair",
-      price: "$50.00",
-      iconCross: "/assets/images/cross.svg",
-    },
-    {
-      productImage: "/assets/images/product-2.png",
-      header: "Kruzo Aero Chair",
-      price: "$78.00",
-      iconCross: "/assets/images/cross.svg",
-    },
-    {
-      productImage: "/assets/images/product-3.png",
-      header: "Ergonomic Chair",
-      price: "$43.00",
-      iconCross: "/assets/images/cross.svg",
-    },
-
-    {
-      productImage: "/assets/images/product-3.png",
-      header: "Nordic Chair",
-      price: "$50.00",
-      iconCross: "/assets/images/cross.svg",
-    },
-
-    {
-      productImage: "/assets/images/product-1.png",
-      header: "Ergonomic Chair",
-      price: "$43.00",
-      iconCross: "/assets/images/cross.svg",
-    },
-    {
-      productImage: "/assets/images/product-2.png",
-      header: "Ergonomic Chair",
-      price: "$43.00",
-      iconCross: "/assets/images/cross.svg",
-    },
-    {
-      productImage: "/assets/images/product-3.png",
-      header: "Ergonomic Chair",
-      price: "$43.00",
-      iconCross: "/assets/images/cross.svg",
-    },
-  ];
   return (
-    <>
-      <div className="site-wrap">
-        <ShopHero />
-        <div className="product-section">
-          <div className="container">
-            <div className="row">
-              {products.map((product, index) => (
-                <div key={index} className="col-12 col-md-6 col-lg-3 mb-4">
-                  <a className="product-item" href="cart.html">
-                    <img
-                      src={product.productImage}
-                      alt="product"
-                      className="img-fluid product-thumbnail"
-                    />
-                    <h3 className="product-title">{product.header}</h3>
-                    <strong className="product-price">{product.price}</strong>
+    <div className="shop-page">
+      {/* Hero Section */}
+      <ShopHero />
 
-                    <span className="icon-cross">
-                      <img src={product.iconCross} className="img-fluid" />
-                    </span>
-                  </a>
-                </div>
-              ))}
+      <div className="container py-5">
+        <div className="row">
+          {/* Sidebar filters - visible on large screens, collapsible on mobile */}
+          <div className="col-lg-3">
+            <div className="d-none d-lg-block">
+              <CategoryNav />
+            </div>
+
+            {/* Collapsible category filter for mobile */}
+            <button
+              className="btn btn-outline-primary w-100 d-lg-none"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#mobileCategories"
+            >
+              <i className="bi bi-funnel"></i> Filter Categories
+            </button>
+            <div className="collapse mt-3 d-lg-none" id="mobileCategories">
+              <CategoryNav />
+            </div>
+          </div>
+
+          {/* Main Product Grid */}
+          <div className="col-lg-9">
+            <h3 className="section-title mb-4">All Products</h3>
+            <ProductGrid />
+
+            {/* Pagination Placeholder */}
+            <div className="d-flex justify-content-center mt-4">
+              <nav>
+                <ul className="pagination">
+                  <li className="page-item disabled">
+                    <a className="page-link">Previous</a>
+                  </li>
+                  <li className="page-item active">
+                    <a className="page-link">1</a>
+                  </li>
+                  <li className="page-item">
+                    <a className="page-link">2</a>
+                  </li>
+                  <li className="page-item">
+                    <a className="page-link">Next</a>
+                  </li>
+                </ul>
+              </nav>
             </div>
           </div>
         </div>
+
+        {/* Featured Vendors Section */}
+        <section className="featured-vendors mt-5">
+          <h3 className="section-title mb-4">Featured Vendors</h3>
+          <VendorQuickView />
+        </section>
       </div>
-    </>
+    </div>
   );
 };
 

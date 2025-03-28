@@ -24,7 +24,7 @@ const Header = () => {
   return (
     <nav
       className="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark"
-      arial-label="Furni navigation bar"
+      arial-label="Vendly navigation bar"
     >
       <div className="container">
         <Link className="navbar-brand" to="/">
@@ -42,38 +42,42 @@ const Header = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarsFurni">
+          
+          {/* Primary Navigation */}
           <ul className="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
             <li className={`nav-item ${isActive("/") ? "active" : ""}`}>
               <Link className="nav-link" to="/">
                 Home
               </Link>
             </li>
+
+            <li className={`nav-item ${isActive("/about") ? "active" : ""}`}>
+              <Link className="nav-link" to="/about">
+                About
+              </Link>
+            </li>
+            
             <li className={`nav-item ${isActive("/shop") ? "active" : ""}`}>
               <Link className="nav-link" to="/shop">
                 Shop
               </Link>
             </li>
-            <li className={`nav-item ${isActive("/about") ? "active" : ""}`}>
-              <Link className="nav-link" to="/about">
-                About us
+            <li className={`nav-item ${isActive("/vendors") ? "active" : ""}`}>
+              <Link className="nav-link" to="/vendors">
+                Vendors
               </Link>
             </li>
-            <li className={`nav-item ${isActive("/services") ? "active" : ""}`}>
-              <Link className="nav-link" to="/services">
-                Services
+            <li
+              className={`nav-item ${isActive("/categories") ? "active" : ""}`}
+            >
+              <Link className="nav-link" to="/categories">
+                Categories
               </Link>
             </li>
-            <li className={`nav-item ${isActive("/blog") ? "active" : ""}`}>
-              <Link className="nav-link" to="/blog">
-                Blog
-              </Link>
-            </li>
-            <li className={`nav-item ${isActive("/contact") ? "active" : ""}`}>
-              <Link className="nav-link" to="/contact">
-                Contact Us
-              </Link>
-            </li>
+            
           </ul>
+
+          {/* Secondary Navigation */}
 
           <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
             <li className="nav-item dropdown position-relative">
@@ -101,7 +105,7 @@ const Header = () => {
               </a>
 
               {isAuthenticated ? (
-                 // Authenticated user menu
+                // Authenticated user menu
                 <div
                   className="dropdown-menu dropdown-menu-end shadow-lg p-0"
                   style={{
@@ -113,7 +117,7 @@ const Header = () => {
                   }}
                 >
                   {/* Enhanced User Info Section */}
-                  <div className="bg-primary p-4 position-relative">
+                  <div className="bg-primary p-4 position-relative" style={{backgroundColor: "#2d3e51"}}>
                     <div className="d-flex align-items-center">
                       <div
                         className="rounded-circle bg-white text-primary d-flex align-items-center justify-content-center me-3"
@@ -138,19 +142,18 @@ const Header = () => {
 
                   {/* Enhanced Menu Items */}
                   <div className="py-2">
-                 
-                      <Link
-                        to={user?.vendor ? "/vendor/dashboard" : "/dashboard"}
-                        className="dropdown-item px-4 py-2 d-flex align-items-center"
-                      >
-                        <i className="fas fa-tachometer-alt me-3 text-primary"></i>
-                        <div>
-                          <strong className="d-block">Dashboard</strong>
-                          <small className="text-muted">
-                            View your dashboard
-                          </small>
-                        </div>
-                      </Link>
+                    <Link
+                      to={user?.vendor ? "/vendor/dashboard" : "/dashboard"}
+                      className="dropdown-item px-4 py-2 d-flex align-items-center"
+                    >
+                      <i className="fas fa-tachometer-alt me-3 text-primary"></i>
+                      <div>
+                        <strong className="d-block">Dashboard</strong>
+                        <small className="text-muted">
+                          View your dashboard
+                        </small>
+                      </div>
+                    </Link>
 
                     <Link
                       to="/profile"
@@ -191,7 +194,7 @@ const Header = () => {
                   </div>
                 </div>
               ) : (
-                  // Guest menu - don't show this when authenticated
+                // Guest menu - don't show this when authenticated
                 <div
                   className="dropdown-menu dropdown-menu-end shadow-lg p-0"
                   style={{
@@ -208,14 +211,14 @@ const Header = () => {
                   >
                     <h5 className="mb-1 fw-bold">Welcome to Vendly</h5>
                     <p className="mb-0 text-white-50 small">
-                      Sign in to access your account
+                      Connect with trusted WhatsApp vendors
                     </p>
                   </div>
 
                   <div className="p-3">
                     <div className="mb-3">
                       <h6 className="dropdown-header text-uppercase small fw-bold text-primary px-2 py-1">
-                        Customer Access
+                        Shop with Vendly
                       </h6>
                       <Link
                         to="/auth/login"
@@ -225,7 +228,7 @@ const Header = () => {
                         <div>
                           <strong className="d-block">Login</strong>
                           <small className="text-muted">
-                            Access your account
+                            Browse and buy from verified vendors
                           </small>
                         </div>
                       </Link>
@@ -237,7 +240,7 @@ const Header = () => {
                         <div>
                           <strong className="d-block">Register</strong>
                           <small className="text-muted">
-                            Create a new account
+                            Join our trusted shopping community
                           </small>
                         </div>
                       </Link>
@@ -245,7 +248,7 @@ const Header = () => {
 
                     <div className="pt-2 border-top">
                       <h6 className="dropdown-header text-uppercase small fw-bold text-primary px-2 py-1">
-                        Vendor Portal
+                        Start Selling
                       </h6>
                       <Link
                         to="/auth/vendor/login"
@@ -255,7 +258,7 @@ const Header = () => {
                         <div>
                           <strong className="d-block">Vendor Login</strong>
                           <small className="text-muted">
-                            Access your vendor account
+                            Manage your WhatsApp store
                           </small>
                         </div>
                       </Link>
@@ -267,14 +270,14 @@ const Header = () => {
                         <div>
                           <strong className="d-block">Become a Vendor</strong>
                           <small className="text-muted">
-                            Start selling on Vendly
+                            Turn your WhatsApp business into an online store
                           </small>
                         </div>
                       </Link>
                     </div>
                   </div>
                 </div>
-                  )}
+              )}
             </li>
             <li>
               <Link className="nav-link" to="/cart">
@@ -282,6 +285,8 @@ const Header = () => {
               </Link>
             </li>
           </ul>
+
+          
         </div>
       </div>
     </nav>

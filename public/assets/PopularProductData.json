@@ -1,0 +1,52 @@
+{
+    "PopularProductData": [
+      {
+        "id": 1,
+        "productName": "Elegant Wooden Chair",
+        "productDescription": "Handcrafted wooden chair with ergonomic design, perfect for modern home decor.",
+        "productImage": "https://picsum.photos/400/300?random=1",
+        "price": 129.99,
+        "category": "Furniture"
+      },
+      {
+        "id": 2,
+        "productName": "Vintage Leather Bag",
+        "productDescription": "Genuine leather messenger bag with multiple compartments, ideal for professionals.",
+        "productImage": "https://picsum.photos/400/300?random=2",
+        "price": 89.50,
+        "category": "Accessories"
+      },
+      {
+        "id": 3,
+        "productName": "Smart Bluetooth Speaker",
+        "productDescription": "Portable wireless speaker with high-definition sound and long battery life.",
+        "productImage": "https://picsum.photos/400/300?random=3",
+        "price": 79.99,
+        "category": "Electronics"
+      },
+      {
+        "id": 4,
+        "productName": "Artisan Ceramic Mug",
+        "productDescription": "Handmade ceramic mug with unique glaze, perfect for coffee lovers.",
+        "productImage": "https://picsum.photos/400/300?random=4",
+        "price": 24.99,
+        "category": "Kitchen"
+      },
+      {
+        "id": 5,
+        "productName": "Organic Cotton T-Shirt",
+        "productDescription": "Soft, comfortable t-shirt made from 100% organic cotton, available in multiple colors.",
+        "productImage": "https://picsum.photos/400/300?random=5",
+        "price": 34.50,
+        "category": "Clothing"
+      },
+      {
+        "id": 6,
+        "productName": "Minimalist Wall Clock",
+        "productDescription": "Sleek and modern wall clock with silent movement, perfect for contemporary interiors.",
+        "productImage": "https://picsum.photos/400/300?random=6",
+        "price": 59.99,
+        "category": "Home Decor"
+      }
+    ]
+  }

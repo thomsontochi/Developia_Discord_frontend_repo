@@ -584,7 +584,7 @@ progress {
   .container,
   .container-md,
   .container-sm {
-    max-width: 720px;
+    /* max-width: 720px; */
   }
 }
 @media (min-width: 992px) {
@@ -7206,7 +7206,7 @@ fieldset:disabled .btn {
     var(--bs-primary-rgb),
     var(--bs-bg-opacity)
   ) !important; */
-  background: #3b5d50;
+  background: #2d3e51;
 }
 .bg-secondary {
   --bs-bg-opacity: 1;
