@@ -34,7 +34,7 @@ const Shop = () => {
 
           {/* Main Product Grid */}
           <div className="col-lg-9">
-            <h3 className="section-title mb-4">All Products</h3>
+            {/* <h3 className="section-title mb-4">All Products</h3> */}
             <ProductGrid />
 
             {/* Pagination Placeholder */}
@@ -61,7 +61,7 @@ const Shop = () => {
 
         {/* Featured Vendors Section */}
         <section className="featured-vendors mt-5">
-          <h3 className="section-title mb-4">Featured Vendors</h3>
+          {/* <h3 className="section-title mb-4">Featured Vendors</h3> */}
           <VendorQuickView />
         </section>
       </div>
