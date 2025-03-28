@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const products = [
   {
@@ -25,64 +25,56 @@ const products = [
 ];
 
 const ProductGrid = () => {
-  const [view, setView] = useState("grid");
+  const [view, setView] = useState('grid');
 
   return (
-    <div className="container">
-      {/* Title + View Toggle (Better Spacing) */}
-      <div className="d-flex flex-wrap justify-content-between align-items-center mb-3">
-        <h3 className="fw-bold mb-2">All Products</h3>
-        <div className="btn-group">
-          <button
-            className={`btn btn-outline-primary btn-sm ${
-              view === "grid" ? "active" : ""
-            }`}
-            onClick={() => setView("grid")}
-          >
-            <i className="bi bi-grid"></i>{" "}
-            <span className="d-none d-md-inline">Grid</span>
-          </button>
-          <button
-            className={`btn btn-outline-primary btn-sm ${
-              view === "list" ? "active" : ""
-            }`}
-            onClick={() => setView("list")}
-          >
-            <i className="bi bi-list"></i>{" "}
-            <span className="d-none d-md-inline">List</span>
-          </button>
+    <div className="container-fluid p-4">
+      <div className="row mb-4 align-items-center">
+        <div className="col">
+          <h2 className="m-0">All Products</h2>
         </div>
+        {/* <div className="col-auto">
+          <div className="btn-group" role="group">
+            <button 
+              type="button" 
+              className={`btn ${view === 'grid' ? 'btn-primary' : 'btn-outline-secondary'}`}
+              onClick={() => setView('grid')}
+            >
+              Grid
+            </button>
+            <button 
+              type="button" 
+              className={`btn ${view === 'list' ? 'btn-primary' : 'btn-outline-secondary'}`}
+              onClick={() => setView('list')}
+            >
+              List
+            </button>
+          </div>
+        </div> */}
       </div>
 
-      {/* Product Grid (Responsive) */}
-      <div className={`row ${view === "list" ? "flex-column" : ""}`}>
+      <div className={`row ${view === 'grid' ? 'row-cols-1 row-cols-md-3 g-4' : 'row-cols-1'}`}>
         {products.map((product) => (
-          <div
-            key={product.id}
-            className={`col-12 col-sm-6 col-md-4 mb-3 ${
-              view === "list" ? "w-100" : ""
-            }`}
-          >
-            <div className="card product-card border-0 shadow-sm p-2">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="img-fluid rounded w-100"
-              />
-
-              <div className="p-2">
-                <h6 className="fw-bold text-truncate">{product.name}</h6>
-                <p className="text-primary fw-bold mb-1">{product.price}</p>
-                <p className="text-muted small">{product.vendor}</p>
-
-                {/* Buttons - Now Stacked on Mobile */}
-                <div className="d-grid gap-2 mt-2">
-                  <button className="btn btn-success">
-                    <i className="bi bi-whatsapp"></i> Chat
-                  </button>
-                  <button className="btn btn-outline-dark">
-                    <i className="bi bi-heart"></i> Save
-                  </button>
+          <div key={product.id} className="col">
+            <div className={`card h-100 ${view === 'list' ? 'd-flex flex-row' : ''}`}>
+              <div className={`${view === 'grid' ? 'card-img-top' : 'card-img-left'}`} style={{
+                height: view === 'grid' ? '250px' : '200px',
+                width: view === 'list' ? '200px' : 'auto',
+                objectFit: 'cover'
+              }}>
+                <img 
+                  src={product.image} 
+                  alt={product.name} 
+                  className="w-100 h-100 object-fit-cover"
+                />
+              </div>
+              <div className="card-body">
+                <h5 className="card-title">{product.name}</h5>
+                <p className="card-text text-muted">{product.vendor}</p>
+                <p className="card-text fw-bold">{product.price}</p>
+                <div className={`d-grid ${view === 'list' ? 'gap-2 d-md-flex' : 'gap-2'}`}>
+                  <button className="btn btn-success" type="button">Chat</button>
+                  <button className="btn btn-dark" type="button">Save</button>
                 </div>
               </div>
             </div>
@@ -94,6 +86,3 @@ const ProductGrid = () => {
 };
 
 export default ProductGrid;
-
-
-

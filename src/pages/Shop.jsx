@@ -59,11 +59,7 @@ const Shop = () => {
           </div>
         </div>
 
-        {/* Featured Vendors Section */}
-        <section className="featured-vendors mt-5">
-          {/* <h3 className="section-title mb-4">Featured Vendors</h3> */}
-          <VendorQuickView />
-        </section>
+       
       </div>
     </div>
   );
