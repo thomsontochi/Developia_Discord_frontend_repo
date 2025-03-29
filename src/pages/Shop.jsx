@@ -3,6 +3,7 @@ import ShopHero from "../components/ShopHero";
 import CategoryNav from "../components/CategoryNav";
 import ProductGrid from "../components/ProductGrid";
 import VendorQuickView from "../components/VendorQuickView";
+import FeaturedProducts from "../components/FeaturedProducts";
 
 const Shop = () => {
   return (
@@ -214,6 +215,11 @@ const Shop = () => {
 
           {/* Main Product Grid */}
           <div className="col-lg-9">
+
+            {/* 🔥 Trending / Featured Products */}
+            <FeaturedProducts />
+
+            {/* 🛍️ All Products */}
             <ProductGrid />
 
             {/* Pagination */}
