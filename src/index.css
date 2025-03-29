@@ -3,3 +3,19 @@
 .why-choose-section {
   background-color: white;
 }
+
+/* Make buttons blend seamlessly */
+.small-btn {
+  background-color: transparent;  /* No solid color */
+  /* border: 1px solid #333; */  /* Subtle border */
+  color: #333;  /* Dark text */
+  padding: 4px 12px;  /* Smaller padding */
+  font-size: 14px;  /* Smaller text */
+  border-radius: 19px;  /* Rounded corners */
+}
+
+/* Button hover effect */
+.small-btn:hover {
+  background-color: #f5f5f5;  /* Light hover effect */
+  border-color: #555;
+}

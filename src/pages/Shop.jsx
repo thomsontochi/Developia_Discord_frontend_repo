@@ -8,36 +8,215 @@ const Shop = () => {
   return (
     <div className="shop-page">
       {/* Hero Section */}
-      <ShopHero />
+      {/* <ShopHero /> */}
 
       <div className="container py-5">
         <div className="row">
-          {/* Sidebar filters - visible on large screens, collapsible on mobile */}
+          {/* Sidebar - Filters, Categories, Search & Sort */}
           <div className="col-lg-3">
+            {/* Filters Section */}
+            <div className="d-none d-lg-block mb-4">
+              <div className="filters p-3 border rounded">
+                <h5 className="fw-bold">Filters</h5>
+
+                <div className="mb-3">
+                  <label className="form-label">Price Range</label>
+                  <input type="range" className="form-range" />
+                </div>
+
+                <div className="mb-3">
+                  <label className="form-label">Vendor Rating</label>
+                  <select className="form-select">
+                    <option>Any</option>
+                    <option>4 Stars & Up</option>
+                    <option>3 Stars & Up</option>
+                  </select>
+                </div>
+
+                <div className="mb-3">
+                  <label className="form-label">Location</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Enter city..."
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label className="form-label">Verification</label>
+                  <select className="form-select">
+                    <option>All Sellers</option>
+                    <option>Verified Sellers</option>
+                    <option>Unverified Sellers</option>
+                  </select>
+                </div>
+                {/* make button size smaller */}
+                <button className="btn btn-dark w-100">Apply Filters</button>
+              </div>
+            </div>
+
+            {/* Categories Section */}
             <div className="d-none d-lg-block">
               <CategoryNav />
             </div>
 
-            {/* Collapsible category filter for mobile */}
+            {/* Search & Sort (Now inside Sidebar) */}
+            <div className="d-none d-lg-block mt-4">
+              <div className="search-sort p-3 border rounded">
+                <h5 className="fw-bold">Search & Sort</h5>
+
+                {/* Search Input */}
+                <div className="mb-3">
+                  <label className="form-label">Search Products</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Search products..."
+                  />
+                </div>
+
+                {/* Sort Dropdown */}
+                <div className="mb-3">
+                  <label className="form-label">Sort By</label>
+                  <select className="form-select">
+                    <option>Newest</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                    <option>Best Sellers</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile View - Collapsible Filters, Categories & Search/Sort */}
+            {/* <button
+              className="btn btn-outline-primary w-100 d-lg-none mb-2"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#mobileFilters"
+            >
+              <i className="bi bi-funnel"></i> Filter Options
+            </button> */}
+
             <button
-              className="btn btn-outline-primary w-100 d-lg-none"
+              className="btn btn-outline-primary d-lg-none mb-2 small-btn"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#mobileFilters"
+            >
+              <i className="bi bi-funnel"></i> Filters
+            </button>
+
+            <div className="collapse mt-2 d-lg-none" id="mobileFilters">
+              <div className="filters p-3 border rounded mb-3">
+                <h5 className="fw-bold">Filters</h5>
+
+                <div className="mb-3">
+                  <label className="form-label">Price Range</label>
+                  <input type="range" className="form-range" />
+                </div>
+
+                <div className="mb-3">
+                  <label className="form-label">Vendor Rating</label>
+                  <select className="form-select">
+                    <option>Any</option>
+                    <option>4 Stars & Up</option>
+                    <option>3 Stars & Up</option>
+                  </select>
+                </div>
+
+                <div className="mb-3">
+                  <label className="form-label">Location</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Enter city..."
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label className="form-label">Verification</label>
+                  <select className="form-select">
+                    <option>All Sellers</option>
+                    <option>Verified Sellers</option>
+                    <option>Unverified Sellers</option>
+                  </select>
+                </div>
+
+                <button className="btn btn-dark w-100">Apply Filters</button>
+              </div>
+            </div>
+
+            {/* <button
+              className="btn btn-outline-primary w-100 d-lg-none mt-2"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#mobileCategories"
             >
-              <i className="bi bi-funnel"></i> Filter Categories
+              <i className="bi bi-list"></i> Filter Categories
+            </button> */}
+
+            <button
+              className="btn btn-outline-primary d-lg-none mb-2 small-btn"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#mobileCategories"
+            >
+              <i className="bi bi-list"></i> Categories
             </button>
             <div className="collapse mt-3 d-lg-none" id="mobileCategories">
               <CategoryNav />
+            </div>
+
+            {/* <button
+              className="btn btn-outline-primary w-100 d-lg-none mt-2"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#mobileSearchSort"
+            >
+              <i className="bi bi-search"></i> Search & Sort
+            </button> */}
+             <button
+              className="btn btn-outline-primary d-lg-none mb-2 small-btn"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#mobileSearchSort"
+            >
+              <i className="bi bi-search"></i> Search & Sort
+            </button>
+            <div className="collapse mt-3 d-lg-none" id="mobileSearchSort">
+              <div className="search-sort p-3 border rounded">
+                <h5 className="fw-bold">Search & Sort</h5>
+
+                {/* Search Input */}
+                <div className="mb-3">
+                  <label className="form-label">Search Products</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Search products..."
+                  />
+                </div>
+
+                {/* Sort Dropdown */}
+                <div className="mb-3">
+                  <label className="form-label">Sort By</label>
+                  <select className="form-select">
+                    <option>Newest</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                    <option>Best Sellers</option>
+                  </select>
+                </div>
+              </div>
             </div>
           </div>
 
           {/* Main Product Grid */}
           <div className="col-lg-9">
-            {/* <h3 className="section-title mb-4">All Products</h3> */}
             <ProductGrid />
 
-            {/* Pagination Placeholder */}
+            {/* Pagination */}
             <div className="d-flex justify-content-center mt-4">
               <nav>
                 <ul className="pagination">
@@ -58,8 +237,6 @@ const Shop = () => {
             </div>
           </div>
         </div>
-
-       
       </div>
     </div>
   );
