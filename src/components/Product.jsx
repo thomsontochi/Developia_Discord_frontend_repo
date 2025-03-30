@@ -11,7 +11,7 @@ const Product = () => {
 
                     {/* <!-- Start Column 1 --> */}
                     <div className="col-md-12 col-lg-3 mb-5 mb-lg-0">
-                        <h2 className="mb-4 section-title">Shop Unique Products from WhatsApp Vendors</h2>
+                        <h2 className="mb-4" style={{fontWeight: "700"}}>Shop Unique Products from WhatsApp Vendors</h2>
                         <p className="mb-4">Explore high-quality, handcrafted items directly from talented vendors. Enjoy a seamless shopping experience through WhatsApp.</p>
                         <p><a href="shop.html" className="btn">Explore Now</a></p>
                     </div>

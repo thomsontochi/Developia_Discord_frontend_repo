@@ -8,6 +8,11 @@ import Testimonials from '../components/Testimonials';
 import TopVendors from '../components/TopVendors';
 import TrustIndicators from '../components/TrustIndicators';
 import CTASection from '../components/CTASection';
+// import CategoryCarousel from '../components/Categories'
+import Categories from '../components/Categories';
+
+
+
 
 
 
@@ -17,13 +22,18 @@ const Home = () => {
            
             <div className="site-wrap">
                 <Hero/>
-                <Product/>
-                <WeHelp />
-                <PopularProduct/>
-                <TopVendors />
                 <TrustIndicators />
+                {/* <CategoryCarousel/> */}
+                <Product/>
+                {/* <WeHelp /> */}
+                <PopularProduct/>
+               
+                {/* <Categories/> */}
+               
+               
+                <TopVendors />
                 <Testimonials />
-                <CTASection />
+                {/* <CTASection /> */}
             </div>
         </>
     );

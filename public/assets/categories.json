@@ -1,0 +1,11 @@
+{
+    "categories": [
+      { "id": 1, "name": "Clothing", "icon": "https://picsum.photos/50?random=1" },
+      { "id": 2, "name": "Electronics", "icon": "https://picsum.photos/50?random=2" },
+      { "id": 3, "name": "Home & Kitchen", "icon": "https://picsum.photos/50?random=3" },
+      { "id": 4, "name": "Beauty & Health", "icon": "https://picsum.photos/50?random=4" },
+      { "id": 5, "name": "Toys & Games", "icon": "https://picsum.photos/50?random=5" },
+      { "id": 6, "name": "Sports", "icon": "https://picsum.photos/50?random=6" }
+    ]
+  }
+  

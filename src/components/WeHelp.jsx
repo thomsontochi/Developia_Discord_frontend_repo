@@ -11,9 +11,9 @@ const WeHelp = () => {
 				<div className="row justify-content-between">
 					<div className="col-lg-7 mb-5 mb-lg-0">
 						<div className="imgs-grid">
-							<div className="grid grid-1"><img src="/assets/images/img1.jpg" alt="Untree.co" /></div>
-							<div className="grid grid-2"><img src="/assets/images/img2.jpg" alt="Untree.co" /></div>
-							<div className="grid grid-3"><img src="/assets/images/img3.jpg" alt="Untree.co" /></div>
+							<div className="grid grid-1"><img src="/assets/images/img1.png" alt="Untree.co" /></div>
+							<div className="grid grid-2"><img src="/assets/images/img2.png" alt="Untree.co" /></div>
+							{/* <div className="grid grid-3"><img src="/assets/images/img3.png" alt="Untree.co" /></div> */}
 						</div>
 					</div>
 					<div className="col-lg-5 ps-lg-5">

@@ -1,0 +1,10 @@
+{
+    "brands": [
+      { "id": 1, "name": "Nike", "logo": "https://picsum.photos/80?random=7" },
+      { "id": 2, "name": "Apple", "logo": "https://picsum.photos/80?random=8" },
+      { "id": 3, "name": "Samsung", "logo": "https://picsum.photos/80?random=9" },
+      { "id": 4, "name": "Adidas", "logo": "https://picsum.photos/80?random=10" },
+      { "id": 5, "name": "Sony", "logo": "https://picsum.photos/80?random=11" }
+    ]
+  }
+  

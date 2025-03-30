@@ -1,67 +1,97 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const PopularProduct = () => {
-    const [PopularProductData, setPopularProductData] = useState([]);
+  const [products, setProducts] = useState([]);
 
-    useEffect(() => {
-        fetch('/assets/PopularProductData.json')
-            .then((response) => response.json())
-            .then((data) => setPopularProductData(data.PopularProductData))
-            .catch((error) => console.error('Error loading testimonials:', error));
-    }, []);
+  useEffect(() => {
+    fetch("/assets/PopularProductData.json")
+      .then((response) => response.json())
+      .then((data) => setProducts(data.PopularProductData))
+      .catch((error) => console.error("Error loading products:", error));
+  }, []);
 
-    return (
-        <div className="product-section">
-            <div className="container">
-                <div className="row">
-                    {/* Start Column 1 - Description */}
-                    <div className="col-md-12 col-lg-3 mb-5 mb-lg-0">
-                        <h2 className="mb-4 section-title">Discover Our Popular Products</h2>
-                        <p className="mb-4">Explore our curated collection of unique and high-quality products that our customers love.</p>
-                        <p><a href="#" className="btn">View All</a></p>
-                    </div>
-
-                    {/* Dynamic Product Columns - First 3 */}
-                    {PopularProductData.slice(0, 3).map((product) => (
-                        <div key={product.id} className="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-                            <a className="product-item" href="#">
-                                <img 
-                                    src={product.productImage} 
-                                    className="img-fluid product-thumbnail" 
-                                    alt={product.productName} 
-                                />
-                                <h3 className="product-title">{product.productName}</h3>
-                                <strong className="product-price">$49.99</strong>
-
-                                <span className="icon-cross">
-                                    <img src="/assets/images/cross.svg" className="img-fluid" alt="Cross icon" />
-                                </span>
-                            </a>
-                        </div>
-                    ))}
-
-                    {/* Dynamic Product Columns - Next 3 */}
-                    {PopularProductData.slice(3, 6).map((product) => (
-                        <div key={product.id} className="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-                            <a className="product-item" href="#">
-                                <img 
-                                    src={product.productImage} 
-                                    className="img-fluid product-thumbnail" 
-                                    alt={product.productName} 
-                                />
-                                <h3 className="product-title">{product.productName}</h3>
-                                <strong className="product-price">$49.99</strong>
-
-                                <span className="icon-cross">
-                                    <img src="/assets/images/cross.svg" className="img-fluid" alt="Cross icon" />
-                                </span>
-                            </a>
-                        </div>
-                    ))}
-                </div>
+  return (
+    <div className="product-section py-4">
+      <div className="container">
+        {/* Title Section - Full Width */}
+        <div className="row mb-4">
+          <div className="col-12 d-flex justify-content-between align-items-center">
+            <div>
+              <h2 className="h4 mb-1">Trending Now</h2>
+              <p className="small text-muted mb-0">
+                Top picks from verified vendors
+              </p>
             </div>
+            <Link to="/shop" className="btn btn-sm btn-outline-primary">
+              View All
+            </Link>
+          </div>
         </div>
-    );
+
+        {/* Product Grid - Two Rows */}
+        <div className="row g-3">
+          <div className="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+            <a className="product-item" href="cart.html">
+              <img
+                src="/assets/images/product-1.png"
+                className="img-fluid product-thumbnail"
+              />
+              <h3 className="product-title">Nordic Chair</h3>
+              <strong className="product-price">$50.00</strong>
+
+              <span className="icon-cross">
+                <img src="/assets/images/cross.svg" className="img-fluid" />
+              </span>
+            </a>
+          </div>
+          <div className="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+            <a className="product-item" href="cart.html">
+              <img
+                src="/assets/images/product-1.png"
+                className="img-fluid product-thumbnail"
+              />
+              <h3 className="product-title">Nordic Chair</h3>
+              <strong className="product-price">$50.00</strong>
+
+              <span className="icon-cross">
+                <img src="/assets/images/cross.svg" className="img-fluid" />
+              </span>
+            </a>
+          </div>
+          <div className="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+            <a className="product-item" href="cart.html">
+              <img
+                src="/assets/images/product-1.png"
+                className="img-fluid product-thumbnail"
+              />
+              <h3 className="product-title">Nordic Chair</h3>
+              <strong className="product-price">$50.00</strong>
+
+              <span className="icon-cross">
+                <img src="/assets/images/cross.svg" className="img-fluid" />
+              </span>
+            </a>
+          </div>
+          <div className="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+            <a className="product-item" href="cart.html">
+              <img
+                src="/assets/images/product-1.png"
+                className="img-fluid product-thumbnail"
+              />
+              <h3 className="product-title">Nordic Chair</h3>
+              <strong className="product-price">$50.00</strong>
+
+              <span className="icon-cross">
+                <img src="/assets/images/cross.svg" className="img-fluid" />
+              </span>
+            </a>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default PopularProduct;
