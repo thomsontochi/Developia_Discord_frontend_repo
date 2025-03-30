@@ -35,42 +35,6 @@
         "categories": ["Tech", "Computers"],
         "whatsappNumber": "4567890123",
         "verifiedBadge": true
-      },
-      {
-        "id": 5,
-        "name": "Olivia Patel",
-        "profileImage": "https://i.pravatar.cc/150?img=5",
-        "rating": 5,
-        "categories": ["Jewelry", "Accessories"],
-        "whatsappNumber": "5678901234",
-        "verifiedBadge": true
-      },
-      {
-        "id": 6,
-        "name": "David Thompson",
-        "profileImage": "https://i.pravatar.cc/150?img=6",
-        "rating": 4,
-        "categories": ["Art", "Prints"],
-        "whatsappNumber": "6789012345",
-        "verifiedBadge": false
-      },
-      {
-        "id": 7,
-        "name": "Lisa Wong",
-        "profileImage": "https://i.pravatar.cc/150?img=7",
-        "rating": 4,
-        "categories": ["Beauty", "Cosmetics"],
-        "whatsappNumber": "7890123456",
-        "verifiedBadge": true
-      },
-      {
-        "id": 8,
-        "name": "Carlos Mendez",
-        "profileImage": "https://i.pravatar.cc/150?img=8",
-        "rating": 3,
-        "categories": ["Food", "Gourmet"],
-        "whatsappNumber": "8901234567",
-        "verifiedBadge": false
       }
     ]
   }

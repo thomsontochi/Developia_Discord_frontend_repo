@@ -65,11 +65,15 @@ const Testimonials = () => {
             ))}
           </Swiper>
           
-          <div className="custom-prev"><span className="fa fa-chevron-left"></span></div>
-          <div className="custom-next"><span className="fa fa-chevron-right"></span></div>
+          {/* <div className="custom-prev"><span className="fa fa-chevron-left"></span></div>
+          <div className="custom-next"><span className="fa fa-chevron-right"></span></div> */}
         </div>
       </div>
+
+     
     </section>
+
+    
   );
 };
 

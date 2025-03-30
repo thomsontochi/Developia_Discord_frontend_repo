@@ -31,7 +31,7 @@ const Home = () => {
                 {/* <Categories/> */}
                
                
-                <TopVendors />
+                {/* <TopVendors /> */}
                 <Testimonials />
                 {/* <CTASection /> */}
             </div>

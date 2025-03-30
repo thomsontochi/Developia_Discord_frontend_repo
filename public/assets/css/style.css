@@ -605,7 +605,8 @@ a.more {
 }
 
 .testimonial-section {
-  padding: 4rem 0 10rem 0;
+  padding: 10rem 10em 10rem 10em;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
   }
 
 .testimonial-slider-wrap {
