@@ -10,6 +10,7 @@ import TrustIndicators from '../components/TrustIndicators';
 import CTASection from '../components/CTASection';
 // import CategoryCarousel from '../components/Categories'
 import Categories from '../components/Categories';
+import NewlyBrands from '../components/NewlyBrands';
 
 
 
@@ -27,9 +28,10 @@ const Home = () => {
                 <Product/>
                 {/* <WeHelp /> */}
                 <PopularProduct/>
+                <NewlyBrands />
+
                
                 {/* <Categories/> */}
-               
                
                 {/* <TopVendors /> */}
                 <Testimonials />

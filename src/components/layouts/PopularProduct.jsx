@@ -18,7 +18,7 @@ const PopularProduct = () => {
         <div className="row mb-4">
           <div className="col-12 d-flex justify-content-between align-items-center">
             <div>
-              <h2 className="h4 mb-1">Trending Now</h2>
+              <h2 className="h4 mb-1" style={{fontWeight: 700, fontSize: "2rem"}}>Trending Now</h2>
               <p className="small text-muted mb-0">
                 Top picks from verified vendors
               </p>
