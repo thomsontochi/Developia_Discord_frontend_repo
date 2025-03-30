@@ -1,31 +1,41 @@
 import React from "react";
-import { Link } from 'react-router-dom';
-// import Counch from "../assets/images/couch.png";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
-    return (
+  return (
+    <div className="hero-section">
+      <div className="container">
+        <div className="row align-items-center">
+          {/* Left Content */}
+          <div className="col-lg-6 text-lg-start text-center">
+            <h1 className="fw-bold">
+              Shop Directly from <span className="text-primary">WhatsApp Vendors</span>
+            </h1>
+            <p className="text-muted">
+              Discover verified local sellers. Chat, shop, and buy with confidence through WhatsApp.
+            </p>
+            <div className="d-flex gap-3 justify-content-lg-start justify-content-center">
+              <Link to="/auth/vendor/register" className="btn btn-primary">
+                Become a Vendor
+              </Link>
+              <Link to="/shop" className="btn btn-outline-dark">
+                Shop Now
+              </Link>
+            </div>
+          </div>
 
-        // <!-- Start Hero Section -->
-		<div className="hero">
-			<div className="container">
-				<div className="row justify-content-between">
-					<div className="col-lg-6">
-						<div className="">
-							<h1>Empowering WhatsApp Vendors <span className="d-block">with Seamless E-commerce Solutions</span></h1>
-							<p className="mb-4">Join Developia Discord, where we connect WhatsApp vendors with customers effortlessly. Our platform provides a user-friendly interface, enabling vendors to showcase their products and manage orders directly through WhatsApp.</p>
-							<p><a href="" className="btn btn-secondary me-2">Start Selling Now</a><a href="#" className="btn btn-white-outline">Discover More</a></p>
-						</div>
-					</div>
-					<div className="col-lg-6">
-						<div className="hero-img-wrap">
-							<img src="/assets/images/Pngtree.png" className="img-fluid" alt="E-commerce illustration" /> {/* Self-closing tag */}
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	
-    );
+          {/* Right Image */}
+          <div className="col-lg-6 text-center mt-4 mt-lg-0">
+            <img
+              src="/assets/images/Shopping.png"
+              className="img-fluid hero-image"
+              alt="Shopping on WhatsApp"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Hero;

@@ -81,3 +81,16 @@ body {
 .error-actions {
   margin-top: 30px;
 }
+
+/* Responsive image display */
+@media (max-width: 991px) {
+  img.img-fluid.hero-image {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) {
+  img.img-fluid.hero-image {
+    display: block; /* Show on desktop */
+  }
+}
