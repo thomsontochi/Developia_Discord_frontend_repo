@@ -25,7 +25,7 @@ const Testimonials = () => {
         <div className="row justify-content-center">
           <div className="col-lg-8 col-md-10">
             <div className="text-center mb-5">
-              <h2 className="section-title">Vendly Customers </h2>
+              <h2 className=""  style={{ fontWeight: 700 , fontSize: "2rem"  }}>Vendly Customers </h2>
               <p className="text-muted">Real feedback from verified buyers</p>
             </div>
 
