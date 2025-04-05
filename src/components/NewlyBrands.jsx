@@ -63,7 +63,7 @@ const NewlyBrandsStyle2 = () => {
       <div className="container">
         {/* Section Header - Title left, Button right */}
         <div className="section-header">
-          <h2 className="" style={{ fontWeight: 700 , fontSize: "2rem"  }}>Newly Added Brands</h2>
+          <h2 className="" style={{ fontWeight: 700 , fontSize: "2rem"  }}>New Brands</h2>
           {/* Styled link/button */}
           <a href="#" className="view-all-button">
             View all
