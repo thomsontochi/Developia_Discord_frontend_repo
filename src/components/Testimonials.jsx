@@ -4,76 +4,97 @@ import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "./testimonials.css"
+import "./testimonials.css";
 
 const Testimonials = () => {
   const [testimonialData, setTestimonialData] = useState([]);
 
   useEffect(() => {
-    fetch('/assets/TestimonialData.json')
+    fetch("/assets/TestimonialData.json")
       .then((response) => response.json())
       .then((data) => setTestimonialData(data.testimonialData))
-      .catch((error) => console.error('Error loading testimonials:', error));
+      .catch((error) => console.error("Error loading testimonials:", error));
   }, []);
 
   // Don't render Swiper if there's no data
   if (testimonialData.length === 0) return null;
 
   return (
-    <section className="testimonial-section py-16">
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Testimonials</h2>
-        </div>
+    <section className="testimonial-section">
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-lg-8 col-md-10">
+            <div className="text-center mb-5">
+              <h2 className="section-title">Vendly Customers </h2>
+              <p className="text-muted">Real feedback from verified buyers</p>
+            </div>
 
-        <div className="relative max-w-4xl mx-auto">
-          <Swiper
-            modules={[Navigation, Autoplay, Pagination]}
-            spaceBetween={30}
-            slidesPerView={1}
-            pagination={{ clickable: true }}
-            navigation={{
-              nextEl: '.custom-next',
-              prevEl: '.custom-prev',
-            }}
-            loop={testimonialData.length > 1} // Only enable loop if more than 1 slide
-            autoplay={{
-              delay: 3000,
-              disableOnInteraction: false,
-            }}
-            className="testimonial-slider"
-          >
-            {testimonialData.map((testimonial) => (
-              <SwiperSlide key={testimonial.id}>
-                <div className="testimonial-block text-center">
-                  <blockquote className="mb-5">
-                    <p>&ldquo;{testimonial.content}&rdquo;</p>
-                  </blockquote>
-                  <div className="author-info">
-                    <div className="author-pic">
-                      <img 
-                        src={testimonial.image} 
-                        alt={testimonial.name}
-                        className="img-fluid w-16 h-16 rounded-full mx-auto object-cover" 
-                      />
+            <div className="testimonials-wrapper position-relative">
+              <Swiper
+                modules={[Navigation, Autoplay, Pagination]}
+                spaceBetween={20}
+                pagination={{
+                  clickable: true,
+                  dynamicBullets: true,
+                }}
+                navigation={{
+                  nextEl: ".custom-next",
+                  prevEl: ".custom-prev",
+                }}
+                loop={testimonialData.length > 1}
+                autoplay={{
+                  delay: 5000,
+                  disableOnInteraction: false,
+                }}
+                breakpoints={{
+                  640: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                  },
+                  768: {
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+                  },
+                }}
+                className="testimonial-slider"
+              >
+                {testimonialData.map((testimonial) => (
+                  <SwiperSlide key={testimonial.id}>
+                    <div className="testimonial-card">
+                      <div className="testimonial-content p-4">
+                        <div className="author-info mb-4">
+                          <div className="d-flex align-items-center">
+                            <div className="author-image">
+                              <img
+                                src={testimonial.image}
+                                alt={testimonial.name}
+                                className="rounded-circle"
+                              />
+                            </div>
+                            <div className="author-details ms-3">
+                              <h4 className="mb-0">{testimonial.name}</h4>
+                              <span className="text-muted small">
+                                {testimonial.position}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <blockquote>
+                          <p className="mb-0">{testimonial.content}</p>
+                        </blockquote>
+                      </div>
                     </div>
-                    <h3 className="font-weight-bold">{testimonial.name}</h3>
-                    <span className="position d-block mb-3">{testimonial.position}</span>
-                  </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-          
-          {/* <div className="custom-prev"><span className="fa fa-chevron-left"></span></div>
-          <div className="custom-next"><span className="fa fa-chevron-right"></span></div> */}
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+
+              {/* Navigation Buttons */}
+             
+            </div>
+          </div>
         </div>
       </div>
-
-     
     </section>
-
-    
   );
 };
 

@@ -207,7 +207,6 @@ const Header = () => {
                 >
                   <div
                     className="bg-primary p-4 text-white"
-                    style={{ backgroundColor: "#3b5d50" }}
                   >
                     <h5 className="mb-1 fw-bold">Welcome to Vendly</h5>
                     <p className="mb-0 text-white-50 small">
